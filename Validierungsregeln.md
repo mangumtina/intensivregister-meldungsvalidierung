@@ -1,10 +1,10 @@
-Hinweise zum Dokument:
+# Hinweise zum Dokument:
 
     Gelbe Markierungen: Änderungen zur vorhergehenden Version
 
     Blaue Markierungen: Diese Vorgaben sind seitens des DIVI-Intensivregisters noch nicht implementiert, werden aber zeitnah nachgezogen.
 
-Inhalt
+## Inhalt
 
 Dieses Dokument fasst alle Plausibilitäts-Checks & Systemanforderungen zusammen, welche der Software-Hersteller implementiert haben soll beim Erfassen von Meldungen für das DIVI-IntensivRegister.
 1) Zusammenfassung nach der Meldung aller Daten
