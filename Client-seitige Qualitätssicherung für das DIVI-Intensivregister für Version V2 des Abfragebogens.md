@@ -44,7 +44,7 @@ Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch h
 intensiv_betten >= intensiv_betten_belegt 
 
 * **Regel 5B (Beziehung freie Behandlungskapazitäten <-> Bettenzahl):**  
-    **5B4:** intensiv_betten >= freie_iv_kapazitaet 
+    **5B4:** intensiv_betten >= freie_iv_kapazitaet  
     **5B5:** intensiv_betten >= freie_ecmo_kapazitaet 
 
 * **Regel 5C (Beziehung COVID-19- (bzw. RSV-, Influenza-)Patient*innen_Gesamt <-> Behandlungsgruppen COVID-19-/RSV-/Influenza-Patient*innen):**
