@@ -115,7 +115,7 @@ intensiv_betten >= intensiv_betten_belegt
     * covid_kapazitaet_frei_ecmo 
 
 
-* **Regel 5G (Beziehung COVID-19-Patient\*innen <-> COVID-19-Alterstrata):**
+* **Regel 5G (Beziehung COVID-19-Patient\*innen <-> COVID-19-Alterstrata):**  
     **5G1** Folgende Altersstrata werden *nicht* in Kinder-Meldebereichen erfasst, sondern nur für Erwachsenen-Meldebereiche bzw. Meldebereiche ohne definierten Behandlungsschwerpunkt:
     * stratum17minus
     * stratum18bis29
