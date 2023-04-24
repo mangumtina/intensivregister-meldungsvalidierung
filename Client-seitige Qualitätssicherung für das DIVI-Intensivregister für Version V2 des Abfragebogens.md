@@ -190,7 +190,7 @@ Alle Datenfelder werden in „Meldung erfassen“ per Default allen Meldebereich
     * stratum60bis69
     * stratum70bis79
     * stratum80plus
-2.	Felder zum RSV- und Influenza-Patient*innen werden **nur** für **Kinder** erfasst:
+2.	Felder zu RSV- und Influenza-Patient*innen werden **nur** für **Kinder** erfasst:
     * faelle_rsv_aktuell
     * faelle_rsv_aktuell_high_flow_oxygen
     * faelle_rsv_aktuell_nicht_invasiv_beatmet
