@@ -35,11 +35,10 @@ Das folgende Dokument führt alle aktuellen Text-Labels und Mouseovers auf, die 
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
 | :- | :- | :- | :- |
 | Wie schätzen Sie persönlich die aktuelle Situation der Behandlungsplätze in Ihrem Meldebereich ein? | - | *{Dies ist ein erklärender Text zu Folgefragen Q8.1 – Q8.3 im Frontend. Der erklärende Text selbst hat keine Antwortoption.}* | - |
-| **Q8.1:** ICU Low-Care | - | „Verfügbar“, „Begrenzt“, „Ausgelastet“, „Keine Angabe“ | kapazitaeten: statusEinschaetzungLowcare |
 | **Q8.2:** ICU High-Care | - | „Verfügbar“, „Begrenzt“, „Ausgelastet“, „Keine Angabe“ | kapazitaeten: statusEinschaetzungHighcare |
 | **Q8.3:** ICU ECMO | - | „Verfügbar“, „Begrenzt“, „Ausgelastet“, „Keine Angabe“ | kapazitaeten: statusEinschaetzungEcmo |
 
-**Q9** wurde gestrichen.
+**Q8.1** und **Q9** wurden gestrichen.
 
 ## ICU-RESERVE
 ### 5. Erfassung: Anzahl zusätzlich aktivierbarer Intensivbehandlungsplätze im Notfall-Szenario
@@ -90,14 +89,10 @@ Bei voriger Betriebs-Einschränkung Auswahl = **"Teilweise eingeschränkt"** ode
 | **Q27.4:** Verbrauchsmaterial | Persönliche Einschätzung der meldenden Person, dass die Betriebs-Einschränkung vornehmlich am Mangel von Verbrauchsmaterial liegt. | kann per Klick ausgewählt oder freigelassen werden | betriebseinschraenkungVerbrauchsmaterial |
 
 ## COVID-19 STATUS: SPEZIFIKATION
-### 9.1. Erfassung: Aktuelle COVID-19-Patient\*innen nach Alter [Kinder-Meldebereiche]
-*Achtung:* Diese Erfassung wird nur für Meldebereiche abgefragt, die als Behandlungsschwerpunkt „Kinder“ angegeben haben.
-| Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
-| :- | :- | :- | :- |
-| **Q25.1<sup>Kinder</sup>:** Anzahl COVID-19-Patient\*innen >= 18 Jahre | Anzahl der COVID-19-Patient\*innen im Alter von 18 Jahren oder älter, die aktuell in intensivmedizinischer Behandlung in Ihrem Meldebereich sind (unabhängig von der Behandlung im Low- und High-Care-Bereich (NIV, High-Flow, inv. Beatmung etc.)). Nur nachgewiesene Infektionen mit SARS-CoV-2, KEINE Verdachtsfälle. | Integer | faelleCovidAelterAls17j |
+**Q25.1** wurde gestrichen.
 
-### 9.2. Erfassung: Aktuelle COVID-19-Patient*innen nach Alter [Erwachsenen-Meldebereiche]
-*i-Button: Anzahl der aktuell in intensivmedizinischer Behandlung befindlichen COVID-19-Patient\*innen pro Altersgruppe, unabhängig von der Behandlung im Low- und High-Care-Bereich (NIV, High-Flow, inv. Beatmung etc.). Nur nachgewiesene Infektionen mit SARS-CoV-2, KEINE Verdachtsfälle. Die Summe der Einträge entspricht der Angabe im Feld „Aktuell COVID-19 in Behandlung“.*
+### 9. Erfassung: Aktuelle COVID-19-Patient*innen nach Alter [Erwachsenen-Meldebereiche]
+*i-Button: Anzahl der aktuell in intensivmedizinischer Behandlung befindlichen COVID-19-Patient\*innen pro Altersgruppe, unabhängig von der Behandlung im Low- und High-Care-Bereich (NIV, High-Flow, inv. Beatmung etc.). Nur nachgewiesene Infektionen mit SARS-CoV-2, KEINE Verdachtsfälle. Die Summe der Einträge entspricht der Angabe im Feld „Aktuell COVID-19 in Behandlung“.*  
 *Achtung*: Diese Erfassung wird nur für Meldebereiche abgefragt, die als Behandlungsschwerpunkt „Erwachsene“ angegeben haben oder den Behandlungsschwerpunkt nicht angegeben haben („NA“).
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
 | :- | :- | :- | :- |
