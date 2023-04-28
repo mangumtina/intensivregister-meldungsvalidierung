@@ -6,6 +6,7 @@ Das folgende Dokument führt alle aktuellen Text-Labels und Mouseovers auf, die 
 **Hinweise zum Dokument:**
 * Die **Reihenfolge** der Abfragen in diesem Dokument spiegelt die Abfragemaske im Front-End wider. Die Nummerierung der einzelnen Abfragen (Q1 – Q50) ist historisch begründet und bei Änderungen der Abfragemaske beibehalten worden, sodass eine einmal zugeordnete Nummerierung bestehen bleibt.
 * Solange kein Hinweis erfolgt, gelten die Abfragen für alle Meldebereiche (Erwachsenen-ITS, PICU, NICU).
+* Durchgestrichene Passagen betreffen derzeit pausierte, d. h. nicht erfragte Variablen. Nach Ende der Pausierung treten die betreffenden Prüfregeln wieder in Kraft.
 
 ## ICU-STATUS
 ### 1. Erfassung: Betreibbare Intensivbetten (Nicht-COVID-19 und COVID-19)
@@ -131,7 +132,7 @@ Bei voriger Betriebs-Einschränkung Auswahl = **"Teilweise eingeschränkt"** ode
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
 | :- | :- | :- | :- |
 | **Q28:** ITS-Erstaufnahme: Anzahl der COVID-19-Patient\*innen, die innerhalb des gestrigen Kalendertages erstmals zur ITS-Behandlung aufgenommen wurden (keine Zählung von Neuaufnahmen aufgrund von ITS-zu-ITS Verlegungen). | Zählung von COVID-19-Patient\*innen, die erstmals auf die ITS verlegt werden von einer Nicht-Intensivstation (Notaufnahme, Normalstation, etc.) bzw. bei voriger ITS-Behandlung nicht im Intensivregister gemeldet wurden (keine Zählung wiederkehrender Patient\*innen). Nur nachgewiesene Infektionen mit SARS-CoV-2, KEINE Verdachtsfälle.	| Integer | neuaufnahmen: erstaufnahmen |
-| **Q29:** ITS-zu-ITS Verlegung: Anzahl der COVID-19-Patient\*innen, die innerhalb des gestrigen Kalendertages im Rahmen einer Verlegung von einem anderen ITS-Meldebereich aufgenommen wurden. | Zählung nur von COVID-19-Patient\*innen, die bereits zuvor in einem anderen ITS-Meldebereich behandelt wurden und im Rahmen einer Verlegung vom hier meldenden ITS-Meldebereich aufgenommen wurden. Nur nachgewiesene Infektionen mit SARS-CoV-2, KEINE Verdachtsfälle.	| Integer | neuaufnahmen: verlegungen |
+| <del>**Q29:** ITS-zu-ITS Verlegung: Anzahl der COVID-19-Patient\*innen, die innerhalb des gestrigen Kalendertages im Rahmen einer Verlegung von einem anderen ITS-Meldebereich aufgenommen wurden.</del> | <del>Zählung nur von COVID-19-Patient\*innen, die bereits zuvor in einem anderen ITS-Meldebereich behandelt wurden und im Rahmen einer Verlegung vom hier meldenden ITS-Meldebereich aufgenommen wurden. Nur nachgewiesene Infektionen mit SARS-CoV-2, KEINE Verdachtsfälle.</del>	| <del>Integer</del> | <del>neuaufnahmen: verlegungen</del> |
 
 ### 13. Erfassung: SARS-CoV-2-Impfstatus der COVID-19-ITS-Erstaufnahmen
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
@@ -158,19 +159,19 @@ Bei voriger Betriebs-Einschränkung Auswahl = **"Teilweise eingeschränkt"** ode
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
 | :- | :- | :- | :- |
 | **Q41<sup>Kinder</sup>:** Anzahl aller aktuell intensivmedizinisch behandelten RSV-Patient\*innen | Anzahl aller aktuell in intensivmedizinischer Behandlung (beatmet und nicht beatmet) befindlicher RSV-Patient\*innen (in allen Intensivbereichen: Low-Care, High-Care, ECMO); nur nachgewiesene Infektionen mit RSV, KEINE Verdachtsfälle. | Integer | rsvStatus: faelleAktuell |
-| **davon** Anzahl mit folgender Behandlung in den letzten 24 h: | - | *{Dies ist ein erklärender Text zu Folgefragen Q42<sup>Kinder</sup> - Q45<sup>Kinder</sup> im Frontend. Der erklärende Text selbst hat keine Antwortoption.}* | - |
-| **Q43<sup>Kinder</sup>:** High-Flow Oxygen (optional) | als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h | Integer | rsvStatus: faelleAktuellHighFlowOxygen |
-| **Q44<sup>Kinder</sup>:** NIV (optional) | als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h | Integer | rsvStatus: faelleAktuellNichtInvasivBeatmet |
-| **Q42<sup>Kinder</sup>:** invasive Beatmung (optional) | invasive Beatmung in den letzten 24 h; unabhängig davon, ob (auch) eine ECMO-Behandlung vorliegt | Integer | rsvStatus: faelleAktuellBeatmet |
-| **Q45<sup>Kinder</sup>:** ECMO (optional) | ECMO-Behandlung in den letzten 24 h; unabhängig davon, ob (auch) eine Beatmungsbehandlung vorliegt | Integer | rsvStatus: faelleAktuellEcmo |
+| <del>**davon** Anzahl mit folgender Behandlung in den letzten 24 h:</del> | - | <del>*{Dies ist ein erklärender Text zu Folgefragen Q42<sup>Kinder</sup> - Q45<sup>Kinder</sup> im Frontend. Der erklärende Text selbst hat keine Antwortoption.}*</del> | - |
+| <del>**Q43<sup>Kinder</sup>:** High-Flow Oxygen (optional)</del> | <del>als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h</del> | <del>Integer</del> | <del>rsvStatus: faelleAktuellHighFlowOxygen</del> |
+| <del>**Q44<sup>Kinder</sup>:** NIV (optional)</del> | <del>als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h</del> | <del>Integer</del> | <del>rsvStatus: faelleAktuellNichtInvasivBeatmet</del> |
+| <del>**Q42<sup>Kinder</sup>:** invasive Beatmung (optional)</del> | <del>invasive Beatmung in den letzten 24 h; unabhängig davon, ob (auch) eine ECMO-Behandlung vorliegt</del> | <del>Integer</del> | <del>rsvStatus: faelleAktuellBeatmet</del> |
+| <del>**Q45<sup>Kinder</sup>:** ECMO (optional)</del> | <del>ECMO-Behandlung in den letzten 24 h; unabhängig davon, ob (auch) eine Beatmungsbehandlung vorliegt</del> | <del>Integer</del> | <del>rsvStatus: faelleAktuellEcmo</del> |
 
 ### 16. Erfassung: Influenza-Status [Kinder-Meldebereiche]
 *Achtung:* Diese Erfassung wird nur für Meldebereiche abgefragt, die als Behandlungsschwerpunkt „Kinder“ angegeben haben.
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
 | :- | :- | :- | :- |
 | **Q46<sup>Kinder</sup>:** Anzahl aller aktuell intensivmedizinisch behandelten Influenza-Patient\*innen | Anzahl aller aktuell in intensivmedizinischer Behandlung (beatmet und nicht beatmet) befindlicher Influenza-Patient\*innen (in allen Intensivbereichen: Low-Care, High-Care, ECMO); nur nachgewiesene Infektionen mit Influenza, KEINE Verdachtsfälle. | Integer | influenzaStatus: faelleAktuell |
-| **davon** Anzahl mit folgender Behandlung in den letzten 24 h: | - | *{Dies ist ein erklärender Text zu Folgefragen Q47<sup>Kinder</sup> - Q50<sup>Kinder</sup> im Frontend. Der erklärende Text selbst hat keine Antwortoption.}* | - |
-| **Q48<sup>Kinder</sup>:** High-Flow Oxygen (optional) | als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h | Integer | influenzaStatus: faelleAktuellHighFlowOxygen |
-| **Q49<sup>Kinder</sup>:** NIV (optional) | als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h | Integer | influenzaStatus: faelleAktuellNichtInvasivBeatmet |
-| **Q47<sup>Kinder</sup>:** invasive Beatmung (optional) | invasive Beatmung in den letzten 24 h; unabhängig davon, ob (auch) eine ECMO-Behandlung vorliegt | Integer | influenzaStatus: faelleAktuellBeatmet |
-| **Q50<sup>Kinder</sup>:** ECMO (optional) | ECMO-Behandlung in den letzten 24 h; unabhängig davon, ob (auch) eine Beatmungsbehandlung vorliegt | Integer | influenzaStatus: faelleAktuellEcmo |
+| <del>**davon** Anzahl mit folgender Behandlung in den letzten 24 h:</del> | - | <del>*{Dies ist ein erklärender Text zu Folgefragen Q47<sup>Kinder</sup> - Q50<sup>Kinder</sup> im Frontend. Der erklärende Text selbst hat keine Antwortoption.}*</del> | - |
+| <del>**Q48<sup>Kinder</sup>:** High-Flow Oxygen (optional)</del> | <del>als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h</del> | <del>Integer</del> | <del>influenzaStatus: faelleAktuellHighFlowOxygen</del> |
+| <del>**Q49<sup>Kinder</sup>:** NIV (optional)</del> | <del>als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h</del> | <del>Integer</del> | <del>influenzaStatus: faelleAktuellNichtInvasivBeatmet</del> |
+| <del>**Q47<sup>Kinder</sup>:** invasive Beatmung (optional)</del> | <del>invasive Beatmung in den letzten 24 h; unabhängig davon, ob (auch) eine ECMO-Behandlung vorliegt</del> | <del>Integer</del> | <del>influenzaStatus: faelleAktuellBeatmet</del> |
+| <del>**Q50<sup>Kinder</sup>:** ECMO (optional)</del> | <del>ECMO-Behandlung in den letzten 24 h; unabhängig davon, ob (auch) eine Beatmungsbehandlung vorliegt</del> | <del>Integer</del> | <del>influenzaStatus: faelleAktuellEcmo</del> |
