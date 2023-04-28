@@ -3,7 +3,9 @@
 
 Dieses Dokument fasst alle Plausibilitäts-Checks & Systemanforderungen zusammen, welche der Software-Hersteller beim Erfassen von Meldungen für das DIVI-IntensivRegister implementiert haben soll.
 
-**Hinweis**: Durchgestrichene Passagen betreffen derzeit pausierte, d. h. nicht erfragte Variablen. Nach Ende der Pausierung treten die betreffenden Prüfregeln wieder in Kraft.
+**Hinweise**:
+* Durchgestrichene Passagen betreffen derzeit pausierte, d. h. nicht erfragte Variablen. Nach Ende der Pausierung treten die betreffenden Prüfregeln wieder in Kraft.
+* Die Nummerierung der Prüfregeln ist historisch bedingt. Durch nachträgliche Änderungen, Hinzufügen oder Streichen von Plausibilitätsprüfungen kann daher ein Sprung in der Nummerierung auftreten.
 
 ## 1) Zusammenfassung nach der Meldung aller Daten
 Nach der Eingabe aller Meldungen, soll der meldende User in einem letzten Schritt aufgefordert werden, alle zusammengefassten Daten nochmals zu prüfen. Dies dient der Sicherstellung einer hohen Datenqualität.  An diesem Schritt sollen auch Warnmeldungen erscheinen, um den User auf potenzielle Fehler hinzuweisen (siehe Punkt 6) und 7)).
@@ -46,16 +48,12 @@ Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch h
     **5B4** intensiv_betten >= freie_iv_kapazitaet  
     **5B5** intensiv_betten >= freie_ecmo_kapazitaet 
 
-* **Regel 5C (Beziehung COVID-19- (bzw. RSV-, Influenza-)Patient\*innen_Gesamt <-> Behandlungsgruppen COVID-19-/RSV-/Influenza-Patient\*innen):**
+* **Regel 5C (Beziehung COVID-19-(bzw. RSV-, Influenza-)Patient\*innen_Gesamt <-> Behandlungsgruppen COVID-19-/RSV-/Influenza-Patient\*innen):**
 
     **Regeln für COVID-19 (alle Meldebereiche)**  
     **5C4A** faelle_covid_aktuell_mit_manifestation >= faelle_covid_aktuell_mit_manifestation_ecmo
 
-    **5C4B** faelle_covid_aktuell_ohne_manifestation >= faelle_covid_aktuell_ohne_manifestation_ecmo
-
-    **5C5A** faelle_covid_aktuell_mit_manifestation >= faelle_covid_aktuell_mit_manifestation_beatmet + faelle_covid_aktuell_mit_manifestation_high_flow_oxygen + faelle_covid_aktuell_mit_manifestation_nicht_invasiv_beatmet
-
-    **5C5B** faelle_covid_aktuell_ohne_manifestation >= faelle_covid_aktuell_ohne_manifestation_beatmet + faelle_covid_aktuell_ohne_manifestation_high_flow_oxygen + faelle_covid_aktuell_ohne_manifestation_nicht_invasiv_beatmet
+    **5C5A** faelle_covid_aktuell_mit_manifestation >= faelle_covid_aktuell_mit_manifestation_beatmet + faelle_covid_aktuell_mit_manifestation_nicht_invasiv_beatmet
 
     **5C6** faelle_covid_aktuell ==
     faelle_covid_aktuell_mit_manifestation + faelle_covid_aktuell_ohne_manifestation
@@ -69,28 +67,18 @@ Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch h
     **5C52** faelle_influenza_aktuell >= faelle_influenza_aktuell_beatmet + faelle_influenza_aktuell_high_flow_oxygen + faelle_influenza_aktuell_nicht_invasiv_beatmet</del>
 
 * **Regel 5D (Beziehung Patient\*innen_Alle <-> COVID-19-/RSV-/Influenza-Patient\*innen):**  
-    Hinweis: für Erwachsenen-Meldebereiche sind RSV/Influenza-Felder alle NULL, im Sinne der Validierung 0.  
+    Hinweis: Für Erwachsenen-Meldebereiche sind RSV/Influenza-Felder alle NULL, im Sinne der Validierung 0.  
     **5D1** patienten_invasiv_beatmet >= faelle_covid_aktuell_mit_manifestation_beatmet + faelle_covid_aktuell_ohne_manifestation_beatmet <del>+ faelle_rsv_aktuell_beatmet + faelle_influenza_aktuell_beatmet</del>.
     
-    **5D2** patienten_nicht_invasiv_beatmet >= faelle_covid_aktuell_mit_manifestation_nicht_invasiv_beatmet + faelle_covid_aktuell_ohne_manifestation_nicht_invasiv_beatmet <del>+ faelle_rsv_aktuell_nicht_invasiv_beatmet + faelle_influenza_aktuell_nicht_invasiv_beatmet</del>
+    **5D2** patienten_nicht_invasiv_beatmet >= faelle_covid_aktuell_mit_manifestation_nicht_invasiv_beatmet <del>+ faelle_rsv_aktuell_nicht_invasiv_beatmet + faelle_influenza_aktuell_nicht_invasiv_beatmet</del>
 
-    **5D3** patienten_ecmo >= faelle_covid_aktuell_mit_manifestation_ecmo + faelle_covid_aktuell_ohne_manifestation_ecmo <del>+ faelle_rsv_aktuell_ecmo + faelle_influenza_aktuell_ecmo</del>
+    **5D3** patienten_ecmo >= faelle_covid_aktuell_mit_manifestation_ecmo <del>+ faelle_rsv_aktuell_ecmo + faelle_influenza_aktuell_ecmo</del>
     
     **5D4** intensiv_betten_belegt >= faelle_covid_aktuell + faelle_rsv_aktuell + faelle_influenza_aktuell
 
 * **Regel 5E (Beziehung Belegte Betten_Patient\*innen_Alle <-> Behandlungsgruppen Patient\*innen_Alle):**  
     **5E1** intensiv_betten_belegt >= patienten_ecmo  
     **5E4** intensiv_betten_belegt >= patienten_invasiv_beatmet + patienten_nicht_invasiv_beatmet 
-
-* **Regel 5F (Beziehung Behandlungskapazitäten_Alle  <->  Behandlungskapazitäten_COVID-19):**  
-    **5F0** intensiv_betten >= covid_kapazitaet_frei  
-    **5F1** freie_iv_kapazitaet >= covid_kapazitaet_frei_iv  
-    **5F2** freie_ecmo_kapazitaet >= covid_kapazitaet_frei_ecmo
-
-    **5F3** Folgende Felder werden **nur** für Erwachsenen-Meldebereiche bzw. Meldebereiche ohne definierten Behandlungsschwerpunkt erfasst:
-    * covid_kapazitaet_frei, 
-    * covid_kapazitaet_frei_iv, 
-    * covid_kapazitaet_frei_ecmo 
 
 * **Regel 5G (Beziehung COVID-19-Patient\*innen <-> COVID-19-Alterstrata):**  
     **5G1** Folgende Altersstrata werden *nicht* in Kinder-Meldebereichen erfasst, sondern **nur** für Erwachsenen-Meldebereiche bzw. Meldebereiche ohne definierten Behandlungsschwerpunkt:
@@ -103,8 +91,8 @@ Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch h
     * stratum70bis79
     * stratum80plus
 
-    **5G2** sum (Alterstrata Covid Fälle) <= faelle_covid_aktuell
-    *Diese Regel prüft „<=“, damit keine Meldungen verloren werden, wenn Meldebereiche einige Altersgruppen nicht angeben können oder möchten. Siehe hierzu auch Regel 6B: nicht speicherverhindernde Warnung bei sum (Alterstrata Covid Fälle) < faelle_covid_aktuell*
+    **5G2** sum (Alterstrata COVID-19-Fälle) <= faelle_covid_aktuell
+    *Diese Regel prüft „<=“, damit keine Meldungen verloren werden, wenn Meldebereiche einige Altersgruppen nicht angeben können oder möchten. Siehe hierzu auch Regel 6B: nicht speicherverhindernde Warnung bei sum (Alterstrata COVID-19-Fälle) < faelle_covid_aktuell*
 
 * **Regel 5H (Genesene COVID-19-Fälle):**  
     **5H1** faelle_covid_genesen nur als kumulativ anwachsende Zahl erlaubt;  
@@ -125,7 +113,7 @@ Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch h
     Für die Regeln 5I siehe auch Abschnitt 10: Keine Regeln 5I bei Korrektur von Meldungen
     
 * **Regel 5J (Beziehung COVID-19-Patient\*innen <-> SARS-CoV-2-Virusvarianten):**  
-    **5J1** sum (SARS-CoV-2-Virusvarianten-Gruppe Covid Fälle) <= faelle_covid_aktuell  
+    **5J1** sum (SARS-CoV-2-Virusvarianten-Gruppe COVID-19-Fälle) <= faelle_covid_aktuell  
     *Diese Regel prüft „<=“, damit keine Meldungen verloren werden, wenn Meldebereiche keine Angaben zu VOCs machen.*
     
 * **Regel 5K (Neuaufnahmen COVID-19-Patient\*innen):**  
@@ -165,8 +153,6 @@ Wenn ein für die Regel relevantes Datenfeld nicht ausgefüllt wurde, soll die W
 
     **Regel 6A2A** faelle_covid_aktuell_mit_manifestation_beatmet >= faelle_covid_aktuell_mit_manifestation_ecmo
 
-    **Regel 6A2B** faelle_covid_aktuell_ohne_manifestation_beatmet >= faelle_covid_aktuell_ohne_manifestation_ecmo
-
 * **Regel 6B** Eine Warnung auf der Zusammenfassungsseite ist anzuzeigen, wenn die Summe(Altersstrata COVID-19-Fälle) < faelle_covid_aktuell.
 
 ## 7) Zweifache Warnmeldung bei stark veränderten Werten
@@ -203,13 +189,9 @@ Alle Datenfelder werden in „Meldung erfassen“ per Default allen Meldebereich
     * <del>faelle_influenza_aktuell_nicht_invasiv_beatmet</del>
     * <del>faelle_influenza_aktuell_beatmet</del>
     * <del>faelle_influenza_aktuell_ecmo</del>
-3.	Die Abfrage von freien Kapazitäten für COVID-19 erfolgt **nur** bei Meldebereichen für **Erwachsene** bzw. ohne Behandlungsschwerpunkt (siehe auch 5F3) über folgende Variablen:
-    * covid_kapazitaet_frei
-    * covid_kapazitaet_frei_iv
-    * covid_kapazitaet_frei_ecmo 
-4.	Die Abfrage zu schwangeren COVID-19-Patient*innen erfolgt **nur** bei Meldebereichen für **Erwachsene** bzw. ohne Behandlungsschwerpunkt erfasst (siehe Regel 5L1):
+3.	Die Abfrage zu schwangeren COVID-19-Patient*innen erfolgt **nur** bei Meldebereichen für **Erwachsene** bzw. ohne Behandlungsschwerpunkt erfasst (siehe Regel 5L1):
     * anzahl_schwangere 
-5.	ECMO-bezogene Eingabefelder (in *ICU-Status*, *COVID-19-Status*) werden **nicht** in Meldebereichen abgefragt, die unter „Mein Krankenhausstandort/ Meldebereichsdaten“ die Check-Box des dortigen Datenfeldes „ICU ECMO vorhanden“ **abgewählt** haben und damit über keine ECMO-Kapazitäten im Meldebereich verfügen.
+4.	ECMO-bezogene Eingabefelder (in *ICU-Status*, *COVID-19-Status*, <del>*RSV- und Influenza-Status*</del>) werden **nicht** in Meldebereichen abgefragt, die unter „Mein Krankenhausstandort/ Meldebereichsdaten“ die Check-Box des dortigen Datenfeldes „ICU ECMO vorhanden“ **abgewählt** haben und damit über keine ECMO-Kapazitäten im Meldebereich verfügen.
 
 ## 9) Funktionalität: Automatisches Werte-Vorausfüllen
 Beim „Meldung erfassen“ kann eine automatische Werte-Vorausfüll-Funktionalität genutzt werden, die alle Datenfelder automatisch mit den Daten der letzten Erfassung befüllt.
@@ -221,7 +203,7 @@ Für die Abfragen "ITS-Erstaufnahme" und "ITS-zu-ITS-Verlegung" im Reiter „COV
 
 Auch im Korrektur-Modus einer schon erfolgten Meldung ist ein Vorausfüllen möglich, unabhängig vom Zeitpunkt der vorhergehenden Meldung. Dies betrifft folgende Datenfelder im Konkreten:
 * faelle_covid_vortag_erstaufnahmen
-* faelle_covid_vortag_verlegungen
+* <del>faelle_covid_vortag_verlegungen</del>
 * impfstatus_unbekannt
 * impfstatus_0_impfungen 
 * impfstatus_1_impfung 
@@ -238,6 +220,6 @@ Prüfregeln (siehe Punkt 5), die bei der Korrektur-Anwendung **nicht** mehr in o
     Einträge, die nicht den Regeln 5H1 oder 5H2 entsprechen, sind erlaubt: Die Werte können kleiner werden bzw. um mehr als 50 ansteigen.
 
 * **Regeln 5I (Verstorbene COVID-19-Fälle)** werden relaxiert:
-    Einträge, die nicht den Regeln 5H1 oder 5H2 entsprechen, sind erlaubt: Die Werte können kleiner werden bzw. um mehr als 50 ansteigen.
+    Einträge, die nicht den Regeln 5I1 oder 5I2 entsprechen, sind erlaubt: Die Werte können kleiner werden bzw. um mehr als 50 ansteigen.
 
 
