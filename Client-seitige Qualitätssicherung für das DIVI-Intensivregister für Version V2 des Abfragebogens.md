@@ -3,6 +3,8 @@
 
 Dieses Dokument fasst alle Plausibilitäts-Checks & Systemanforderungen zusammen, welche der Software-Hersteller beim Erfassen von Meldungen für das DIVI-IntensivRegister implementiert haben soll.
 
+**Hinweis**: Durchgestrichene Passagen betreffen derzeit pausierte, d. h. nicht erfragte Variablen. Nach Ende der Pausierung treten die betreffenden Prüfregeln wieder in Kraft.
+
 ## 1) Zusammenfassung nach der Meldung aller Daten
 Nach der Eingabe aller Meldungen, soll der meldende User in einem letzten Schritt aufgefordert werden, alle zusammengefassten Daten nochmals zu prüfen. Dies dient der Sicherstellung einer hohen Datenqualität.  An diesem Schritt sollen auch Warnmeldungen erscheinen, um den User auf potenzielle Fehler hinzuweisen (siehe Punkt 6) und 7)).
 
@@ -58,21 +60,21 @@ Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch h
     **5C6** faelle_covid_aktuell ==
     faelle_covid_aktuell_mit_manifestation + faelle_covid_aktuell_ohne_manifestation
      
-    **Regeln für RSV (nur für Kinder-Meldebereiche)**  
+    <del>**Regeln für RSV (nur für Kinder-Meldebereiche)**  
     **5C41** faelle_rsv_aktuell >= faelle_rsv_aktuell_ecmo  
-    **5C51** faelle_rsv_aktuell >= faelle_rsv_aktuell_beatmet + faelle_rsv_aktuell_high_flow_oxygen + faelle_rsv_aktuell_nicht_invasiv_beatmet
+    **5C51** faelle_rsv_aktuell >= faelle_rsv_aktuell_beatmet + faelle_rsv_aktuell_high_flow_oxygen + faelle_rsv_aktuell_nicht_invasiv_beatmet</del>
 
-    **Regeln für Influenza (nur für Kinder-Meldebereiche)**  
+    <del>**Regeln für Influenza (nur für Kinder-Meldebereiche)**  
     **5C42** faelle_influenza_aktuell >= faelle_influenza_aktuell_ecmo  
-    **5C52** faelle_influenza_aktuell >= faelle_influenza_aktuell_beatmet + faelle_influenza_aktuell_high_flow_oxygen + faelle_influenza_aktuell_nicht_invasiv_beatmet
+    **5C52** faelle_influenza_aktuell >= faelle_influenza_aktuell_beatmet + faelle_influenza_aktuell_high_flow_oxygen + faelle_influenza_aktuell_nicht_invasiv_beatmet</del>
 
 * **Regel 5D (Beziehung Patient\*innen_Alle <-> COVID-19-/RSV-/Influenza-Patient\*innen):**  
     Hinweis: für Erwachsenen-Meldebereiche sind RSV/Influenza-Felder alle NULL, im Sinne der Validierung 0.  
-    **5D1** patienten_invasiv_beatmet >= faelle_covid_aktuell_mit_manifestation_beatmet + faelle_covid_aktuell_ohne_manifestation_beatmet + faelle_rsv_aktuell_beatmet + faelle_influenza_aktuell_beatmet.
+    **5D1** patienten_invasiv_beatmet >= faelle_covid_aktuell_mit_manifestation_beatmet + faelle_covid_aktuell_ohne_manifestation_beatmet <del>+ faelle_rsv_aktuell_beatmet + faelle_influenza_aktuell_beatmet</del>.
     
-    **5D2** patienten_nicht_invasiv_beatmet >= faelle_covid_aktuell_mit_manifestation_nicht_invasiv_beatmet + faelle_covid_aktuell_ohne_manifestation_nicht_invasiv_beatmet + faelle_rsv_aktuell_nicht_invasiv_beatmet + faelle_influenza_aktuell_nicht_invasiv_beatmet
+    **5D2** patienten_nicht_invasiv_beatmet >= faelle_covid_aktuell_mit_manifestation_nicht_invasiv_beatmet + faelle_covid_aktuell_ohne_manifestation_nicht_invasiv_beatmet <del>+ faelle_rsv_aktuell_nicht_invasiv_beatmet + faelle_influenza_aktuell_nicht_invasiv_beatmet</del>
 
-    **5D3** patienten_ecmo >= faelle_covid_aktuell_mit_manifestation_ecmo + faelle_covid_aktuell_ohne_manifestation_ecmo + faelle_rsv_aktuell_ecmo + faelle_influenza_aktuell_ecmo
+    **5D3** patienten_ecmo >= faelle_covid_aktuell_mit_manifestation_ecmo + faelle_covid_aktuell_ohne_manifestation_ecmo <del>+ faelle_rsv_aktuell_ecmo + faelle_influenza_aktuell_ecmo</del>
     
     **5D4** intensiv_betten_belegt >= faelle_covid_aktuell + faelle_rsv_aktuell + faelle_influenza_aktuell
 
@@ -129,8 +131,8 @@ Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch h
 * **Regel 5K (Neuaufnahmen COVID-19-Patient\*innen):**  
     **5K1** Wenn die betreffende Meldung die erste Meldung des Kalendertages (0:00:00 - 23:59:59 Uhr) ist, erfolgt keine automatische Vorausfüll-Funktionalität bei dem Datenfeld Neuaufnahmen. Falls am gleichen Kalendertag schon eine Meldung für den Meldebereich abgegeben wurde, wird der Wert der Neuaufnahmen der letzten vorherigen Meldung des Tages vorausgefüllt (siehe auch Abschnitt 9, Ausnahmen).
 
-    **5K2** ((faelle_covid_aktuell + covid_kapazitaet_frei) * 2) +2 >
-    (faelle_covid_vortag_erstaufnahmen + faelle_covid_vortag_verlegungen)
+    **5K2** (intensiv_betten * 2) +10 >
+    (faelle_covid_vortag_erstaufnahmen <del>+ faelle_covid_vortag_verlegungen</del>)
     
 * **Regel 5L (Schwangere COVID-19-Patient\*innen):**  
     **5L1** Die Abfrage zu Schwangeren soll nur für Meldebereiche angezeigt werden, die als  Behandlungsschwerpunkt „Erwachsene“ angegeben haben oder den Behandlungsschwerpunkt nicht angegeben haben („NA“) 
@@ -192,15 +194,15 @@ Alle Datenfelder werden in „Meldung erfassen“ per Default allen Meldebereich
     * stratum80plus
 2.	Felder zu RSV- und Influenza-Patient*innen werden **nur** für **Kinder** erfasst:
     * faelle_rsv_aktuell
-    * faelle_rsv_aktuell_high_flow_oxygen
-    * faelle_rsv_aktuell_nicht_invasiv_beatmet
-    * faelle_rsv_aktuell_beatmet
-    * faelle_rsv_aktuell_ecmo
+    * <del>faelle_rsv_aktuell_high_flow_oxygen</del>
+    * <del>faelle_rsv_aktuell_nicht_invasiv_beatmet</del>
+    * <del>faelle_rsv_aktuell_beatmet</del>
+    * <del>faelle_rsv_aktuell_ecmo</del>
     * faelle_influenza_aktuell
-    * faelle_influenza_aktuell_high_flow_oxygen
-    * faelle_influenza_aktuell_nicht_invasiv_beatmet
-    * faelle_influenza_aktuell_beatmet
-    * faelle_influenza_aktuell_ecmo 
+    * <del>faelle_influenza_aktuell_high_flow_oxygen</del>
+    * <del>faelle_influenza_aktuell_nicht_invasiv_beatmet</del>
+    * <del>faelle_influenza_aktuell_beatmet</del>
+    * <del>faelle_influenza_aktuell_ecmo</del>
 3.	Die Abfrage von freien Kapazitäten für COVID-19 erfolgt **nur** bei Meldebereichen für **Erwachsene** bzw. ohne Behandlungsschwerpunkt (siehe auch 5F3) über folgende Variablen:
     * covid_kapazitaet_frei
     * covid_kapazitaet_frei_iv
