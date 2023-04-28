@@ -6,7 +6,7 @@ Das folgende Dokument führt alle aktuellen Text-Labels und Mouseovers auf, die 
 **Hinweise zum Dokument:**
 * Die **Reihenfolge** der Abfragen in diesem Dokument spiegelt die Abfragemaske im Front-End wider. Die Nummerierung der einzelnen Abfragen (Q1 – Q50) ist historisch begründet und bei Änderungen der Abfragemaske beibehalten worden, sodass eine einmal zugeordnete Nummerierung bestehen bleibt.
 * Solange kein Hinweis erfolgt, gelten die Abfragen für alle Meldebereiche (Erwachsenen-ITS, PICU, NICU).
-* **Durchgestrichene Passagen** betreffen derzeit **pausierte**, d. h. nicht erfragte Variablen. Nach Ende der Pausierung sollen wie Variablen wie gehabt wieder erfragt werden.
+* **Durchgestrichene Passagen** betreffen derzeit **pausierte**, d. h. nicht erfragte Variablen. Nach Ende der Pausierung sollen die Variablen wieder erfragt werden.
 
 ## ICU-STATUS
 ### 1. Erfassung: Betreibbare Intensivbetten (Nicht-COVID-19 und COVID-19)
