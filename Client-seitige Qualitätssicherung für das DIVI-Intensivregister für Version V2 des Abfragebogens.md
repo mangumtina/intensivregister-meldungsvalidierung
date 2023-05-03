@@ -53,7 +53,8 @@ Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch h
     **Regeln für COVID-19 (alle Meldebereiche)**  
     **5C4A** faelle_covid_aktuell_mit_manifestation >= faelle_covid_aktuell_mit_manifestation_ecmo
 
-    **5C5A** faelle_covid_aktuell_mit_manifestation >= faelle_covid_aktuell_mit_manifestation_beatmet + faelle_covid_aktuell_mit_manifestation_nicht_invasiv_beatmet
+    **5C5A** faelle_covid_aktuell_mit_manifestation >= faelle_covid_aktuell_mit_manifestation_beatmet + faelle_covid_aktuell_mit_manifestation_nicht_invasiv_beatmet  
+    **5C5B** faelle_covid_aktuell_ohne_manifestation >= faelle_covid_aktuell_ohne_manifestation_beatmet
 
     **5C6** faelle_covid_aktuell ==
     faelle_covid_aktuell_mit_manifestation + faelle_covid_aktuell_ohne_manifestation
