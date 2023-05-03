@@ -6,6 +6,7 @@ Das folgende Dokument führt alle aktuellen Text-Labels und Mouseovers auf, die 
 **Hinweise zum Dokument:**
 * Die **Reihenfolge** der Abfragen in diesem Dokument spiegelt die Abfragemaske im Front-End wider. Die Nummerierung der einzelnen Abfragen (Q1 – Q50) ist historisch begründet und bei Änderungen der Abfragemaske beibehalten worden, sodass eine einmal zugeordnete Nummerierung bestehen bleibt.
 * Solange kein Hinweis erfolgt, gelten die Abfragen für alle Meldebereiche (Erwachsenen-ITS, PICU, NICU).
+* **Durchgestrichene Passagen** betreffen derzeit **pausierte**, d. h. nicht erfragte Variablen. Nach Ende der Pausierung sollen die Variablen wieder erfragt werden.
 
 ## ICU-STATUS
 ### 1. Erfassung: Betreibbare Intensivbetten (Nicht-COVID-19 und COVID-19)
@@ -53,28 +54,16 @@ Das folgende Dokument führt alle aktuellen Text-Labels und Mouseovers auf, die 
 | **Q11:** Anzahl aller aktuell intensivmedizinisch behandelten COVID-19-Patient\*innen | Anzahl aller aktuell in intensivmedizinischer Behandlung befindlicher SARS-CoV-2-positiver Patient\*innen (nur bei labordiagnostischem Nukleinsäure- oder Antigennachweis; keine klinischen Verdachtsfälle). Inklusive Zählung von COVID-19-Patient\*innen mit zurückliegendem SARS-CoV-2-Nachweis, die weiterhin mit ihrer COVID-19-Erkrankung intensivmedizinisch behandelt werden. | Integer | faelleCovidAktuell |
 | **Q11.1:** Anzahl der COVID-19-Patient\*innen mit intensivmedizinisch relevanter COVID-19-Manifestation | Dazu gehören alle intensivmedizinisch behandelten Patient\*innen, bei denen eine primäre Lungen- und/oder Systembeteiligung einer COVID-19-Erkrankung vorliegt oder deren klinischer Zustand sich durch COVID-19 verschlechtert hat. Hierzu zählen auch Patient\*innen, deren Hauptdiagnose und/oder Grunderkrankungen durch die COVID-19-Erkrankung beeinflusst werden oder vice versa. *Limitation:* Die Zuordnung der Patient\*innen in diese Gruppe obliegt der klinischen medizinischen Einschätzung. | Integer | covid19StatusV3: mitManifestation: faelleAktuell |
 | **davon** Anzahl mit folgender Behandlung in den letzten 24 h: | - | *{Dies ist ein erklärender Text zu Folgefragen Q11.1.1 – Q11.1.4 im Frontend. Der erklärende Text selbst hat keine Antwortoption.}* | - |
-| **Q11.1.2:** High-Flow Oxygen (optional) | als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h | Integer | covid19StatusV3: mitManifestation: faelleAktuellHighFlowOxygen |
 | **Q11.1.3:** NIV (optional) | als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h | Integer | covid19StatusV3: mitManifestation: faelleAktuellNichtInvasivBeatmet |
 | **Q11.1.1:** invasive Beatmung | invasive Beatmung in den letzten 24 h; unabhängig davon, ob (auch) eine ECMO-Behandlung vorliegt | Integer | covid19StatusV3: mitManifestation: faelleAktuellBeatmet |
 | **Q11.1.4:** ECMO (optional) | ECMO-Behandlung in den letzten 24 h; unabhängig davon, ob (auch) eine Beatmungsbehandlung vorliegt | Integer | covid19StatusV3: mitManifestation: faelleAktuellEcmo |
 | **Q11.2:** Anzahl der COVID-19-Patient\*innen ohne intensivmedizinisch relevante COVID-19-Manifestation | Dazu gehören alle intensivmedizinisch behandelten Patient\*innen ohne Hinweis auf eine intensivmedizinisch relevante Manifestation der Infektion. Die Hauptdiagnose und/oder Grunderkrankungen sind durch die SARS-CoV-2-Infektion nicht beeinflusst. *Limitation:* Die Zuordnung der Patient\*innen in diese Gruppe obliegt der klinischen medizinischen Einschätzung. | Integer | covid19StatusV3: ohneManifestation: faelleAktuell |
-| **davon** Anzahl mit folgender Behandlung in den letzten 24 h: | - | *{Dies ist ein erklärender Text zu Folgefragen Q11.2.1 – Q11.2.4 im Frontend. Der erklärende Text selbst hat keine Antwortoption.}* | - |
-| **Q11.2.2:** High-Flow Oxygen (optional) | als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h | Integer | covid19StatusV3: ohneManifestation: faelleAktuellHighFlowOxygen |
-| **Q11.2.3:** NIV (optional) | als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h | Integer | covid19StatusV3: ohneManifestation: faelleAktuellNichtInvasivBeatmet |
+| **davon** Anzahl mit folgender Behandlung in den letzten 24 h: | - | *{Dies ist ein erklärender Text zu Folgefragen Q11.2.1 im Frontend. Der erklärende Text selbst hat keine Antwortoption.}* | - |
 | **Q11.2.1:** invasive Beatmung | invasive Beatmung in den letzten 24 h; unabhängig davon, ob (auch) eine ECMO-Behandlung vorliegt | Integer | covid19StatusV3: ohneManifestation: faelleAktuellBeatmet |
-| **Q11.2.4:** ECMO (optional) | ECMO-Behandlung in den letzten 24 h; unabhängig davon, ob (auch) eine Beatmungsbehandlung vorliegt | Integer | covid19StatusV3: ohneManifestation: faelleAktuellEcmo |
 
-**Q12 – Q15.1** wurden gestrichen.
+**Q11.1.2**, **Q.11.2.2 – Q11.2.4** sowie **Q12 – Q15.1** und **Q20 – Q22** wurden gestrichen.
 
-### 7. Erfassung: Freie Behandlungskapazitäten für COVID-19-Patient\*innen [Erwachsenen-Meldebereiche] 
-*Achtung:* Diese Erfassung wird nur für Meldebereiche abgefragt, die als Behandlungsschwerpunkt „Erwachsene“ angegeben haben oder den Behandlungsschwerpunkt nicht angegeben haben („NA“).
-| Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
-| :- | :- | :- | :- |
-| **Q20:** Aktuell mögliche Neuaufnahmen von COVID-19-Patient\*innen im Rahmen der Akutversorgung (in Low- und High-Care). Eine unmittelbare Belegung mit COVID-19-Patient\*innen kann erfolgen. | Isoliermöglichkeiten, Pflegepersonal, Schutzausrüstung etc. werden vorausgesetzt. | Integer | covidKapazitaetFrei |
-| **Q21:** Anzahl freier invasiver Beatmungsmöglichkeiten für neue COVID-19-Patient\*innen | Teilmenge der im ICU-Status angegebenen „Freie betreibbare invasive Beatmungsmöglichkeiten“. Hier soll die Anzahl angegeben werden, die unter Isoliermöglichkeiten zur Behandlung zusätzlicher COVID-19-Patient\*innen eingesetzt werden könnte. | Integer | covidKapazitaetFreiIv |
-| **Q22:** Anzahl freier ECMO-Behandlungsmöglichkeiten für neue COVID-19-Patient\*innen | Teilmenge der im ICU-Status angegebenen „Freie betreibbare ECMO-Behandlungsmöglichkeiten“. Hier soll die Anzahl angegeben werden, die unter Isoliermöglichkeiten zur Behandlung zusätzlicher COVID-19-Patient\*innen eingesetzt werden könnte. | Integer | covidKapazitaetFreiECMO |
-
-### 8. Erfassung: Betriebs-Einschränkung
+### 7. Erfassung: Betriebs-Einschränkung
 *i-Button: Persönliche Einschätzung der meldenden Person, inwieweit der Betrieb des gesamten Intensivbereichs (Low-Care, High-Care, ECMO) eingeschränkt ist; Beurteilung im Vergleich zum Regelbetrieb (keine Pandemie/Epidemie, kein besonders hohes Patient\*innenaufkommen)*
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
 | :- | :- | :- | :- |
@@ -91,7 +80,7 @@ Bei voriger Betriebs-Einschränkung Auswahl = **"Teilweise eingeschränkt"** ode
 ## COVID-19 STATUS: SPEZIFIKATION
 **Q25.1** wurde gestrichen.
 
-### 9. Erfassung: Aktuelle COVID-19-Patient*innen nach Alter [Erwachsenen-Meldebereiche]
+### 8. Erfassung: Aktuelle COVID-19-Patient*innen nach Alter [Erwachsenen-Meldebereiche]
 *i-Button: Anzahl der aktuell in intensivmedizinischer Behandlung befindlichen COVID-19-Patient\*innen pro Altersgruppe, unabhängig von der Behandlung im Low- und High-Care-Bereich (NIV, High-Flow, inv. Beatmung etc.). Nur nachgewiesene Infektionen mit SARS-CoV-2, KEINE Verdachtsfälle. Die Summe der Einträge entspricht der Angabe im Feld „Aktuell COVID-19 in Behandlung“.*  
 *Achtung*: Diese Erfassung wird nur für Meldebereiche abgefragt, die als Behandlungsschwerpunkt „Erwachsene“ angegeben haben oder den Behandlungsschwerpunkt nicht angegeben haben („NA“).
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
@@ -106,7 +95,7 @@ Bei voriger Betriebs-Einschränkung Auswahl = **"Teilweise eingeschränkt"** ode
 | **Q25.8:** 70-79 | - | Integer | altersstrata: stratum70bis79 |
 | **Q25.9:** ≥80 | - | Integer | altersstrata: stratum80plus |
 
-### 10. Erfassung: Aktuelle COVID-19-Patient\*innen nach Virusvarianten
+### 9. Erfassung: Aktuelle COVID-19-Patient\*innen nach Virusvarianten
 *i-Button: Anzahl der aktuell in intensivmedizinischer Behandlung befindlichen COVID-19-Patient\*innen mit einer nachgewiesenen VOC, unabhängig von der Behandlung im Low- und High-Care-Bereich (NIV, High-Flow, inv. Beatmung etc.). Die Summe der Einträge sollte der Angabe im Feld “Aktuell COVID-19 in Behandlung” entsprechen.*
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
 | :- | :- | :- | :- |
@@ -116,7 +105,7 @@ Bei voriger Betriebs-Einschränkung Auswahl = **"Teilweise eingeschränkt"** ode
 | **Q26.3:** Alle anderen SARS-CoV-2-Varianten | - | Integer | varianten: sonstige |
 | **Q26.4:** Nicht bestimmt oder nicht bekannt | - | Integer | varianten: unbekannt |
 
-### 11. Erfassung: Schwangere und frisch Entbundene mit COVID-19 [Erwachsenen-Meldebereiche]
+### 10. Erfassung: Schwangere und frisch Entbundene mit COVID-19 [Erwachsenen-Meldebereiche]
 *Achtung:* Diese Erfassung wird nur für Meldebereiche abgefragt, die als Behandlungsschwerpunkt „Erwachsene“ angegeben haben oder den Behandlungsschwerpunkt nicht angegeben haben („NA“).
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
 | :- | :- | :- | :- |
@@ -127,13 +116,13 @@ Bei voriger Betriebs-Einschränkung Auswahl = **"Teilweise eingeschränkt"** ode
 ## COVID-19-STATUS: NEUAUFNAHMEN UND ABGÄNGE
 **Q28.0** wurde gestrichen.
 
-### 12. Erfassung: Neuaufnahmen von COVID-19-Patient\*innen
+### 11. Erfassung: Neuaufnahmen von COVID-19-Patient\*innen
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
 | :- | :- | :- | :- |
 | **Q28:** ITS-Erstaufnahme: Anzahl der COVID-19-Patient\*innen, die innerhalb des gestrigen Kalendertages erstmals zur ITS-Behandlung aufgenommen wurden (keine Zählung von Neuaufnahmen aufgrund von ITS-zu-ITS Verlegungen). | Zählung von COVID-19-Patient\*innen, die erstmals auf die ITS verlegt werden von einer Nicht-Intensivstation (Notaufnahme, Normalstation, etc.) bzw. bei voriger ITS-Behandlung nicht im Intensivregister gemeldet wurden (keine Zählung wiederkehrender Patient\*innen). Nur nachgewiesene Infektionen mit SARS-CoV-2, KEINE Verdachtsfälle.	| Integer | neuaufnahmen: erstaufnahmen |
-| **Q29:** ITS-zu-ITS Verlegung: Anzahl der COVID-19-Patient\*innen, die innerhalb des gestrigen Kalendertages im Rahmen einer Verlegung von einem anderen ITS-Meldebereich aufgenommen wurden. | Zählung nur von COVID-19-Patient\*innen, die bereits zuvor in einem anderen ITS-Meldebereich behandelt wurden und im Rahmen einer Verlegung vom hier meldenden ITS-Meldebereich aufgenommen wurden. Nur nachgewiesene Infektionen mit SARS-CoV-2, KEINE Verdachtsfälle.	| Integer | neuaufnahmen: verlegungen |
+| <del>**Q29:** ITS-zu-ITS Verlegung: Anzahl der COVID-19-Patient\*innen, die innerhalb des gestrigen Kalendertages im Rahmen einer Verlegung von einem anderen ITS-Meldebereich aufgenommen wurden.</del> | <del>Zählung nur von COVID-19-Patient\*innen, die bereits zuvor in einem anderen ITS-Meldebereich behandelt wurden und im Rahmen einer Verlegung vom hier meldenden ITS-Meldebereich aufgenommen wurden. Nur nachgewiesene Infektionen mit SARS-CoV-2, KEINE Verdachtsfälle.</del>	| <del>Integer</del> | <del>neuaufnahmen: verlegungen</del> |
 
-### 13. Erfassung: SARS-CoV-2-Impfstatus der COVID-19-ITS-Erstaufnahmen
+### 12. Erfassung: SARS-CoV-2-Impfstatus der COVID-19-ITS-Erstaufnahmen
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
 | :- | :- | :- | :- |
 | Anzahl der COVID-ITS-Erstaufnahmen (aufgenommen innerhalb des gestrigen Kalendertages) mit jeweiliger Anzahl Impfungen gegen SARS-CoV-2 | Erfassung einmalig bei ITS-Erstaufnahme! Es werden nur Impfungen mit einem in Deutschland zugelassenen Impfstoff gezählt, unabhängig vom Zeitpunkt der Impfung. Nur nachgewiesene Infektionen mit SARS-CoV-2, keine Verdachtsfälle. | *{Dies ist ein erklärender Text zu Folgefragen Q30.1 – Q30.6 im Frontend. Der erklärende Text selbst hat keine Antwortoption.}* | - |
@@ -146,31 +135,31 @@ Bei voriger Betriebs-Einschränkung Auswahl = **"Teilweise eingeschränkt"** ode
 
 *Hinweis an die Meldenden:* Nach dem Speichern dieser Meldung befindet Sie Button, um bekannt gewordene Impfstatus früherer Meldungen nachzutragen.
 
-### 14. Erfassung: Gesamtzahl aller entlassenen/verlegten und verstorbenen COVID-19-Patient\*innen
+### 13. Erfassung: Gesamtzahl aller entlassenen/verlegten und verstorbenen COVID-19-Patient\*innen
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
 | :- | :- | :- | :- |
 | **Q23:** Gesamtzahl bisher verstorbener COVID-19-Patient\*innen in Ihrem Meldebereich | Gesamtzahl aller bisher verstorbenen COVID-19-Patient\*innen auf Ihrer Intensivstation; Summe ab 01.01.2020; nur nachgewiesene Infektionen mit SARS-CoV-2, keine Verdachtsfälle. Bei Fragen zu dieser Eingabe wenden Sie sich bitte an intensivregister-hilfe@rki.de (auch zu finden unter ‚Team/Kontakt‘).| Integer | faelleCovidVerstorben |
 | **Q24:** Gesamtzahl bisher von Ihrem Meldebereich weg-verlegter oder entlassener COVID-19-Patient\*innen | Gesamtzahl aller bisher von Ihrem Meldebereich (lebend) entlassenen COVID-19-Patient\*innen; Summe ab 01.01.2020; nur nachgewiesene Infektionen mit SARS-CoV-2, keine Verdachtsfälle. Bei Fragen zu dieser Eingabe wenden Sie sich bitte an intensivregister-hilfe@rki.de (auch zu finden unter ‚Team/Kontakt‘). | Integer | faelleCovidGenesen |
 	
 ## RSV- UND INFLUENZA-STATUS [Kinder-Meldebereiche]
-### 15. Erfassung: RSV-Status [Kinder-Meldebereiche]
+### 14. Erfassung: RSV-Status [Kinder-Meldebereiche]
 *Achtung:* Diese Erfassung wird nur für Meldebereiche abgefragt, die als Behandlungsschwerpunkt „Kinder“ angegeben haben.
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
 | :- | :- | :- | :- |
 | **Q41<sup>Kinder</sup>:** Anzahl aller aktuell intensivmedizinisch behandelten RSV-Patient\*innen | Anzahl aller aktuell in intensivmedizinischer Behandlung (beatmet und nicht beatmet) befindlicher RSV-Patient\*innen (in allen Intensivbereichen: Low-Care, High-Care, ECMO); nur nachgewiesene Infektionen mit RSV, KEINE Verdachtsfälle. | Integer | rsvStatus: faelleAktuell |
-| **davon** Anzahl mit folgender Behandlung in den letzten 24 h: | - | *{Dies ist ein erklärender Text zu Folgefragen Q42<sup>Kinder</sup> - Q45<sup>Kinder</sup> im Frontend. Der erklärende Text selbst hat keine Antwortoption.}* | - |
-| **Q43<sup>Kinder</sup>:** High-Flow Oxygen (optional) | als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h | Integer | rsvStatus: faelleAktuellHighFlowOxygen |
-| **Q44<sup>Kinder</sup>:** NIV (optional) | als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h | Integer | rsvStatus: faelleAktuellNichtInvasivBeatmet |
-| **Q42<sup>Kinder</sup>:** invasive Beatmung (optional) | invasive Beatmung in den letzten 24 h; unabhängig davon, ob (auch) eine ECMO-Behandlung vorliegt | Integer | rsvStatus: faelleAktuellBeatmet |
-| **Q45<sup>Kinder</sup>:** ECMO (optional) | ECMO-Behandlung in den letzten 24 h; unabhängig davon, ob (auch) eine Beatmungsbehandlung vorliegt | Integer | rsvStatus: faelleAktuellEcmo |
+| <del>**davon** Anzahl mit folgender Behandlung in den letzten 24 h:</del> | - | <del>*{Dies ist ein erklärender Text zu Folgefragen Q42<sup>Kinder</sup> - Q45<sup>Kinder</sup> im Frontend. Der erklärende Text selbst hat keine Antwortoption.}*</del> | - |
+| <del>**Q43<sup>Kinder</sup>:** High-Flow Oxygen (optional)</del> | <del>als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h</del> | <del>Integer</del> | <del>rsvStatus: faelleAktuellHighFlowOxygen</del> |
+| <del>**Q44<sup>Kinder</sup>:** NIV (optional)</del> | <del>als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h</del> | <del>Integer</del> | <del>rsvStatus: faelleAktuellNichtInvasivBeatmet</del> |
+| <del>**Q42<sup>Kinder</sup>:** invasive Beatmung (optional)</del> | <del>invasive Beatmung in den letzten 24 h; unabhängig davon, ob (auch) eine ECMO-Behandlung vorliegt</del> | <del>Integer</del> | <del>rsvStatus: faelleAktuellBeatmet</del> |
+| <del>**Q45<sup>Kinder</sup>:** ECMO (optional)</del> | <del>ECMO-Behandlung in den letzten 24 h; unabhängig davon, ob (auch) eine Beatmungsbehandlung vorliegt</del> | <del>Integer</del> | <del>rsvStatus: faelleAktuellEcmo</del> |
 
-### 16. Erfassung: Influenza-Status [Kinder-Meldebereiche]
+### 15. Erfassung: Influenza-Status [Kinder-Meldebereiche]
 *Achtung:* Diese Erfassung wird nur für Meldebereiche abgefragt, die als Behandlungsschwerpunkt „Kinder“ angegeben haben.
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
 | :- | :- | :- | :- |
 | **Q46<sup>Kinder</sup>:** Anzahl aller aktuell intensivmedizinisch behandelten Influenza-Patient\*innen | Anzahl aller aktuell in intensivmedizinischer Behandlung (beatmet und nicht beatmet) befindlicher Influenza-Patient\*innen (in allen Intensivbereichen: Low-Care, High-Care, ECMO); nur nachgewiesene Infektionen mit Influenza, KEINE Verdachtsfälle. | Integer | influenzaStatus: faelleAktuell |
-| **davon** Anzahl mit folgender Behandlung in den letzten 24 h: | - | *{Dies ist ein erklärender Text zu Folgefragen Q47<sup>Kinder</sup> - Q50<sup>Kinder</sup> im Frontend. Der erklärende Text selbst hat keine Antwortoption.}* | - |
-| **Q48<sup>Kinder</sup>:** High-Flow Oxygen (optional) | als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h | Integer | influenzaStatus: faelleAktuellHighFlowOxygen |
-| **Q49<sup>Kinder</sup>:** NIV (optional) | als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h | Integer | influenzaStatus: faelleAktuellNichtInvasivBeatmet |
-| **Q47<sup>Kinder</sup>:** invasive Beatmung (optional) | invasive Beatmung in den letzten 24 h; unabhängig davon, ob (auch) eine ECMO-Behandlung vorliegt | Integer | influenzaStatus: faelleAktuellBeatmet |
-| **Q50<sup>Kinder</sup>:** ECMO (optional) | ECMO-Behandlung in den letzten 24 h; unabhängig davon, ob (auch) eine Beatmungsbehandlung vorliegt | Integer | influenzaStatus: faelleAktuellEcmo |
+| <del>**davon** Anzahl mit folgender Behandlung in den letzten 24 h:</del> | - | <del>*{Dies ist ein erklärender Text zu Folgefragen Q47<sup>Kinder</sup> - Q50<sup>Kinder</sup> im Frontend. Der erklärende Text selbst hat keine Antwortoption.}*</del> | - |
+| <del>**Q48<sup>Kinder</sup>:** High-Flow Oxygen (optional)</del> | <del>als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h</del> | <del>Integer</del> | <del>influenzaStatus: faelleAktuellHighFlowOxygen</del> |
+| <del>**Q49<sup>Kinder</sup>:** NIV (optional)</del> | <del>als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h</del> | <del>Integer</del> | <del>influenzaStatus: faelleAktuellNichtInvasivBeatmet</del> |
+| <del>**Q47<sup>Kinder</sup>:** invasive Beatmung (optional)</del> | <del>invasive Beatmung in den letzten 24 h; unabhängig davon, ob (auch) eine ECMO-Behandlung vorliegt</del> | <del>Integer</del> | <del>influenzaStatus: faelleAktuellBeatmet</del> |
+| <del>**Q50<sup>Kinder</sup>:** ECMO (optional)</del> | <del>ECMO-Behandlung in den letzten 24 h; unabhängig davon, ob (auch) eine Beatmungsbehandlung vorliegt</del> | <del>Integer</del> | <del>influenzaStatus: faelleAktuellEcmo</del> |
