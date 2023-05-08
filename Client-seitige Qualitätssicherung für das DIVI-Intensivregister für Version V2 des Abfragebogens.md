@@ -42,6 +42,8 @@ Wenn ein für die Regel relevantes Datenfeld **nicht** ausgefüllt wurde, werden
 
 Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch hingewiesen werden (z. B. in Form einer Fehlermeldung oder durch ein Pop-up während der Eingabe). 
 
+Die Integration der Prüfregeln setzt voraus, dass das Client-System die letzte Meldung des Meldebereichs gespeichert hat und abrufen kann (betrifft 5H und 5I).
+
 * **Regel 5A:** intensiv_betten >= intensiv_betten_belegt 
 
 * **Regel 5B (Beziehung freie Behandlungskapazitäten <-> Bettenzahl):**  
@@ -52,8 +54,8 @@ Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch h
 
     **Regeln für COVID-19 (alle Meldebereiche)**  
     **5C4A** faelle_covid_aktuell_mit_manifestation >= faelle_covid_aktuell_mit_manifestation_ecmo
-
     **5C5A** faelle_covid_aktuell_mit_manifestation >= faelle_covid_aktuell_mit_manifestation_beatmet + faelle_covid_aktuell_mit_manifestation_nicht_invasiv_beatmet  
+    
     **5C5B** faelle_covid_aktuell_ohne_manifestation >= faelle_covid_aktuell_ohne_manifestation_beatmet
 
     **5C6** faelle_covid_aktuell ==
@@ -92,7 +94,7 @@ Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch h
     * stratum70bis79
     * stratum80plus
 
-    **5G2** sum (Alterstrata COVID-19-Fälle) <= faelle_covid_aktuell
+    **5G2** sum(COVID-19-Alterstrata) <= faelle_covid_aktuell  
     *Diese Regel prüft „<=“, damit keine Meldungen verloren werden, wenn Meldebereiche einige Altersgruppen nicht angeben können oder möchten. Siehe hierzu auch Regel 6B: nicht speicherverhindernde Warnung bei sum (Alterstrata COVID-19-Fälle) < faelle_covid_aktuell*
 
 * **Regel 5H (Genesene COVID-19-Fälle):**  
@@ -114,7 +116,7 @@ Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch h
     Für die Regeln 5I siehe auch Abschnitt 10: Keine Regeln 5I bei Korrektur von Meldungen
     
 * **Regel 5J (Beziehung COVID-19-Patient\*innen <-> SARS-CoV-2-Virusvarianten):**  
-    **5J1** sum (SARS-CoV-2-Virusvarianten-Gruppe COVID-19-Fälle) <= faelle_covid_aktuell  
+    **5J1** sum(SARS-CoV-2-Virusvarianten-Gruppen) <= faelle_covid_aktuell  
     *Diese Regel prüft „<=“, damit keine Meldungen verloren werden, wenn Meldebereiche keine Angaben zu VOCs machen.*
     
 * **Regel 5K (Neuaufnahmen COVID-19-Patient\*innen):**  
@@ -134,7 +136,7 @@ Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch h
     **5M7** Wenn die betreffende Meldung die erste Meldung des Kalendertages (0:00:00 - 23:59:59 Uhr) ist, erfolgt keine automatische Vorausfüll-Funktionalität bei den Datenfeldern für Impfstatus. Falls am gleichen Kalendertag schon eine Meldung für den Meldebereich abgegeben wurde, werden die gemeldeten Werte für Impfstatus der letzten vorherigen Meldung des Tages vorausgefüllt. (siehe auch Abschnitt 9, Ausnahmen)
     
 * **Regel 5P (technische Regel):**  
-    **5P1** Wenn meldung.covid19StatusV3 übermittelt wird, müssen folgende veraltete Felder null sein (bzw. nicht definiert):
+    **5P1** Wenn meldung.covid19StatusV3 übermittelt wird, müssen folgende veraltete Felder NULL sein (bzw. nicht definiert):
     * faelle_covid_aktuell_beatmet
     * faelle_covid_aktuell_high_flow_oxygen
     * faelle_covid_aktuell_nicht_invasiv_beatmet
@@ -143,10 +145,10 @@ Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch h
 
 ## 6) Zweifache Warnmeldung bei bestimmten Prüfregeln auf Eingabeseite
 
-Die folgenden Prüfregeln werden nur mit einer Warnung versehen; eine Meldung kann gesichert werden, wenn diese Prüfregeln nicht erfüllt sind. 
-Die Warnungen sollen zweimal erscheinen mit der Aufforderung die Angaben zu überprüfen, sollte eine Regel verstoßen werden: 
-1. Hinweis auf Regelbruch bei der Eingabe der Werte (entweder in der Zusammenfassung oder durch ein Pop-up bei der Eingabe),
-2. erneute Warnanzeige nachdem der Meldende auf „Speichern“ gedrückt hat.
+Die folgenden Prüfregeln werden nur mit einer Warnung versehen; eine Meldung kann trotzdem gespeichert werden, auch wenn diese Prüfregeln nicht erfüllt sind. 
+Die Warnungen sollen erscheinen mit der Aufforderung die Angaben zu überprüfen, sollte eine Regel verstoßen werden: 
+1. Hinweis auf Regelbruch bei der Eingabe der Werte (entweder auf der Zusammenfassungs-Seite oder durch ein Pop-up bei der Eingabe),
+
 
 Wenn ein für die Regel relevantes Datenfeld nicht ausgefüllt wurde, soll die Warnmeldung nicht angezeigt werden.
 
@@ -154,17 +156,17 @@ Wenn ein für die Regel relevantes Datenfeld nicht ausgefüllt wurde, soll die W
 
     **Regel 6A2A** faelle_covid_aktuell_mit_manifestation_beatmet >= faelle_covid_aktuell_mit_manifestation_ecmo
 
-* **Regel 6B** Eine Warnung auf der Zusammenfassungsseite ist anzuzeigen, wenn die Summe(Altersstrata COVID-19-Fälle) < faelle_covid_aktuell.
+* **Regel 6B** Eine Warnung auf der Zusammenfassungsseite ist anzuzeigen, wenn die Summe(COVID-19-Altersstrata) < faelle_covid_aktuell.
 
 ## 7) Zweifache Warnmeldung bei stark veränderten Werten
-Bei zu starker Abweichung von der letzten Meldung sollte die folgende Pop-up Meldung für den User erscheinen: "Sind sie sicher, dass die Eingabe bei [Label] [Wert] korrekt ist, da die Zahl sehr stark abweicht?". Diese Warnmeldungen sollten nur bei numerischen Datenfeldern angezeigt werden. Wie groß die Abweichung sein muss, damit ein Pop-up angezeigt wird, hängt von der Größenordnung der vorherigen Meldung ab:
-* bei Größenordnung 0-9 vorheriger Meldungen: Pop-up nur bei Sprung von +- >= 7
-* bei Größenordnung 10-19 vorheriger Meldungen: Pop-up bei Verdoppelung oder Vierteilung
-* bei Größenordnung ab 20 vorheriger Meldungen: Pop-up bei Verdoppelung oder Halbierung
+Bei zu starker Abweichung von der letzten Meldung sollte die folgende Warnmeldung für den User erscheinen: "Sind sie sicher, dass die Eingabe bei [Label] [Wert] korrekt ist, da die Zahl sehr stark abweicht?". Diese Warnmeldungen sollten nur bei numerischen Datenfeldern angezeigt werden. Wie groß die Abweichung sein muss, damit eine Warnmeldung angezeigt wird, hängt von der Größenordnung der vorherigen Meldung ab:
+* bei Größenordnung 0-9 vorheriger Meldungen: Warnmeldung nur bei Sprung von +- >= 7
+* bei Größenordnung 10-19 vorheriger Meldungen: Warnmeldung bei Verdoppelung oder Reduktion auf ein Viertel
+* bei Größenordnung ab 20 vorheriger Meldungen: Warnmeldung bei Verdoppelung oder Halbierung
 
-Eine Warnung muss für jedes Datenfeld, das eine starke Abweichung aufzeigt, einzeln angezeigt werden. Insgesamt sollen diese Warnungen mindestens zweimal erscheinen mit der Aufforderung die Angaben zu überprüfen. Erstens sollen die Warnungen bei der Zusammenfassung der Meldung erscheinen (siehe 1). Zweitens sollen die Warnhinweise erneut angezeigt werden, nachdem der Meldende auf „Speichern“ gedrückt hat.
+Eine Warnung muss für jedes Datenfeld, das eine starke Abweichung aufzeigt, einzeln angezeigt werden. Diese Warnungen erscheinen mit der Aufforderung die Angaben zu überprüfen auf der Zusammenfassung-Seite der Meldung. 
 
-Die Integration der Warnmeldungen setzt voraus, dass das Client-System die letzte Meldung des Meldebereichs gespeichert hat und abrufen kann.
+Die Integration der Warnmeldung setzt voraus, dass das Client-System die letzte Meldung des Meldebereichs gespeichert hat und abrufen kann.
 
 ## 8) Anzeige der abgefragten Datenfelder je nach Meldebereich
 Alle Datenfelder werden in „Meldung erfassen“ per Default allen Meldebereichen angezeigt.
@@ -200,7 +202,7 @@ Dies soll den Meldenden das Melden erleichtern, da nur Werte, die sich seit der 
 
 **Ausnahmen sind:**
 
-Für die Abfragen "ITS-Erstaufnahme" und "ITS-zu-ITS-Verlegung" im Reiter „COVID-19-Status: Neuaufnahmen und Abgänge“ erfolgt keine automatische Vorausfüll-Funktionalität, wenn die betreffende Meldung die erste Meldung des Kalendertages (0:00:00 - 23:59:59 Uhr) ist. Falls jedoch am gleichen Kalendertag schon eine Meldung für den Meldebereich abgegeben wurde, werden die Datenfelder mit der letzten vorherigen Meldung des Tages vorausgefüllt.
+Für die Abfragen "ITS-Erstaufnahme" <del>und "ITS-zu-ITS-Verlegung"</del> sowie zum Impfstatus im Reiter „COVID-19-Status: Neuaufnahmen und Abgänge“ erfolgt keine automatische Vorausfüll-Funktionalität, wenn die betreffende Meldung die erste Meldung des Kalendertages (0:00:00 - 23:59:59 Uhr) ist. Falls jedoch am gleichen Kalendertag schon eine Meldung für den Meldebereich abgegeben wurde, werden die Datenfelder mit der letzten vorherigen Meldung des Tages vorausgefüllt.
 
 Auch im Korrektur-Modus einer schon erfolgten Meldung ist ein Vorausfüllen möglich, unabhängig vom Zeitpunkt der vorhergehenden Meldung. Dies betrifft folgende Datenfelder im Konkreten:
 * faelle_covid_vortag_erstaufnahmen
@@ -210,7 +212,7 @@ Auch im Korrektur-Modus einer schon erfolgten Meldung ist ein Vorausfüllen mög
 * impfstatus_1_impfung 
 * impfstatus_2_impfungen
 * impfstatus_3_impfungen
-* impfstatus_4+\_impfungen
+* impfstatus_4+_impfungen
 
 ## 10) Funktionalität: Nachträgliche Werte-Korrektur von erfassten Meldungen
 Eine Meldung kann rückwirkend bis zu 14 Tage nach der initialen Erfassung der Meldung von allen Meldenden eines Meldebereichs korrigiert werden.
