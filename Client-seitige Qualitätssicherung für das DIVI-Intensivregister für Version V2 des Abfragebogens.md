@@ -146,7 +146,7 @@ Die Integration der Prüfregeln setzt voraus, dass das Client-System die letzte 
 ## 6) Zweifache Warnmeldung bei bestimmten Prüfregeln auf Eingabeseite
 
 Die folgenden Prüfregeln werden nur mit einer Warnung versehen; eine Meldung kann trotzdem gespeichert werden, auch wenn diese Prüfregeln nicht erfüllt sind. 
-Die Warnungen sollen erscheinen mit der Aufforderung die Angaben zu überprüfen, sollte eine Regel verstoßen werden: 
+Die Warnungen sollen erscheinen mit der Aufforderung die Angaben zu überprüfen, sollte gegen eine Regel verstoßen werden: 
 1. Hinweis auf Regelbruch bei der Eingabe der Werte (entweder auf der Zusammenfassungs-Seite oder durch ein Pop-up bei der Eingabe),
 
 
