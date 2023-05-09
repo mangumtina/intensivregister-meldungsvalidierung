@@ -53,7 +53,7 @@ Die Integration der Prüfregeln setzt voraus, dass das Client-System die letzte 
 * **Regel 5C (Beziehung COVID-19-(bzw. RSV-, Influenza-)Patient\*innen_Gesamt <-> Behandlungsgruppen COVID-19-/RSV-/Influenza-Patient\*innen):**
 
     **Regeln für COVID-19 (alle Meldebereiche)**  
-    **5C4A** faelle_covid_aktuell_mit_manifestation >= faelle_covid_aktuell_mit_manifestation_ecmo
+    **5C4A** faelle_covid_aktuell_mit_manifestation >= faelle_covid_aktuell_mit_manifestation_ecmo  
     **5C5A** faelle_covid_aktuell_mit_manifestation >= faelle_covid_aktuell_mit_manifestation_beatmet + faelle_covid_aktuell_mit_manifestation_nicht_invasiv_beatmet  
     
     **5C5B** faelle_covid_aktuell_ohne_manifestation >= faelle_covid_aktuell_ohne_manifestation_beatmet
