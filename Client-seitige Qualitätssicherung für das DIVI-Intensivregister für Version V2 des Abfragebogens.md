@@ -4,7 +4,7 @@
 Dieses Dokument fasst alle Plausibilitäts-Checks & Systemanforderungen zusammen, welche der Software-Hersteller beim Erfassen von Meldungen für das DIVI-IntensivRegister implementiert haben soll.
 
 **Hinweise**:
-* Durchgestrichene Passagen betreffen derzeit pausierte, d. h. nicht erfragte Variablen. Nach Ende der Pausierung treten die betreffenden Prüfregeln wieder in Kraft.
+* **Durchgestrichene Passagen** betreffen derzeit **pausierte**, d. h. nicht erfragte Variablen. Nach Ende der Pausierung treten die betreffenden Prüfregeln wieder in Kraft.
 * Die Nummerierung der Prüfregeln ist historisch bedingt. Durch nachträgliche Änderungen, Hinzufügen oder Streichen von Plausibilitätsprüfungen kann daher ein Sprung in der Nummerierung auftreten.
 
 ## 1) Zusammenfassung nach der Meldung aller Daten
