@@ -8,7 +8,7 @@ Dieses Dokument fasst alle Plausibilitäts-Checks & Systemanforderungen zusammen
 * Die Nummerierung der Prüfregeln ist historisch bedingt. Durch nachträgliche Änderungen, Hinzufügen oder Streichen von Plausibilitätsprüfungen kann daher ein Sprung in der Nummerierung auftreten.
 
 ## 1) Zusammenfassung nach der Meldung aller Daten
-Nach der Eingabe aller Meldungen, soll der meldende User in einem letzten Schritt aufgefordert werden, alle zusammengefassten Daten nochmals zu prüfen. Dies dient der Sicherstellung einer hohen Datenqualität.  An diesem Schritt sollen auch Warnmeldungen erscheinen, um den User auf potenzielle Fehler hinzuweisen (siehe Punkt 6) und 7)).
+Nach der Eingabe aller Datenfelder, sieht der User in einem letzten Schritt jene eingegebenen Daten zusammengefasst, die sich seit der letzten Meldung geändert haben. Diese Übersicht nennen wir im weiteren Verlauf des Dokuments "Meldungszusammenfassungsseite". Hier sollen die eingegeben Werte noch einmal überprüft werden, bevor sie final gespeichert werden. Dies dient der Sicherstellung einer hohen Datenqualität. An diesem Schritt sollen auch Warnmeldungen erscheinen, um den User auf potenzielle Fehler hinzuweisen (siehe Kapitel 2, 6 und 7).
 
 ## 2) Pflichtfelder zum Speichern der Meldung
 Eine Meldung kann von technischer Seite gespeichert werden, wenn sie mindestens Angaben zu den folgenden Datenfeldern enthält:
@@ -17,8 +17,8 @@ Eine Meldung kann von technischer Seite gespeichert werden, wenn sie mindestens 
 * covid_genesen
 * covid_verstorben
 
-Für die anderen Datenfelder sind auch NULL-Werte zugelassen. Wenn eines dieser Felder leer gelassen wurde (NULL), sollte es einen Warnhinweis auf der Zusammenfassungsseite geben. In diesem Fall ist das Speichern der Meldung trotzdem möglich. 
-Es wird jedoch ausdrücklich auf die bestehende Meldepflicht entsprechend der jeweils geltenden Verordnung zur Krankenhauskapazitätssurveillance hingewiesen. Alle Datenfelder sind demnach rechtlich verpflichtend für die Meldung, ausgenommen Datenfelder, die explizit mit dem Label „(optional)“ versehen sind.
+Für die anderen Datenfelder sind auch NULL-Werte zugelassen. Das Speichern der Meldung ist trotzdem möglich. Wenn eines dieser Felder leer gelassen wurde (NULL), sollte es einen Warnhinweis geben. Im Intensivregister Frontend ist der Warnhinweis so implementiert, dass er auf der Meldungszusammenfassungsseite angezeigt wird, wenn ein Datenfeld mit Zahlenwert aus einer vorherigen Meldung auf eine NULLmeldung wechselt. Danach werden keine weiteren Warnhinweise bei späteren Meldungen angezeigt, bis wieder erstmalig ein Datenfeld leer gelassen wird.
+Grundsätzlich besteht eine Meldepflicht entsprechend der jeweils geltenden Verordnung zur Krankenhauskapazitätssurveillance. Alle Datenfelder sind demnach rechtlich verpflichtend für die Meldung, ausgenommen Datenfelder, welche explizit mit dem Label „(optional)“ versehen sind.
 
 #### Fall: Datenfeld Betriebseinschränkung
 NULL-Werte sind auch hier zugelassen und bedeuten, dass der Anwender nicht um den Zustand des Feldes weiß.
@@ -143,14 +143,14 @@ Die Integration der Prüfregeln setzt voraus, dass das Client-System die letzte 
     * faelle_covid_aktuell_ecmo
     * faelle_covid_ohne_symptomatik
 
-## 6) Zweifache Warnmeldung bei bestimmten Prüfregeln auf Eingabeseite
+## 6) Warnmeldung bei bestimmten Prüfregeln auf Eingabeseite
 
-Die folgenden Prüfregeln werden nur mit einer Warnung versehen; eine Meldung kann trotzdem gespeichert werden, auch wenn diese Prüfregeln nicht erfüllt sind. 
+Die folgenden Prüfregeln werden nur mit einer Warnung versehen. Eine Meldung kann trotzdem gespeichert werden, auch wenn diese Prüfregeln nicht erfüllt sind. 
 Die Warnungen sollen erscheinen mit der Aufforderung die Angaben zu überprüfen, sollte gegen eine Regel verstoßen werden: 
-1. Hinweis auf Regelbruch bei der Eingabe der Werte (entweder auf der Zusammenfassungs-Seite oder durch ein Pop-up bei der Eingabe),
+1. Hinweis auf Regelbruch bei der Eingabe der Werte (z.B. auf der Meldungszusammenfassungsseite oder durch ein Pop-up bei der Eingabe),
 
 
-Wenn ein für die Regel relevantes Datenfeld nicht ausgefüllt wurde, soll die Warnmeldung nicht angezeigt werden.
+Wenn ein für die Regel relevantes Datenfeld nicht ausgefüllt wurde, soll die Warnmeldung folglich nicht angezeigt werden.
 
 * **Regel 6A** patienten_invasiv_beatmet >= patienten_ecmo
 
@@ -158,7 +158,7 @@ Wenn ein für die Regel relevantes Datenfeld nicht ausgefüllt wurde, soll die W
 
 * **Regel 6B** Eine Warnung auf der Zusammenfassungsseite ist anzuzeigen, wenn die Summe(COVID-19-Altersstrata) < faelle_covid_aktuell.
 
-## 7) Zweifache Warnmeldung bei stark veränderten Werten
+## 7) Warnmeldung bei stark veränderten Werten
 Bei zu starker Abweichung von der letzten Meldung sollte die folgende Warnmeldung für den User erscheinen: "Sind sie sicher, dass die Eingabe bei [Label] [Wert] korrekt ist, da die Zahl sehr stark abweicht?". Diese Warnmeldungen sollten nur bei numerischen Datenfeldern angezeigt werden. Wie groß die Abweichung sein muss, damit eine Warnmeldung angezeigt wird, hängt von der Größenordnung der vorherigen Meldung ab:
 * bei Größenordnung 0-9 vorheriger Meldungen: Warnmeldung nur bei Sprung von +- >= 7
 * bei Größenordnung 10-19 vorheriger Meldungen: Warnmeldung bei Verdoppelung oder Reduktion auf ein Viertel
