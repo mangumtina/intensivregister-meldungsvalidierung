@@ -8,7 +8,7 @@ Dieses Dokument fasst alle Plausibilitäts-Checks & Systemanforderungen zusammen
 * Die Nummerierung der Prüfregeln ist historisch bedingt. Durch nachträgliche Änderungen, Hinzufügen oder Streichen von Plausibilitätsprüfungen kann daher ein Sprung in der Nummerierung auftreten.
 
 ## 1) Zusammenfassung nach der Meldung aller Daten
-Nach der Eingabe aller Datenfelder, sieht der User in einem letzten Schritt jene eingegebenen Daten zusammengefasst, die sich seit der letzten Meldung geändert haben. Diese Übersicht nennen wir im weiteren Verlauf des Dokuments "Meldungszusammenfassungsseite". Hier sollen die eingegeben Werte noch einmal überprüft werden, bevor sie final gespeichert werden. Dies dient der Sicherstellung einer hohen Datenqualität. An diesem Schritt sollen auch Warnmeldungen erscheinen, um den User auf potenzielle Fehler hinzuweisen (siehe Kapitel 2, 6 und 7).
+Nach der Eingabe aller Datenfelder sieht der User in einem letzten Schritt jene eingegebenen Daten zusammengefasst, die sich seit der letzten Meldung geändert haben. Diese Übersicht nennen wir im weiteren Verlauf des Dokuments "Meldungszusammenfassungsseite". Hier sollen die eingegeben Werte noch einmal überprüft werden, bevor sie final gespeichert werden. Dies dient der Sicherstellung einer hohen Datenqualität. An diesem Schritt sollen auch Warnmeldungen erscheinen, um den User auf potenzielle Fehler hinzuweisen (siehe Kapitel 2, 6 und 7).
 
 ## 2) Pflichtfelder zum Speichern der Meldung
 Eine Meldung kann von technischer Seite gespeichert werden, wenn sie mindestens Angaben zu den folgenden Datenfeldern enthält:
