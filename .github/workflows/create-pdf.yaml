@@ -1,8 +1,8 @@
 name: "Create and Upload PDF"
 on:
   push:
-    tags:
-      - "v*.*.*"
+    branches:
+      - main
 
 jobs:
   build:
@@ -10,12 +10,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.67.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: baileyjm02/markdown-to-pdf@v1.2.0
         with:
           input_path: docs
           output_dir: pdfs
           build_html: false
-      - name: Build project # This would actually build your project, using zip for an example artifact
+      - name: Create artifact
         run: |
           zip --junk-paths Intensivregister-API-Dokumentation pdfs/*
       - name: Release
