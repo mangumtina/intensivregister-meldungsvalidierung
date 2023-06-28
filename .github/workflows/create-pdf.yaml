@@ -14,12 +14,11 @@ jobs:
         with:
           input_path: docs
           output_dir: pdfs
-          #images_dir: docs/images
-          # for example <img src="./images/file-name.png">
-          #image_import: ./images
-          # Default is true, can set to false to only get PDF files
           build_html: false
-      - uses: actions/upload-artifact@v1
+      - name: Build project # This would actually build your project, using zip for an example artifact
+        run: |
+          zip --junk-paths Intensivregister-API-Dokumentation docs
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
-          name: docs
-          path: pdfs
+          files: Intensivregister-API-Dokumentation.zip
