@@ -1,8 +1,8 @@
 name: "Create and Upload PDF"
 on:
   push:
-    branches:
-      - 'main'
+    tags:
+      - "v*.*.*"
 
 jobs:
   build:
