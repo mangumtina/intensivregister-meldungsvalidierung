@@ -36,14 +36,12 @@ Das Intensivregister hat mehrere, komplett unabhängige Umgebungen.
 
 In der Regel wird neuen API-Partnern zunächst Accounts und OICD-Client auf der UAT-Umgebung zugewiesen.
 
-* `https://auth-uat.intensivregister.de/auth/realms/ir-uat
-    /protocol/openid-connect/token` ist der Access-Token-Endpunkt
+* `https://auth-uat.intensivregister.de/realms/ir-uat/protocol/openid-connect/token` ist der Access-Token-Endpunkt
 * `https://uat.intensivregister.de/api/` ist der Basispfad der Serveranwendung.
 
 Nach Test und Freigabe durch das RKI wird ein Account für Produktion eingerichtet. Die Pfade dort sind
 
-* `https://auth.intensivregister.de/auth/realms/intensivregister
-    /protocol/openid-connect/token` ist der Access-Token-Endpunkt.
+* `https://auth.intensivregister.de/realms/intensivregister/protocol/openid-connect/token` ist der Access-Token-Endpunkt.
 * `https://www.intensivregister.de/api/`  ist der Basispfad der Serveranwendung.
 
 Zugewiesene Meldebereiche o.ä. auf UAT bedeuten nicht, dass ihren Nutzern der Meldebereich in Produktion ebenfalls
@@ -67,7 +65,7 @@ des Access-Tokens zur aufrufenden Applikation zurückgeleitet wird. Die aufrufen
 Token im Namen des Nutzers Aktionen ausführen (Standard-oAuth2-Login-Flow). Dazu muss insbesondere die Redirect-URL der
 Client-Applikation hinterlegt werden.
 
-[^3]: `https://auth.intensivregister.de/auth/realms/intensivregister`
+[^3]: `https://auth.intensivregister.de/realms/intensivregister`
 
 Es ist möglich, dass ein technischer Nutzer eingerichtet wird, welcher als zusätzlicher Nutzer Schreibrecht auf einen
 oder mehrere Meldebereiche erhält. Dann kann die Client-Applikation sich mit dessen Logindaten einloggen und hat dann
@@ -83,7 +81,7 @@ Das API-Token kann man sich mit einem OpenID-Connect-Client beim DIVI-Intensivre
 Alternativ kann man auch folgenden HTTP-Call ausführen[^2]:
 
 
-[^1]: `https://auth.intensivregister.de/auth/realms/intensivregister/.well-known/openid-configuration`
+[^1]: `https://auth.intensivregister.de/realms/intensivregister/.well-known/openid-configuration`
 [^2]: `https://tools.ietf.org/html/rfc6749#section-4.3`
 
 ```
