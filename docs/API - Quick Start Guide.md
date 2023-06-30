@@ -10,8 +10,7 @@ header-includes: |
 ...
 
 # Dokument
-
-Version 2.2, 2022-12-07, Matti Mäkitalo <matti.maekitalo@prodyna.com>
+Matti Mäkitalo <matti.maekitalo@prodyna.com>
 
 # Zugriffsbeschränkungen
 
