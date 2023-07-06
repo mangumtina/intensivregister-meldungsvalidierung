@@ -9,27 +9,27 @@ Das folgende Dokument führt alle aktuellen Text-Labels und Mouseovers auf, die 
 * **Durchgestrichene Passagen** betreffen derzeit **pausierte**, d. h. nicht erfragte Variablen. Nach Ende der Pausierung sollen die Variablen wieder erfragt werden.
 
 ## ICU-STATUS
-### 1. Erfassung: Betreibbare Intensivbetten (Nicht-COVID-19 und COVID-19)
-*i-Button: Alle betreibbaren Intensivbetten Low- und High-Care (inkl. COVID-19-Kapazitäten)*
+### 1. Erfassung: Betreibbare Intensivbetten
+*i-Button: Alle betreibbaren Intensivbetten in Ihrem Meldebereich*
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
 | :- | :- | :- | :- |
-| **Q1:** Gesamt aktuell betreibbare Intensivbetten (Low-Care und High-Care) im Rahmen der Akutversorgung | Wie viele der regulär aufgestellten Intensivbetten (Low-Care und High-Care, freie + belegte) sind aktuell im Meldebereich betreibbar im Rahmen der Akutversorgung? | Integer | kapazitaeten: intensivBetten |
-| **Q2:** Anzahl aktuell belegter Intensivbetten (Low- und High-Care) oder verplant zur Belegung (bis 23:59 Uhr des jeweiligen Tages) | Teilmenge von „Gesamt aktuell betreibbare Intensivbetten“. Wie viele Intensivbetten (Low-Care und High-Care) sind aktuell im Meldebereich belegt sowie heute zur Belegung verplant im Rahmen der Akutversorgung? *(\*unabhängig von der Behandlungsursache)* | Integer | kapazitaeten: intensivBettenBelegt |
+| **Q1:** Gesamt aktuell betreibbare Intensivbetten im Rahmen der Akutversorgung | Wie viele der regulär aufgestellten Intensivbetten (freie + belegte) sind aktuell im Meldebereich betreibbar im Rahmen der Akutversorgung? | Integer | kapazitaeten: intensivBetten |
+| **Q2:** Anzahl aktuell belegter Intensivbetten oder verplant zur Belegung (bis 23:59 Uhr des jeweiligen Tages) | Teilmenge von „Gesamt aktuell betreibbare Intensivbetten“. Wie viele Intensivbetten sind im Rahmen der Akutversorgung aktuell im Meldebereich belegt (unabhängig von der Behandlungsursache) bzw. heute zur Belegung verplant? | Integer | kapazitaeten: intensivBettenBelegt |
 
-### 2. Erfassung: Patient\*innen mit Beatmung/ECMO (Nicht-COVID-19 und COVID-19)
-*i-Button: Alle Patient\*innen (inkl. COVID-19-Patient\*innen)*
+### 2. Erfassung: Intensivpatient\*innen mit Beatmung/ECMO
+*i-Button: Alle Patient\*innen mit Beatmung oder ECMO-Behandlung in Ihrem Meldebereich (unabhängig von der Behandlungsursache)*
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
 | :- | :- | :- | :- |
-| **Q3:** Alle Patient\*innen mit nicht-invasiver (NIV) Beatmung im Rahmen der Akutversorgung | Anzahl aktuell nicht-invasiv beatmeter Patient\*innen im Rahmen der Akutversorgung als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h. Unabhängig von der Behandlungsursache (einschließlich Nicht-COVID-19- und COVID-19-Patient\*innen im Meldebereich). | Integer | kapazitaeten: patientenNichtInvasivBeatmet |
-| **Q4:** Alle Patient\*innen mit invasiver Beatmung im Rahmen der Akutversorgung | Wie viele Patient\*innen werden aktuell invasiv beatmet im Rahmen der Akutversorgung (einschließlich Nicht-COVID-19- und COVID-19-Patient\*innen im Meldebereich)? \*Hier sind alle invasiv beatmeten Patient\*innen zu berücksichtigen, unabhängig davon, ob bei ihnen (auch) eine ECMO-Behandlung läuft. | Integer | kapazitaeten: patientenInvasivBeatmet |
-| **Q5:** Alle Patient\*innen mit ECMO-Behandlungen | Wie viele Patient\*innen haben aktuell eine laufende ECMO-Behandlung (einschließlich Nicht-COVID-19- und COVID-19-Patient\*innen im Meldebereich)? \*Hier sind alle invasiv beatmeten Patient\*innen zu berücksichtigen, unabhängig davon, ob bei ihnen (auch) eine ECMO-Behandlung läuft. | Integer | kapazitaeten: patientenEcmo |
+| **Q3:** Alle Intensivpatient\*innen mit nicht-invasiver (NIV) Beatmung im Rahmen der Akutversorgung | Wie viele Patient*innen erhalten im Rahmen der Akutversorgung aktuell eine nicht-invasive Beatmung (NIV) als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h (unabhängig von der Behandlungsursache) in Ihrem Meldebereich? | Integer | kapazitaeten: patientenNichtInvasivBeatmet |
+| **Q4:** Alle Intensivpatient\*innen mit invasiver Beatmung im Rahmen der Akutversorgung | Wie viele Patient\*innen erhalten im Rahmen der Akutversorgung aktuell eine invasive Beatmung (unabhängig von der Behandlungsursache) in Ihrem Meldebereich)? \*Hier sind alle invasiv beatmeten Patient\*innen zu berücksichtigen, unabhängig davon, ob bei ihnen (auch) eine ECMO-Behandlung läuft. | Integer | kapazitaeten: patientenInvasivBeatmet |
+| **Q5:** Alle Intensivpatient\*innen mit ECMO-Behandlungen im Rahmen der Akutversorgung | Wie viele Patient\*innen erhalten im Rahmen der Akutversorgung aktuell eine ECMO-Behandlung (unabhängig von der Behandlungsursache) in Ihrem Meldebereich)?| Integer | kapazitaeten: patientenEcmo |
 
-### 3. Erfassung: Freie Behandlungskapazitäten (Nicht-COVID-19 und COVID-19)
-*i-Button: Alle freien Behandlungskapazitäten (inkl. Kapazitäten zur Behandlung von COVID-19-Patient\*innen)*
+### 3. Erfassung: Freie Behandlungskapazitäten
+*i-Button: Alle freien betreibbaren Behandlungskapazitäten (unabhängig von der Behandlungsursache)*
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
 | :- | :- | :- | :- |
-| **Q6:** Freie betreibbare invasive Beatmungsmöglichkeiten im Rahmen der Akutversorgung | Wie viele weitere invasive Beatmungen im Rahmen der Akutversorgung (zusätzlich zu den bereits laufenden) sind aktuell möglich (einschließlich Nicht-COVID-19- und COVID-19-Patient\*innen)? \*Hier ist die mögliche Gesamtzahl der zusätzlich invasiven Beatmungen gemeint: Berücksichtigen Sie dafür mögliche Neuaufnahmen von Patient\*innen zur invasiven Beatmung in freien Betten sowie Patient\*innen, die schon in Behandlung sind und ggf. verlegt werden können, um weitere Kapazität zu schaffen. Die hier angegebene Zahl kann damit die Zahl Ihrer aktuell freien Betten auch übersteigen. | Integer | kapazitaeten: freieIvKapazitaet |
-| **Q7:** Freie betreibbare ECMO-Behandlungsmöglichkeiten | Wie viele weitere ECMO-Behandlungen (zusätzlich zu den bereits laufenden) sind aktuell möglich (einschließlich Nicht-COVID-19- und COVID-19-Patient\*innen)? \*Berücksichtigen Sie dazu mögliche Neuaufnahmen in freie Betten von Patient\*innen, die ECMO benötigen, sowie Patient\*innen, die schon in Behandlung sind, ohne bisher nötige ECMO-Behandlung. | Integer | kapazitaeten: freieEcmoKapazitaet |
+| **Q6:** Freie betreibbare invasive Beatmungsmöglichkeiten im Rahmen der Akutversorgung | Wie viele weitere invasive Beatmungen im Rahmen der Akutversorgung (zusätzlich zu den bereits laufenden) sind aktuell möglich (unabhängig von der Behandlungsursache)? \*Hier ist die mögliche Gesamtzahl der zusätzlich invasiven Beatmungen gemeint: Berücksichtigen Sie dafür mögliche Neuaufnahmen von Patient\*innen zur invasiven Beatmung in freien Betten sowie Patient\*innen, die schon in Behandlung sind und ggf. verlegt werden können, um weitere Kapazität zu schaffen. Die hier angegebene Zahl kann damit die Zahl Ihrer aktuell freien Betten auch übersteigen. | Integer | kapazitaeten: freieIvKapazitaet |
+| **Q7:** Freie betreibbare ECMO-Behandlungsmöglichkeiten | Wie viele weitere ECMO-Behandlungen (zusätzlich zu den bereits laufenden) sind aktuell möglich (unabhängig von der Behandlungsursache)? \*Berücksichtigen Sie dazu mögliche Neuaufnahmen in freie Betten von Patient\*innen, die ECMO benötigen, sowie Patient\*innen, die schon in Behandlung sind, ohne bisher nötige ECMO-Behandlung. | Integer | kapazitaeten: freieEcmoKapazitaet |
 
 ### 4. Erfassung: Verfügbarkeit
 *i-Button: Berücksichtigt werden neben Bettenauslastung auch Personalsituation, Arbeitsbelastung etc.*
