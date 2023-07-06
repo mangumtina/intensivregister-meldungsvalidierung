@@ -1,18 +1,9 @@
----
-title: Schnittstellenbeschreibung des Intensivregisters 
-header-includes: |
-  \usepackage{fancyhdr} 
-  \pagestyle{fancy} 
-  \fancyhead[CO,CE]{} 
-  \fancyfoot[CO,CE]{} 
-  \fancyfoot[LE,RO]
-  {\thepage} 
-...
+# Schnittstellenbeschreibung des Intensivregisters - Quick Start Guide
 
-# Dokument
+## Dokument
 Matti Mäkitalo <matti.maekitalo@prodyna.com>
 
-# Zugriffsbeschränkungen
+## Zugriffsbeschränkungen
 
 Alle Endpunkte mit "/public" im Pfad sind öffentlich nutzbar. Für alle anderen Endpunkte benötigt man ein AccessToken,
 welches für einen spezifischen User mit bestimmten Rollen erstellt wurde. Diese Beschränkungen sind beim
@@ -29,7 +20,7 @@ curl --location --request GET \
   --header 'Authorization: Bearer <ACCESS_TOKEN>'
 ```
 
-## Umgebungen und Freigaben
+### Umgebungen und Freigaben
 
 Das Intensivregister hat mehrere, komplett unabhängige Umgebungen.
 
@@ -54,9 +45,9 @@ Meldebereich ausschalten.
 Auf UAT werden keine eMails versendet (z.B. keine "Passwort zurücksetzen"-eMails). Falls Sie einen eMail-Inhalt
 benötigen, wenden Sie sich bitte den den IT-Support (s. Ende).
 
-# Login-Modi
+## Login-Modi
 
-## oAuth2-Standard-Flow vs. technischer Nutzer
+### oAuth2-Standard-Flow vs. technischer Nutzer
 
 Prinzipiell ist das System so ausgelegt, dass der Nutzer durch die Client-Applikation auf den Auth-Provider[^3]
 weitergeleitet wird, sich dort einloggt und dann samt
@@ -115,7 +106,7 @@ Als Ergebnis erhält man einen JSON-formatierten Body mit folgenden Feldern (gek
 
 Den Wert im Feld access_token muss in folgenden API-Calls an das Intensivregister mitgesendet werden.
 
-# Intensivregister-API
+## Intensivregister-API
 
 Die Dokumentation des (semi-)öffentlichen Teils dieser Schnittstelle findet man unter
 
@@ -124,7 +115,7 @@ Die Dokumentation des (semi-)öffentlichen Teils dieser Schnittstelle findet man
 
 Darüber hinaus gibt es noch weitere Endpunkte, die nicht in der öffentlichen API-Spec beschrieben werden.
 
-## Kompabilität
+### Kompabilität
 
 Es gibt keine garantierte Rückwärtskompabilität der API. Im Fall von notwendigen rückwärts inkompatiblen Changes (insb:
 ein alter Request ist ungültig im Kontext der neuen API) wird es aber i.d.R. eine Übergangsfrist geben. API-Changes
@@ -133,7 +124,7 @@ werden per e-Mail bekanntgegeben.
 Changes der API-Endpunkte, die nicht in der öffentlichen API-Spec beschrieben sind, werden nicht kommuniziert. Die Benutzung
 dieser Endpunkte ist möglich, wird aber nicht offiziell unterstützt.
 
-## OpenAPI-Spezifikation
+### OpenAPI-Spezifikation
 
 Es wird dringend angeraten, die Client-seitige API anhand der OpenAPI-Spec automatisch zu generieren[^4]. Das
 Intensivregister-Frontend nutzt diese Variante ebenfalls. Der Vorteil hierbei ist, dass Änderungen an der API einfacher
@@ -142,19 +133,19 @@ Programmiersprachen möglich.
 
 [^4]: `https://github.com/OpenAPITools/openapi-generator`
 
-## Fachliche Anwendungsfälle
+### Fachliche Anwendungsfälle
 
-### Meldebereiche des Nutzers abfragen
+#### Meldebereiche des Nutzers abfragen
 
 Die Meldebereiche, die für den Nutzer selber freigegeben sind, sind mit dem Endpunkt ```GET /stammdaten/meldebereich```
 abfragbar.
 
-### Letzte Meldung eines Meldebereichs abfragen.
+#### Letzte Meldung eines Meldebereichs abfragen.
 
 Die letzte (aktive/freigegebene) Meldung eines Meldebereichs ist mit dem
 Endpunkt ```GET /stammdaten/meldebereich/{meldebereichId}/letzte-meldung``` abfragbar.
 
-### Meldungen senden
+#### Meldungen senden
 
 Zum Abgeben von Meldungen ist der Endpunkt ```POST /api/meldungen``` relevant, zum aktualisieren
 ```PUT /api/meldungen/{meldungId}``` [^5]. Notwendige technische Informationen zum Benutzen sind: ein Access-Token (s.o.)
@@ -206,7 +197,7 @@ beliebig viele dieser Betriebseinschränkungsgründe gesetzt werden.
 
 Für eine genaue Datenfeld-Definition wenden Sie sich bitte an das RKI.
 
-####Aktuelle Ankündigung zu API Änderungen erweiterete COVID-19-Fälle vom 22.11.2022
+#### Aktuelle Ankündigung zu API Änderungen erweiterete COVID-19-Fälle vom 22.11.2022
 
 Auf vielfachen Wunsch und daraus resultierender Vorgabe aus dem Bundesministerium für Gesundheit implementieren wir aktuell eine erweiterte Abfrage zu den COVID-19-Fällen, die bald differenziert nach mit bzw. ohne intensivmedizinisch relevante COVID-19-Manifestation abgefragt werden.
 Im Anhang finden Sie einen Mockup zur neuen geplanten Abfrage sowie die anzupassenden Plausibilitätsregeln - beides ein fortgeschrittener Arbeitsstand.
@@ -246,7 +237,7 @@ Der Nutzeraccount des Access-Tokens muss für das Schreiben auf den Meldebereich
 der Nutzeraccount Owner des Meldebereichs ist oder weil das Entwicklerteam eine separate Schreibberechtigung auf den
 Meldebereich konfiguriert hat. Es ist insbesondere nicht möglich, für beliebige Meldebereiche Meldungen abzugeben.
 
-## Validierungen
+### Validierungen
 
 Meldungen werden vor der Speicherung oder Aktualisierung zunächst validiert/plausibilisiert. Diese Validierungen können
 sich auf einzelne Felder beziehen (Beispiel: der Wert für ```faelleCovidAktuell``` muss im Bereich 0 <=
