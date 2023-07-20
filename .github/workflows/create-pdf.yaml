@@ -26,3 +26,4 @@ jobs:
           tag: ${{ github.ref }}
           overwrite: true
           promote: true
+          make_latest: true
