@@ -2,7 +2,7 @@ name: "Create and Upload PDF"
 on:
   push:
     tags:
-      - "v*.*.*"
+      - "*"
 
 jobs:
   build:
@@ -18,7 +18,12 @@ jobs:
       - name: Build project # This would actually build your project, using zip for an example artifact
         run: |
           zip --junk-paths Intensivregister-API-Dokumentation pdfs/*
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: Intensivregister-API-Dokumentation.zip
+
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        file: Intensivregister-API-Dokumentation.zip
+        asset_name: Intensivregister-API-Dokumentation
+        tag: ${{ github.ref }}
+        overwrite: true
+        promote: true
