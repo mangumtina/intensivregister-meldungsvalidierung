@@ -20,9 +20,9 @@ Das folgende Dokument führt alle aktuellen Text-Labels und Mouseovers auf, die 
 *i-Button: Alle Patient\*innen mit Beatmung oder ECMO-Behandlung in Ihrem Meldebereich (unabhängig von der Behandlungsursache)*
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
 | :- | :- | :- | :- |
-| **Q3:** Alle Intensivpatient\*innen mit nicht-invasiver (NIV) Beatmung im Rahmen der Akutversorgung | Wie viele Patient*innen erhalten im Rahmen der Akutversorgung aktuell eine nicht-invasive Beatmung (NIV) als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h (unabhängig von der Behandlungsursache) in Ihrem Meldebereich? | Integer | kapazitaeten: patientenNichtInvasivBeatmet |
+| **Q3:** Alle Intensivpatient\*innen mit nicht-invasiver (NIV) Beatmung im Rahmen der Akutversorgung | Wie viele Patient*innen erhalten im Rahmen der Akutversorgung eine nicht-invasive Beatmung (NIV) als höchste Stufe der respiratorischen Unterstützung in den letzten 24 h (unabhängig von der Behandlungsursache) in Ihrem Meldebereich? | Integer | kapazitaeten: patientenNichtInvasivBeatmet |
 | **Q4:** Alle Intensivpatient\*innen mit invasiver Beatmung im Rahmen der Akutversorgung | Wie viele Patient\*innen erhalten im Rahmen der Akutversorgung aktuell eine invasive Beatmung (unabhängig von der Behandlungsursache) in Ihrem Meldebereich)? \*Hier sind alle invasiv beatmeten Patient\*innen zu berücksichtigen, unabhängig davon, ob bei ihnen (auch) eine ECMO-Behandlung läuft. | Integer | kapazitaeten: patientenInvasivBeatmet |
-| **Q5:** Alle Intensivpatient\*innen mit ECMO-Behandlungen im Rahmen der Akutversorgung | Wie viele Patient\*innen erhalten im Rahmen der Akutversorgung aktuell eine ECMO-Behandlung (unabhängig von der Behandlungsursache) in Ihrem Meldebereich)?| Integer | kapazitaeten: patientenEcmo |
+| **Q5:** Alle Intensivpatient\*innen mit ECMO-Behandlungen im Rahmen der Akutversorgung | Wie viele Patient\*innen erhalten im Rahmen der Akutversorgung aktuell eine ECMO-Behandlung (unabhängig von der Behandlungsursache) in Ihrem Meldebereich; unabhängig davon, ob (auch) eine Beatmungsbehandlung vorliegt?| Integer | kapazitaeten: patientenEcmo |
 
 ### 3. Erfassung: Freie Behandlungskapazitäten
 *i-Button: Alle freien betreibbaren Behandlungskapazitäten (unabhängig von der Behandlungsursache)*
