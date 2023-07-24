@@ -22,7 +22,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           file: Intensivregister-API-Dokumentation.zip
-          asset_name: Intensivregister-API-Dokumentation
+          asset_name: Intensivregister-API-Dokumentation.zip
           tag: ${{ github.ref }}
           overwrite: true
           promote: true
