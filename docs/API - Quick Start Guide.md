@@ -82,7 +82,7 @@ curl --location --request POST \
  --data-urlencode 'client_id=<CLIENT_ID>' \
  --data-urlencode 'client_secret=<CLIENT_SECRET>'
  --data-urlencode 'username=<USERNAME>' \
- --data-urlencode 'password=<PASSWORD>' \
+ --data-urlencode 'password=<PASSWORD>' 
  ```
 
 * CLIENT_ID und CLIENT_SECRET kann vom DIVI-Intensivregisterteam erfragt werden. Diese Werte sind pro Client-Applikation
