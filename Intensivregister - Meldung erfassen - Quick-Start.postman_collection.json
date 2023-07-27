@@ -1,0 +1,217 @@
+{
+	"info": {
+		"_postman_id": "39f2db1c-d44c-45ff-aa11-9c04baf86ca6",
+		"name": "Intensivregister - Meldung erfassen",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Access Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();",
+							"pm.globals.set(\"TOKEN\", response.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "{{API_CLIENTID}}",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "{{USERNAME}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{PASSWORD}}",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{API_CLIENT_SECRET}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{API_ACCESS_TOKEN_URL}}",
+					"host": [
+						"{{API_ACCESS_TOKEN_URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Frage meine Meldebereiche ab",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{URL}}/stammdaten/meldebereich",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"stammdaten",
+						"meldebereich"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Frage letzte Meldungen ab",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{URL}}/stammdaten/meldebereich/{{MELDEBEREICH_ID}}/letzte-meldung",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"stammdaten",
+						"meldebereich",
+						"{{MELDEBEREICH_ID}}",
+						"letzte-meldung"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Melde Kapazität",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();",
+							"let personId = response.id;",
+							"pm.globals.set(\"KAPAZITAETSMELDUNG_ID\", personId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "BEARER {{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"{{$guid}}\",\n\t\"meldebereich\": {\n\t\t\"id\": \"{{MELDEBEREICH_ID}}\"\n\t},\n    \"kapazitaeten\": {\n        \"intensivBetten\": 0,\n        \"intensivBettenBelegt\": 0\n    },\n    \"faelleCovidAktuell\": 0,\n    \"faelleCovidAktuellBeatmet\": 0,\n    \"faelleCovidGenesen\": 0,\n    \"faelleCovidVerstorben\": 0,\n    \"betriebssituation\": \"REGULAERER_BETRIEB\",\n    \"betriebseinschraenkungPersonal\": false,\n    \"betriebseinschraenkungRaum\": false,\n    \"betriebseinschraenkungBeatmungsgeraet\": false,\n    \"betriebseinschraenkungVerbrauchsmaterial\": false\n}"
+				},
+				"url": {
+					"raw": "{{URL}}/meldungen",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"meldungen"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
