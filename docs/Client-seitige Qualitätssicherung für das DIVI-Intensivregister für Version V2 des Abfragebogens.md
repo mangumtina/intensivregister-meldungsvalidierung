@@ -18,7 +18,7 @@ Eine Meldung kann von technischer Seite gespeichert werden, wenn sie mindestens 
 * covid_verstorben
 
 Für die anderen Datenfelder sind auch NULL-Werte zugelassen. Das Speichern der Meldung ist trotzdem möglich. Wenn eines dieser Felder leer gelassen wurde (NULL), sollte es einen Warnhinweis geben. Im Intensivregister Frontend ist der Warnhinweis so implementiert, dass er auf der Meldungszusammenfassungsseite angezeigt wird, wenn ein Datenfeld mit Zahlenwert aus einer vorherigen Meldung auf eine NULLmeldung wechselt. Danach werden keine weiteren Warnhinweise bei späteren Meldungen angezeigt, bis wieder erstmalig ein Datenfeld leer gelassen wird.
-Grundsätzlich besteht eine Meldepflicht entsprechend der jeweils geltenden Verordnung zur Krankenhauskapazitätssurveillance. Alle Datenfelder sind demnach rechtlich verpflichtend für die Meldung, ausgenommen Datenfelder, welche explizit mit dem Label „(optional)“ versehen sind.
+**Bitte beachten Sie: Grundsätzlich besteht eine Meldepflicht, die über die technischen Pflichtfelder hinausgeht. Die gesetzliche Grundlage bildet die Verordnung zur Krankenhauskapazitätssurveillance (https://www.gesetze-im-internet.de/khkapsurv/BJNR626200022.html). Alle Datenfelder sind demnach rechtlich verpflichtend für die Meldung, ausgenommen Datenfelder, welche explizit mit dem Label „(optional)“ versehen sind.**
 
 #### Fall: Datenfeld Betriebseinschränkung
 NULL-Werte sind auch hier zugelassen und bedeuten, dass der Anwender nicht um den Zustand des Feldes weiß.
