@@ -4,7 +4,7 @@
 Das folgende Dokument führt alle aktuellen Text-Labels und Mouseovers auf, die auf dem DIVI-Intensivregister Front-End beim Erfassen einer täglichen Meldung zu sehen sind. In den Tabellen befinden sich die Textlabel der Datenfelder, die Mouseover-Texte für die jeweiligen Datenfelder sowie die zugehörigen, Schnittstellen-relevanten Variablennamen.
 
 **Hinweise zum Dokument:**
-* Die **Reihenfolge** der Abfragen in diesem Dokument spiegelt die Abfragemaske im Front-End wider. Die Nummerierung der einzelnen Abfragen (Q1 – Q50) ist historisch begründet und bei Änderungen der Abfragemaske beibehalten worden, sodass eine einmal zugeordnete Nummerierung bestehen bleibt.
+* Die **Reihenfolge** der Abfragen in diesem Dokument spiegelt die Abfragemaske im Front-End wider. Die Nummerierung der einzelnen Abfragen (Q1 – Q52) ist historisch begründet und bei Änderungen der Abfragemaske beibehalten worden, sodass eine einmal zugeordnete Nummerierung bestehen bleibt.
 * Solange kein Hinweis erfolgt, gelten die Abfragen für alle Meldebereiche (Erwachsenen-ITS, PICU, NICU).
 * **Durchgestrichene Passagen** betreffen derzeit **pausierte**, d. h. nicht erfragte Variablen. Nach Ende der Pausierung sollen die Variablen wieder erfragt werden.
 
@@ -135,11 +135,12 @@ Bei voriger Betriebs-Einschränkung Auswahl = **"Teilweise eingeschränkt"** ode
 
 *Hinweis an die Meldenden:* Nach dem Speichern dieser Meldung befindet Sie Button, um bekannt gewordene Impfstatus früherer Meldungen nachzutragen.
 
-### 13. Erfassung: Gesamtzahl aller entlassenen/verlegten und verstorbenen COVID-19-Patient\*innen
+### 13. Erfassung: Anzahl verstorbener und verlegter/entlassener COVID-19-Intensivpatient\*innen
+**Q23** und **Q24** wurden durch **Q51** und **Q52** ersetzt.
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
 | :- | :- | :- | :- |
-| **Q23:** Gesamtzahl bisher verstorbener COVID-19-Patient\*innen in Ihrem Meldebereich | Gesamtzahl aller bisher verstorbenen COVID-19-Patient\*innen auf Ihrer Intensivstation; Summe ab 01.01.2020; nur nachgewiesene Infektionen mit SARS-CoV-2, keine Verdachtsfälle. Bei Fragen zu dieser Eingabe wenden Sie sich bitte an intensivregister-hilfe@rki.de (auch zu finden unter ‚Team/Kontakt‘).| Integer | faelleCovidVerstorben |
-| **Q24:** Gesamtzahl bisher von Ihrem Meldebereich weg-verlegter oder entlassener COVID-19-Patient\*innen | Gesamtzahl aller bisher von Ihrem Meldebereich (lebend) entlassenen COVID-19-Patient\*innen; Summe ab 01.01.2020; nur nachgewiesene Infektionen mit SARS-CoV-2, keine Verdachtsfälle. Bei Fragen zu dieser Eingabe wenden Sie sich bitte an intensivregister-hilfe@rki.de (auch zu finden unter ‚Team/Kontakt‘). | Integer | faelleCovidGenesen |
+| **Q51:** Anzahl der innerhalb des gestrigen Kalendertages verstorbenen COVID-19-Intensivpatient\*innen in Ihrem Meldebereich | Anzahl der verstorbenen COVID-19-Patient\*innen in Ihrem Meldebereich innerhalb des gestrigen Kalendertages. Hierzu zählen alle verstorbenen Intensivpatient*innen, bei denen im Verlauf eine SARS-CoV-2-Infektion nachgewiesen wurde (keine Verdachtsfälle) oder die aufgrund einer COVID-19-Erkrankung intensivmedizinisch behandelt wurden. | Integer | faelleCovidVortagVerlegtVerstorben: faelleCovidVortagVerstorben |
+| **Q52:** Anzahl der innerhalb des gestrigen Kalendertages von Ihrem Meldebereich wegverlegten oder entlassenen COVID-19-Intensivpatient\*innen | Anzahl der innerhalb des gestrigen Kalendertages (lebend) von Ihrem Meldebereich entlassenen oder verlegten COVID-19-Intensivpatient\*innen. Hierzu zählen alle entlassenen oder verlegten Intensivpatient*innen, bei denen im Verlauf eine SARS-CoV-2-Infektion nachgewiesen wurde (keine Verdachtsfälle) oder die aufgrund einer COVID-19-Erkrankung intensivmedizinisch behandelt wurden. | Integer | faelleCovidVortagVerlegtVerstorben: faelleCovidVortagVerlegt |
 	
 ## RSV- UND INFLUENZA-STATUS [Kinder-Meldebereiche]
 ### 14. Erfassung: RSV-Status [Kinder-Meldebereiche]
