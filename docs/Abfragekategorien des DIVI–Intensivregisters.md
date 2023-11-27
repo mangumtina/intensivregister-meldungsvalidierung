@@ -36,8 +36,8 @@ Das folgende Dokument führt alle aktuellen Text-Labels und Mouseovers auf, die 
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
 | :- | :- | :- | :- |
 | Wie schätzen Sie persönlich die aktuelle Situation der Behandlungsplätze in Ihrem Meldebereich ein? | - | *{Dies ist ein erklärender Text zu Folgefragen Q8.1 – Q8.3 im Frontend. Der erklärende Text selbst hat keine Antwortoption.}* | - |
-| **Q8.2:** ICU High-Care | - | „Verfügbar“, „Begrenzt“, „Ausgelastet“, „Keine Angabe“ | kapazitaeten: statusEinschaetzungHighcare |
-| **Q8.3:** ICU ECMO | - | „Verfügbar“, „Begrenzt“, „Ausgelastet“, „Keine Angabe“ | kapazitaeten: statusEinschaetzungEcmo |
+| **Q8.2:** ICU High-Care (optional) | - | „Verfügbar“, „Begrenzt“, „Ausgelastet“, „Keine Angabe“ | kapazitaeten: statusEinschaetzungHighcare |
+| **Q8.3:** ICU ECMO (optional) | - | „Verfügbar“, „Begrenzt“, „Ausgelastet“, „Keine Angabe“ | kapazitaeten: statusEinschaetzungEcmo |
 
 **Q8.1** und **Q9** wurden gestrichen.
 
@@ -63,7 +63,7 @@ Das folgende Dokument führt alle aktuellen Text-Labels und Mouseovers auf, die 
 
 **Q11.1.2**, **Q.11.2.2 – Q11.2.4** sowie **Q12 – Q15.1** und **Q20 – Q22** wurden gestrichen.
 
-### 7. Erfassung: Betriebs-Einschränkung
+### 7. Erfassung: Betriebs-Einschränkung (optional)
 *i-Button: Persönliche Einschätzung der meldenden Person, inwieweit der Betrieb des gesamten Intensivbereichs (Low-Care, High-Care, ECMO) eingeschränkt ist; Beurteilung im Vergleich zum Regelbetrieb (keine Pandemie/Epidemie, kein besonders hohes Patient\*innenaufkommen)*
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
 | :- | :- | :- | :- |
@@ -80,7 +80,7 @@ Bei voriger Betriebs-Einschränkung Auswahl = **"Teilweise eingeschränkt"** ode
 ## COVID-19 STATUS: SPEZIFIKATION
 **Q25.1** wurde gestrichen.
 
-### 8. Erfassung: Aktuelle COVID-19-Patient*innen nach Alter [Erwachsenen-Meldebereiche]
+### 8. Erfassung: Aktuelle COVID-19-Patient*innen nach Alter (optional) [Erwachsenen-Meldebereiche]
 *i-Button: Anzahl der aktuell in intensivmedizinischer Behandlung befindlichen COVID-19-Patient\*innen pro Altersgruppe, unabhängig von der Behandlung im Low- und High-Care-Bereich (NIV, High-Flow, inv. Beatmung etc.). Nur nachgewiesene Infektionen mit SARS-CoV-2, KEINE Verdachtsfälle. Die Summe der Einträge entspricht der Angabe im Feld „Aktuell COVID-19 in Behandlung“.*  
 *Achtung*: Diese Erfassung wird nur für Meldebereiche abgefragt, die als Behandlungsschwerpunkt „Erwachsene“ angegeben haben oder den Behandlungsschwerpunkt nicht angegeben haben („NA“).
 | Textlabel des Datenfeldes | Mouseover-Text | Antwort-Möglichkeiten | Variablen-Name |
