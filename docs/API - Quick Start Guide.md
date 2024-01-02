@@ -115,21 +115,15 @@ Die Dokumentation des (semi-)öffentlichen Teils dieser Schnittstelle findet man
 
 Darüber hinaus gibt es noch weitere Endpunkte, die nicht in der öffentlichen API-Spec beschrieben werden.
 
-### Kompabilität
+### Kompatibilität
 
-Es gibt keine garantierte Rückwärtskompabilität der API. Im Fall von notwendigen rückwärts inkompatiblen Changes (insb:
-ein alter Request ist ungültig im Kontext der neuen API) wird es aber i.d.R. eine Übergangsfrist geben. API-Changes
-werden per e-Mail bekanntgegeben.
+Es gibt keine garantierte Rückwärtskompatibilität der API. Im Fall von notwendigen rückwärts inkompatiblen Changes (insb: ein alter Request ist ungültig im Kontext der neuen API) wird es aber i.d.R. eine Übergangsfrist geben. API-Changes werden per e-Mail bekanntgegeben.
 
-Changes der API-Endpunkte, die nicht in der öffentlichen API-Spec beschrieben sind, werden nicht kommuniziert. Die Benutzung
-dieser Endpunkte ist möglich, wird aber nicht offiziell unterstützt.
+Changes der API-Endpunkte, die nicht in der öffentlichen API-Spec beschrieben sind, werden nicht kommuniziert. Die Benutzung dieser Endpunkte ist möglich, wird aber nicht offiziell unterstützt.
 
 ### OpenAPI-Spezifikation
 
-Es wird dringend angeraten, die Client-seitige API anhand der OpenAPI-Spec automatisch zu generieren[^4]. Das
-Intensivregister-Frontend nutzt diese Variante ebenfalls. Der Vorteil hierbei ist, dass Änderungen an der API einfacher
-nachzuvollziehen sind (der der clientseitige API-Code nur neu generiert werden muss). Dies ist für alle gängigen
-Programmiersprachen möglich.
+Es wird dringend angeraten, die Client-seitige API anhand der OpenAPI-Spec automatisch zu generieren[^4]. Das Intensivregister-Frontend nutzt diese Variante ebenfalls. Der Vorteil hierbei ist, dass Änderungen an der API einfacher nachzuvollziehen sind (da der clientseitige API-Code nur neu generiert werden muss). Dies ist für alle gängigen Programmiersprachen möglich.
 
 [^4]: `https://github.com/OpenAPITools/openapi-generator`
 
@@ -137,20 +131,16 @@ Programmiersprachen möglich.
 
 #### Meldebereiche des Nutzers abfragen
 
-Die Meldebereiche, die für den Nutzer selber freigegeben sind, sind mit dem Endpunkt ```GET /stammdaten/meldebereich```
-abfragbar.
+Die Meldebereiche, die für den Nutzer selber freigegeben sind, sind mit dem Endpunkt ```GET /stammdaten/meldebereich``` abfragbar.
 
 #### Letzte Meldung eines Meldebereichs abfragen.
 
-Die letzte (aktive/freigegebene) Meldung eines Meldebereichs ist mit dem
-Endpunkt ```GET /stammdaten/meldebereich/{meldebereichId}/letzte-meldung``` abfragbar.
+Die letzte (aktive/freigegebene) Meldung eines Meldebereichs ist mit dem Endpunkt ```GET /stammdaten/meldebereich/{meldebereichId}/letzte-meldung``` abfragbar.
 
 #### Meldungen senden
 
-Zum Abgeben von Meldungen ist der Endpunkt ```POST /api/meldungen``` relevant, zum aktualisieren
-```PUT /api/meldungen/{meldungId}``` [^5]. Notwendige technische Informationen zum Benutzen sind: ein Access-Token (s.o.)
-, die ID des Meldebereichs, für den man melden will (s.u.) und eine zufällig generierte UUID für die neue Meldung (bzw.
-die ID der zu aktualisierenden Meldung).
+Zum Abgeben von Meldungen ist der Endpunkt ```POST /api/meldungen``` relevant, zum Aktualisieren
+```PUT /api/meldungen/{meldungId}``` [^5]. Notwendige technische Informationen zum Benutzen sind: ein Access-Token (s.o.), die ID des Meldebereichs, für den man melden will (s.u.) und eine zufällig generierte UUID für die neue Meldung (bzw. die ID der zu aktualisierenden Meldung).
 
 [^5]: Ist die ID der Meldung bereits in Benutzung durch einen anderen Meldebereich wird die neue Meldung abgelehnt (Status-Code 403).
 
@@ -173,12 +163,9 @@ Folgende Hinweise für einige Felder:
 Das Attribut ```kapazitaeten``` beschreibt den aktuellen Zustand der Betten und ist zwingend zu füllen.
 
 NULL-Werte (bzw. nicht gesendet) sind (bis auf unten aufgeführte Felder)
-zugelassen und bedeuten, dass der Anwender nicht um den Zustand des entsprechenden Feldes weiß. Die Ausprägungen
-von ```versorgungskategorie```, ```bettenVerfuegbarkeit``` und ```betriebssituation``` sind in der OpenAPI-Spec
-hinterlegt.
+zugelassen und bedeuten, dass der Anwender nicht um den Zustand des entsprechenden Feldes weiß. Die Ausprägungen von ```versorgungskategorie```, ```bettenVerfuegbarkeit``` und ```betriebssituation``` sind in der OpenAPI-Spec hinterlegt.
 
-Die DIVI-Intensivregister-Verordnung[^Verordnung] definiert die Meldepflicht für verschiedene Datenfelder. 
-Technisch verpflichtende Eingabefelder sind:
+Die DIVI-Intensivregister-Verordnung[^Verordnung] definiert die Meldepflicht für verschiedene Datenfelder. Technisch verpflichtende Eingabefelder sind:
 
 * ```id```
 * ```meldebereich.id``` (das restliche Meldebereich-Objekt kann leer gelassen werden)
@@ -197,15 +184,14 @@ beliebig viele dieser Betriebseinschränkungsgründe gesetzt werden.
 
 Für eine genaue Datenfeld-Definition wenden Sie sich bitte an das RKI.
 
-#### Aktuelle Ankündigung zu API Änderungen erweiterete COVID-19-Fälle vom 22.11.2022
+#### Aktuelle Ankündigung zu API Änderungen erweiterte COVID-19-Fälle vom 22.11.2022
 
 Auf vielfachen Wunsch und daraus resultierender Vorgabe aus dem Bundesministerium für Gesundheit implementieren wir aktuell eine erweiterte Abfrage zu den COVID-19-Fällen, die bald differenziert nach mit bzw. ohne intensivmedizinisch relevante COVID-19-Manifestation abgefragt werden.
 Im Anhang finden Sie einen Mockup zur neuen geplanten Abfrage sowie die anzupassenden Plausibilitätsregeln - beides ein fortgeschrittener Arbeitsstand.
 Diese Umstellung wird sowohl für Erwachsenen- als auch Kinder-Meldebereiche erfolgen.
 Zudem wird die Abfrage für Schwangere reduziert auf die Frage "Anzahl aktuell schwangerer und frisch entbundener COVID-19-Patient*innen auf Ihrer ITS" bzw. "anzahlSchwangere".
 
-Geplant ist ein Live-Gang zum 04. Januar 2023, eventuell aber auch früher im Dezember.
-Eine (vorübergehende) Abwärtskompatibilität bzw. einen übergangsweisen Parallelbetrieb werden wir sicher stellen.
+Geplant ist ein Live-Gang zum 04. Januar 2023, eventuell aber auch früher im Dezember. Eine (vorübergehende) Abwärtskompatibilität bzw. einen übergangsweisen Parallelbetrieb werden wir sicher stellen.
 
 Den aktuellen Stand der in Umsetzung befindlichen API finden Sie auf unserer Testumgebung (Anpassung des Meldungsobjektes / POST / meldungen):
 https://uat.intensivregister.de/api/public/swagger-ui/index.html?configUrl=/api/public/api-docs/swagger-config#/meldungs-controller/meldeKapazitaet
@@ -233,31 +219,19 @@ folgendes Verfahren ermöglicht:
 
 Die Meldebereich-IDs sind technische Schlüssel (UUIDs) und haben keine fachliche Bewandnis.
 
-Der Nutzeraccount des Access-Tokens muss für das Schreiben auf den Meldebereich freigeschaltet werden, entweder, weil
-der Nutzeraccount Owner des Meldebereichs ist oder weil das Entwicklerteam eine separate Schreibberechtigung auf den
-Meldebereich konfiguriert hat. Es ist insbesondere nicht möglich, für beliebige Meldebereiche Meldungen abzugeben.
+Der Nutzeraccount des Access-Tokens muss für das Schreiben auf den Meldebereich freigeschaltet werden, entweder, weil der Nutzeraccount Owner des Meldebereichs ist oder weil das Entwicklerteam eine separate Schreibberechtigung auf den Meldebereich konfiguriert hat. Es ist insbesondere nicht möglich, für beliebige Meldebereiche Meldungen abzugeben.
 
 ### Validierungen
 
-Meldungen werden vor der Speicherung oder Aktualisierung zunächst validiert/plausibilisiert. Diese Validierungen können
-sich auf einzelne Felder beziehen (Beispiel: der Wert für ```faelleCovidAktuell``` muss im Bereich 0 <=
-faelleCovidAktuell <= 999 liegen), oder auf mehrere Felder (Beispiel: die Anzahl der aktuellen COVID-19-Fälle muss
-kleinergleich der Gesamtzahl der belegeten Betten sein).
+Meldungen werden vor der Speicherung oder Aktualisierung zunächst validiert/plausibilisiert. Diese Validierungen können sich auf einzelne Felder beziehen (Beispiel: der Wert für ```faelleCovidAktuell``` muss im Bereich 0 <= faelleCovidAktuell <= 999 liegen), oder auf mehrere Felder (Beispiel: die Anzahl der aktuellen COVID-19-Fälle muss kleinergleich der Gesamtzahl der belegten Betten sein).
 
-Es gibt auch Plausibilitätsregeln über die aktuelle Meldung hinweg. So wird z.B. geprüft, dass ```faelleCovidGenesen``` 
-sowie ```faelleCovidVerstorben``` von der letzten Meldung zur neuen Meldung nicht abnimmt.
-Beim Bearbeiten von alten Meldungen (nur über die manuelle Maske auf intensivregister.de möglich) sind diese 
-Plausibilitätsregeln über die aktuelle Meldung hinweg ausgeschaltet.
+Es gibt auch Plausibilitätsregeln über die aktuelle Meldung hinweg. So wird z.B. geprüft, dass ```faelleCovidGenesen``` sowie ```faelleCovidVerstorben``` von der letzten Meldung zur neuen Meldung nicht abnimmt. Beim Bearbeiten von alten Meldungen (nur über die manuelle Maske auf intensivregister.de möglich) sind diese Plausibilitätsregeln über die aktuelle Meldung hinweg ausgeschaltet.
 
-Schlägt die Validierung fehl, wird ein HTTP-Response mit dem Status Code 400 (Bad Request) zurückgegeben, welcher die
-Validierungsfehler als ```errors``` enthält. Für jedes in der fehlgeschlagenen Validierung beteiligte Feld wird ein
-separater ```error``` zurückgegeben.
+Schlägt die Validierung fehl, wird ein HTTP-Response mit dem Status Code 400 (Bad Request) zurückgegeben, welcher die Validierungsfehler als ```errors``` enthält. Für jedes in der fehlgeschlagenen Validierung beteiligte Feld wird ein separater ```error``` zurückgegeben.
 
-Ein ```error``` besteht aus einem ```errorCode```, der den Fehler identifiziert, einem ```propertyPath```, welcher das
-beteiligte Feld benennt und einer ```errorMessage```, welche den Fehler beschreibt.
+Ein ```error``` besteht aus einem ```errorCode```, der den Fehler identifiziert, einem ```propertyPath```, welcher das beteiligte Feld benennt und einer ```errorMessage```, welche den Fehler beschreibt.
 
-Ein Beispiel-Response für einen Request mit einer negativen Anzahl verstorbener und mehr aktuellen COVID-19-Fälleen als
-Gesamtzahl der belegten Betten:
+Ein Beispiel-Response für einen Request mit einer negativen Anzahl verstorbener und mehr aktuellen COVID-19-Fällen als Gesamtzahl der belegten Betten:
 
 ```json
 {
@@ -283,8 +257,7 @@ Gesamtzahl der belegten Betten:
 }
  ``` 
 
-Für die Meldung-Erfassen-Endpunkte (neu und update) gibt es ein separates Dokument mit den Plausibilisierungsregeln, 
-abzufragen beim RKI.
+Für die Meldung-Erfassen-Endpunkte (neu und update) gibt es ein separates Dokument mit den Plausibilisierungsregeln, abzufragen beim RKI.
 
 ## Kontakt
 
