@@ -3,15 +3,9 @@
 
 # Getting Started
 
-### Neues Verfahren (Partner-Portal)
-
 Sie können sich seblstständig im [Partner-Portal](https://partner.intensivregister.de) registieren. Sobald die Registrierung abgeschlossen ist, können Sie die benötigten Zugangsinformation über das [Partner-Portal](https://partner.intensivregister.de) unter *Zugänge* einsehen. Mit den aufgeführten Credentials können Sie ein "Access Token" bei unserer Authentifizierungssoftware [^Keycloak] erstellen.
 Dieses Access-Token muss in jedem HTTP-Request im Header namens ```Authorization``` samt des Prefix "Bearer " (Leerzeichen beachten!) mitgesendet werden.
 
-### Altes Verfahren (ohne Partner-Portal)
-
-Sie bekommen Zugangsdaten, mit denen Sie zunächst ein "Access Token" bei unserer Authentifizierungssoftware [^Keycloak] erstellen.
-Dieses Access-Token muss in jedem HTTP-Request im Header namens "Authorization" samt des Prefix "Bearer " (Leerzeichen beachten!) mitgesendet werden.
 
 ## Beispiel:
 1. Access-Token abfragen
@@ -43,13 +37,9 @@ Das Ergebnis ist ein JSON-Dokument mit der Menge der Meldebereiche, die Ihnen zu
 
 ## Umgebungen und Freigaben
 
-Das Intensivregister hat mehrere, komplett unabhängige Umgebungen.
+Das Intensivregister hat mehrere, komplett unabhängige Umgebungen. Neuen API-Partnern werden Accounts und OICD-Clients auf der Testumgebung und Produktiv-Umgebung zugewiesen.
 
-### Neues Verfahren (Partner-Portal)
-
-Neuen API-Partnern werden Accounts und OICD-Clients auf der Testumgebung und Produktiv-Umgebung zugewiesen.
-
-Tests können in der Testumgebung durchgeführt werden, dabei die folgenden Pfaden verwenden:
+Tests können in der Testumgebung durchgeführt werden, dabei können die folgenden Pfaden verwendet werden:
 
 * Access-Token-Endpunkt - `https://auth.intensivregister.de/ir-prod-alike/protocol/openid-connect/token`
 * Basispfad der Serveranwendung - `https://prod-alike.intensivregister.de/api/`
@@ -59,46 +49,19 @@ Nach den Tests und der Freigabe durch das RKI wird der OICD-Clients für die Pro
 * Access-Token-Endpunkt - `https://auth.intensivregister.de/intensivregister/protocol/openid-connect/token`
 * Basispfad der Serveranwendung - `https://www.intensivregister.de/api/`
 
-In der Testumgebung können selbstständig Meldbereiche zum Testen über das [Partner-Portal](https://partner.intensivregister.de) angelegt werden.
-Diese Meldebereiche dienen nur zum Testen und sind unabhängig von den Meldebereichen in Produktion - die Umgebungen sind strikt voneinander getrennt.
-Dementsprechend können auch die IDs der Meldebereiche voneinander abweichen.
+In der Testumgebung können selbstständig Meldbereiche zum Testen über das [Partner-Portal](https://partner.intensivregister.de) unter *Zugänge* > *Meldebereiche verwalten* angelegt werden.
+Diese Meldebereiche dienen nur zum Testen und sind unabhängig von den Meldebereichen in Produktion - die Umgebungen sind strikt voneinander getrennt. Dementsprechend können auch die IDs der Meldebereiche voneinander abweichen.
 
-### Altes Verfahren (ohne Partner-Portal)
-
-In der Regel wird neuen API-Partnern zunächst Accounts und OICD-Client auf der UAT-Umgebung zugewiesen.
-
-* Access-Token-Endpunkt - `https://auth-uat.intensivregister.de/ir-uat/protocol/openid-connect/token`
-* Basispfad der Serveranwendung - `https://uat.intensivregister.de/api/`
-
-Nach Test und Freigabe durch das RKI wird ein Account für Produktion eingerichtet. Die Pfade dort sind:
-
-* Access-Token-Endpunkt - `https://auth.intensivregister.de/intensivregister/protocol/openid-connect/token`
-* Basispfad der Serveranwendung - `https://www.intensivregister.de/api/`
-
-Zugewiesene Meldebereiche o.ä. auf UAT bedeuten nicht, dass ihren Nutzern der Meldebereich in Produktion ebenfalls
-zugewiesen wird (oder umgekehrt) - die Umgebungen sind strikt voneinander getrennt. 
-Auch IDs u.ä. können voneinander abweichen.
-
-#### Besonderheiten auf UAT
-
-Auf UAT läuft täglich ein Datengenerierungsskript zum Erzeugen von Testdaten. Wenn gewünscht, können wir dies für ihren
-Meldebereich ausschalten.
-
-Auf UAT werden keine eMails versendet (z.B. keine "Passwort zurücksetzen"-eMails). Falls Sie einen eMail-Inhalt
-benötigen, wenden Sie sich bitte den den IT-Support (s. Ende).
+In der Produktiv-Umgebung müssen die Meldebereiche erst zugeordnet werden, dafür muss zunächste eine Meldebereichsanfrage über das [Partner-Portal](https://partner.intensivregister.de) unter *Zugänge* > *Meldebereiche anzeigen* gestellt werden. Danach kann die Freigabe durch das RKI ebenfalls über das [Partner-Portal](https://partner.intensivregister.de) angefragt werden.
 
 ## Login-Modi
 
-### Neues Verfahren (Partner-Portal)
-
-Für die Authentifizierung wird das "client credentials" Verfahren verwendet.
-
-Im Fall von "client credentials" wird kein username/passwort benötigt, sondern für die Authentifizerung muss das client_secret und der grant_type auf "client_credentials" gesetzt werden. 
+Für die Authentifizierung wird das "client credentials" Verfahren verwendet. Hierzu wird kein username/passwort benötigt, sondern für die Authentifizerung muss das ```client_secret``` und der ```grant_type``` auf "client_credentials" gesetzt werden. 
 
 Die folgende Informationen werden benötigt und können dem [Partner-Portal](https://partner.intensivregister.de) unter *Zugänge* entnommen werden:
 
-* client-id
-* client_secret
+* ```client-id```
+* ```client_secret```
 
 Beispiel:
 ```
@@ -127,35 +90,13 @@ Als Ergebnis erhält man jeweils einen JSON-formatierten Body mit folgenden Feld
 
 Den Wert im Feld access_token muss in folgenden API-Calls an das Intensivregister mitgesendet werden.
 
-### Altes Verfahren (ohne Partner-Portal)
-
-Für die Authentifizierung kann über "password based credentials" oder "client credentials" Verfahren erfolgen.
-Ersteres wird derzeit auf "client credentials" umgestellt.
-
-Im Falle von "password based credentials" bekommen Sie folgende Informationen:
-
-* client-id
-* username
-* passwort
-
-Der Request zum Abholen des Access-Tokens ("password based credentials") sieht dann folgendermaßen aus:
-```
-curl --location --request POST \
- <URL des Token-Endpunktes, s.o.> \
- --header 'Content-Type: application/x-www-form-urlencoded' \
- --data-urlencode 'grant_type=password' \
- --data-urlencode 'client_id=<CLIENT_ID>' \
- --data-urlencode 'username=<USERNAME>' \
- --data-urlencode 'password=<PASSWORD>' 
- ```
-
 
 ## Intensivregister-API
 
 Die Dokumentation des (semi-)öffentlichen Teils dieser Schnittstelle findet man unter
 
-* UI - [https://www.intensivregister.de/api/public/api-docs-ui](https://www.intensivregister.de/api/public/api-docs-ui)
-* OpenAPI Spec - [https://www.intensivregister.de/api/public/api-docs](https://www.intensivregister.de/api/public/api-docs)
+* Swagger UI - [https://www.intensivregister.de/api/public/api-docs-ui](https://www.intensivregister.de/api/public/api-docs-ui)
+* OpenAPI-Spezifikation - [https://www.intensivregister.de/api/public/api-docs](https://www.intensivregister.de/api/public/api-docs)
 
 Darüber hinaus gibt es noch weitere Endpunkte, die nicht in der öffentlichen API-Spec beschrieben werden.
 
@@ -189,23 +130,24 @@ beispielhaft mit "neuaufnahmen" dargestellt:
 }
 ```
 
-Selbst wenn Sie die API ohne das unbekannte Sub-Feld aufrufen, wird die Antwort dieses Feld (mit dem Wert null)
+Selbst wenn Sie die API ohne das unbekannte Sub-Feld aufrufen, wird die Antwort dieses Feld (mit dem Wert NULL)
 enthalten. Wenn Ihr API-Client kein "ignore unknowns" kann wird dieser in diesem Fall einen Fehler werfen (da die Antwort
 ein für den Client unbekanntes Feld enthält).
 
-Changes der API-Endpunkte, die nicht in der öffentlichen API-Spec beschrieben sind, werden nicht kommuniziert. Die Benutzung dieser Endpunkte ist möglich, wird aber nicht offiziell unterstützt.
+Changes der API-Endpunkte, die nicht in der öffentlichen OpenAPI-Spezifikation beschrieben sind, werden nicht kommuniziert. Die Benutzung dieser Endpunkte ist möglich, wird aber offiziell nicht unterstützt.
 
 ## OpenAPI-Spezifikation
 
-Es wird dringend angeraten, die Client-seitige API anhand der OpenAPI-Spec automatisch zu generieren[^4]. Das Intensivregister-Frontend nutzt diese Variante ebenfalls. Der Vorteil hierbei ist, dass Änderungen an der API einfacher nachzuvollziehen sind (da nur der clientseitige API-Code neu generiert werden muss). Dies ist für alle gängigen Programmiersprachen möglich.
+Es wird dringend angeraten, die Client-seitige API anhand der OpenAPI-Spezifikation automatisch zu generieren[^4]. Das Intensivregister-Frontend nutzt diese Variante ebenfalls. Der Vorteil hierbei ist, dass Änderungen an der API einfacher nachzuvollziehen sind (da nur der Client-seitige API-Code neu generiert werden muss). Dies ist für alle gängigen Programmiersprachen möglich.
 
 [^4]: `https://github.com/OpenAPITools/openapi-generator`
+
 
 # Fachliche Anwendungsfälle
 
 ## Meldebereiche des Nutzers abfragen
 
-Die Meldebereiche, die für den Nutzer selber freigegeben sind, sind mit dem folegenden Endpunkt abrufbar:
+Die Meldebereiche, die für den Client freigegeben sind, sind mit dem folegenden Endpunkt abrufbar:
 * Abrufen der Meldebereiche - ```GET /stammdaten/meldebereich```
 
 ## Letzte Meldung eines Meldebereichs abfragen.
@@ -245,7 +187,7 @@ Die DIVI-Intensivregister-Verordnung [^Verordnung] definiert die Meldepflicht f�
 [^Verordnung]: `https://www.buzer.de/gesetz/13878/index.htm`
 
 ### Hinweis:
-Ist die Betriebssituation ```KEINE_ANGABE``` oder ```REGULAERER_BETRIEB```, so sollen die vier Felder für
+Ist die Betriebssituation ```KEINE_ANGABE``` oder ```REGULAERER_BETRIEB```, so sollten die vier Felder für
 Betriebseinschränkungen (```betriebseinschraenkungPersonal```, ```betriebseinschraenkungRaum```,
 ```betriebseinschraenkungBeatmungsgeraet```, ```betriebseinschraenkungVerbrauchsmaterial```) NULL sein. In anderen Fällen können beliebig viele dieser Betriebseinschränkungsgründe gesetzt werden.
 
@@ -256,8 +198,8 @@ Für eine genaue Datenfeld-Definition wenden Sie sich bitte an das RKI.
 Um dem RKI eine fachliche Validierung der gesendeten Meldungen zu ermöglichen inkl. eines Parallelbetriebs wurde
 folgendes Verfahren ermöglicht:
 
-* Mit der Kommunikation von Client-ID/-Secret (sowie Nutzername/Passwort) ist es für die entsprechende Umgebung möglich,
-  Meldungen abzugeben.
+* Mit der Kommunikation von Client-Id/-Secret ist es für die entsprechende Umgebung möglich,
+  Meldungen abzugeben (sofern man dem entsprechenden Meldebereich zugeordnet ist).
 * Ohne weitere Konfiguration werden die Meldungen zwar angenommen und gespeichert, aber werden nicht für inhaltliche
   Zwecke ausgewertet und in der Oberfläche nicht angezeigt. Die Meldungen sind "nicht freigegeben"
   und im Meldungsobjekt ist der Wert des Feldes "aktiv" auf 0.
@@ -307,7 +249,7 @@ Für die Meldung-Erfassen-Endpunkte gibt es ein separates Dokument mit den Plaus
 
 ## Kontakt
 
-Für Einrichtung von Zugängen wenden Sie sich bitte an den Helpdesk: `intensivregister-hilfe@rki.de`
+Für die Unterstützung bei der Einrichtung von Zugängen wenden Sie sich bitte an den Helpdesk: `intensivregister-hilfe@rki.de`
 
 Für technische Fragen zu diesem Dokument/der Schnittstelle wenden Sie sich bitte an das Support-Team:
 `Tech-support-IntensivRegister@prodyna.com`. 
