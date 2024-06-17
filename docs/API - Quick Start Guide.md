@@ -39,12 +39,12 @@ Das Ergebnis ist ein JSON-Dokument mit der Menge der Meldebereiche, die Ihnen zu
 
 Das Intensivregister hat mehrere, komplett unabhängige Umgebungen. Neuen API-Partnern werden Accounts und OICD-Clients auf der Testumgebung und Produktiv-Umgebung zugewiesen.
 
-Tests können in der Testumgebung durchgeführt werden, dabei können die folgenden Pfaden verwendet werden:
+Tests können in der Testumgebung durchgeführt werden, dabei können die folgenden Pfade verwendet werden:
 
 * Access-Token-Endpunkt - `https://auth.intensivregister.de/ir-prod-alike/protocol/openid-connect/token`
 * Basispfad der Serveranwendung - `https://prod-alike.intensivregister.de/api/`
 
-Nach den Tests und der Freigabe durch das RKI wird der OICD-Clients für die Produktiv-Umgebung freigeschalten. Die Pfade dort sind:
+Nach den Tests und der Freigabe durch das RKI wird der OICD-Client für die Produktiv-Umgebung freigeschalten. Die Pfade dort sind:
 
 * Access-Token-Endpunkt - `https://auth.intensivregister.de/intensivregister/protocol/openid-connect/token`
 * Basispfad der Serveranwendung - `https://www.intensivregister.de/api/`
