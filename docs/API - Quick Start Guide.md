@@ -3,8 +3,10 @@
 
 # Getting Started
 
-Sie können sich seblstständig im [Partner-Portal](https://partner.intensivregister.de) registieren. Sobald die Registrierung abgeschlossen ist, können Sie die benötigten Zugangsinformation über das [Partner-Portal](https://partner.intensivregister.de) unter *Zugänge* einsehen. Mit den aufgeführten Credentials können Sie ein "Access Token" bei unserer Authentifizierungssoftware [^Keycloak] erstellen.
+Sie können sich seblstständig im [Partner-Portal](https://partner.intensivregister.de) registieren. Sobald die Registrierung abgeschlossen ist, können Sie die benötigten Zugangsinformation über das [Partner-Portal](https://partner.intensivregister.de) unter *Zugänge* einsehen. Mit den aufgeführten Credentials können Sie ein "Access Token" bei unserer Authentifizierungssoftware [^1] erstellen.
 Dieses Access-Token muss in jedem HTTP-Request im Header namens ```Authorization``` samt des Prefix "Bearer " (Leerzeichen beachten!) mitgesendet werden.
+
+[^1] : Wir nutzen Keycloak, ein OpenID-Connect fähige Lösung.
 
 
 ## Beispiel:
@@ -31,7 +33,7 @@ curl --location --request GET \
 
 Das Ergebnis ist ein JSON-Dokument mit der Menge der Meldebereiche, die Ihnen zugewiesen ist.
 
-[^Keycloak] : Wir nutzen Keycloak, ein OpenID-Connect fähige Lösung.
+
 
 # Allgemeines
 
@@ -44,7 +46,7 @@ Tests können in der Testumgebung durchgeführt werden, dabei können die folgen
 * Access-Token-Endpunkt - `https://auth.intensivregister.de/ir-prod-alike/protocol/openid-connect/token`
 * Basispfad der Serveranwendung - `https://prod-alike.intensivregister.de/api/`
 
-Nach den Tests und der Freigabe durch das RKI wird der OICD-Client für die Produktiv-Umgebung freigeschalten. Die Pfade dort sind:
+Nach Test wird der OICD-Client für die Produktiv-Umgebung freigeschalten. Die Pfade dort sind:
 
 * Access-Token-Endpunkt - `https://auth.intensivregister.de/intensivregister/protocol/openid-connect/token`
 * Basispfad der Serveranwendung - `https://www.intensivregister.de/api/`
@@ -88,7 +90,7 @@ Als Ergebnis erhält man jeweils einen JSON-formatierten Body mit folgenden Feld
 }
  ```
 
-Den Wert im Feld access_token muss in folgenden API-Calls an das Intensivregister mitgesendet werden.
+Der Wert im Feld access_token muss in folgenden API-Calls an das Intensivregister mitgesendet werden.
 
 
 ## Intensivregister-API
@@ -131,7 +133,7 @@ beispielhaft mit "neuaufnahmen" dargestellt:
 ```
 
 Selbst wenn Sie die API ohne das unbekannte Sub-Feld aufrufen, wird die Antwort dieses Feld (mit dem Wert NULL)
-enthalten. Wenn Ihr API-Client kein "ignore unknowns" kann wird dieser in diesem Fall einen Fehler werfen (da die Antwort
+enthalten. Wenn Ihr API-Client kein "ignore unknowns" kann, wird dieser in diesem Fall einen Fehler werfen (da die Antwort
 ein für den Client unbekanntes Feld enthält).
 
 Changes der API-Endpunkte, die nicht in der öffentlichen OpenAPI-Spezifikation beschrieben sind, werden nicht kommuniziert. Die Benutzung dieser Endpunkte ist möglich, wird aber offiziell nicht unterstützt.
@@ -156,7 +158,7 @@ Die letzte (aktive/freigegebene) Meldung eines Meldebereichs ist mit dem folgend
 * Abrufen der letzen Meldung - ```GET /stammdaten/meldebereich/{meldebereichId}/letzte-meldung```
 
 ## Meldungen senden
-Zum Abgeben von Meldungen bzw. zum aktualisieren von Meldungen [^5] sind die folgenden Entpunkte relevant:
+Zum Abgeben von Meldungen bzw. zum Aktualisieren von Meldungen [^5] sind die folgenden Entpunkte relevant:
 * Abgeben einer Meldung - ```POST /meldungen```
 * Aktulisierung einer Meldung - ```PUT /meldungen/{meldungId}``` 
 
@@ -177,14 +179,16 @@ Folgende Hinweise für bestimmte Felder:
 NULL-Werte (bzw. nicht gesendet) sind (bis auf die unten aufgeführte Felder)
 zugelassen und bedeuten, dass der Anwender nicht um den Zustand des entsprechenden Feldes weiß. Die Ausprägungen von ```versorgungskategorie```, ```bettenVerfuegbarkeit``` und ```betriebssituation``` sind in der OpenAPI-Spezifikation hinterlegt.
 
-Die DIVI-Intensivregister-Verordnung [^Verordnung] definiert die Meldepflicht für verschiedene Datenfelder. Technisch verpflichtende Eingabefelder sind:
+Die Verordnung zur Krankenhauskapazitätssurveillance [^7] definiert die Meldepflicht für verschiedene Datenfelder. 
+
+Technisch verpflichtende Eingabefelder sind:
 
 * ```id```
 * ```meldebereich.id```
 * ```kapazitaeten.intensivBetten```
 * ```kapazitaeten.intensivBettenBelegt```
 
-[^Verordnung]: `https://www.buzer.de/gesetz/13878/index.htm`
+[^7]: [Verordnung zur Krankenhauskapazitätssurveillance](https://www.gesetze-im-internet.de/khkapsurv/BJNR626200022.html)
 
 ### Hinweis:
 Ist die Betriebssituation ```KEINE_ANGABE``` oder ```REGULAERER_BETRIEB```, so sollten die vier Felder für
