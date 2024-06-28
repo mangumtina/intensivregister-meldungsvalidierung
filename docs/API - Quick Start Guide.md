@@ -90,7 +90,7 @@ Als Ergebnis erhält man jeweils einen JSON-formatierten Body mit folgenden Feld
 }
  ```
 
-Der Wert im Feld access_token muss in folgenden API-Calls an das Intensivregister mitgesendet werden.
+Der Wert im Feld ```access_token``` muss in folgenden API-Calls an das Intensivregister mitgesendet werden.
 
 
 ## Intensivregister-API
