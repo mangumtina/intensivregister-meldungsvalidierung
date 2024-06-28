@@ -6,7 +6,7 @@
 Sie können sich seblstständig im [Partner-Portal](https://partner.intensivregister.de) registieren. Sobald die Registrierung abgeschlossen ist, können Sie die benötigten Zugangsinformation über das [Partner-Portal](https://partner.intensivregister.de) unter *Zugänge* einsehen. Mit den aufgeführten Credentials können Sie ein "Access Token" bei unserer Authentifizierungssoftware [^1] erstellen.
 Dieses Access-Token muss in jedem HTTP-Request im Header namens ```Authorization``` samt des Prefix "Bearer " (Leerzeichen beachten!) mitgesendet werden.
 
-[^1] : Wir nutzen Keycloak, ein OpenID-Connect fähige Lösung.
+[^1]: Wir nutzen Keycloak, ein OpenID-Connect fähige Lösung.
 
 
 ## Beispiel:
@@ -142,7 +142,7 @@ Changes der API-Endpunkte, die nicht in der öffentlichen OpenAPI-Spezifikation 
 
 Es wird dringend angeraten, die Client-seitige API anhand der OpenAPI-Spezifikation automatisch zu generieren[^4]. Das Intensivregister-Frontend nutzt diese Variante ebenfalls. Der Vorteil hierbei ist, dass Änderungen an der API einfacher nachzuvollziehen sind (da nur der Client-seitige API-Code neu generiert werden muss). Dies ist für alle gängigen Programmiersprachen möglich.
 
-[^4]: `https://github.com/OpenAPITools/openapi-generator`
+[^4]: [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator)
 
 
 # Fachliche Anwendungsfälle
