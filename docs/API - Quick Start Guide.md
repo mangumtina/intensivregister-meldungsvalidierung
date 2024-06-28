@@ -20,7 +20,7 @@ curl --location --request POST \
  --data-urlencode 'client_secret=<CLIENT_SECRET>'
  ```
 
-Die Antwort ist ein JSON-Dokument, welches u.a. den Eintrag "access_token" enthält. Dieses bitte extrahieren. 
+Die Antwort ist ein JSON-Dokument, welches u.a. den Eintrag ```access_token``` enthält. Dieses bitte extrahieren. 
 Die Gültigkeitsdauer des Tokens ist ebenfalls in der Antwort enthalten (alternativ kann auch das Token entpackt werden, es ist ein normales JWT).
 
 2. Beispiel-Request an das Intensivregister
