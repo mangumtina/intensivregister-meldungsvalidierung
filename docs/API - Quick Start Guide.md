@@ -3,7 +3,7 @@
 
 # Getting Started
 
-Sie können sich seblstständig im [Partner-Portal](https://partner.intensivregister.de) registieren. Sobald die Registrierung abgeschlossen ist, können Sie die benötigten Zugangsinformation über das [Partner-Portal](https://partner.intensivregister.de) unter *Zugänge* einsehen. Mit den aufgeführten Credentials können Sie ein "Access Token" bei unserer Authentifizierungssoftware [^1] erstellen.
+Sie können sich selbstständig im [Partner-Portal](https://partner.intensivregister.de) registieren. Sobald die Registrierung abgeschlossen ist, können Sie die benötigten Zugangsinformation über das [Partner-Portal](https://partner.intensivregister.de) unter *Zugänge* einsehen. Mit den aufgeführten Credentials können Sie ein "Access Token" bei unserer Authentifizierungssoftware [^1] erstellen.
 Dieses Access-Token muss in jedem HTTP-Request im Header namens ```Authorization``` samt des Prefix "Bearer " (Leerzeichen beachten!) mitgesendet werden.
 
 [^1]: Wir nutzen Keycloak, ein OpenID-Connect fähige Lösung.
@@ -46,21 +46,21 @@ Tests können in der Testumgebung durchgeführt werden, dabei können die folgen
 * Access-Token-Endpunkt - `https://auth.intensivregister.de/ir-prod-alike/protocol/openid-connect/token`
 * Basispfad der Serveranwendung - `https://prod-alike.intensivregister.de/api/`
 
-Nach Test wird der OICD-Client für die Produktiv-Umgebung freigeschalten. Die Pfade dort sind:
+Nach Test wird der OICD-Client für die Produktiv-Umgebung freigeschaltet. Die Pfade dort sind:
 
 * Access-Token-Endpunkt - `https://auth.intensivregister.de/intensivregister/protocol/openid-connect/token`
 * Basispfad der Serveranwendung - `https://www.intensivregister.de/api/`
 
-In der Testumgebung können selbstständig Meldbereiche zum Testen über das [Partner-Portal](https://partner.intensivregister.de) unter *Zugänge* > *Meldebereiche verwalten* angelegt werden.
+In der Testumgebung können selbstständig Meldebereiche zum Testen über das [Partner-Portal](https://partner.intensivregister.de) unter *Zugänge* > *Meldebereiche verwalten* angelegt werden.
 Diese Meldebereiche dienen nur zum Testen und sind unabhängig von den Meldebereichen in Produktion - die Umgebungen sind strikt voneinander getrennt. Dementsprechend können auch die IDs der Meldebereiche voneinander abweichen.
 
-In der Produktiv-Umgebung müssen die Meldebereiche erst zugeordnet werden, dafür muss zunächste eine Meldebereichsanfrage über das [Partner-Portal](https://partner.intensivregister.de) unter *Zugänge* > *Meldebereiche anzeigen* gestellt werden. Danach kann die Freigabe durch das RKI ebenfalls über das [Partner-Portal](https://partner.intensivregister.de) angefragt werden.
+In der Produktiv-Umgebung müssen die Meldebereiche erst zugeordnet werden, dafür muss zunächst eine Meldebereichsanfrage über das [Partner-Portal](https://partner.intensivregister.de) unter *Zugänge* > *Meldebereiche anzeigen* gestellt werden. Danach kann die Freigabe durch das RKI ebenfalls über das [Partner-Portal](https://partner.intensivregister.de) angefragt werden.
 
 ## Login-Modi
 
 Für die Authentifizierung wird das "client credentials" Verfahren verwendet. Hierzu wird kein username/passwort benötigt, sondern für die Authentifizerung muss das ```client_secret``` und der ```grant_type``` auf "client_credentials" gesetzt werden. 
 
-Die folgende Informationen werden benötigt und können dem [Partner-Portal](https://partner.intensivregister.de) unter *Zugänge* entnommen werden:
+Die folgenden Informationen werden benötigt und können dem [Partner-Portal](https://partner.intensivregister.de) unter *Zugänge* entnommen werden:
 
 * ```client-id```
 * ```client_secret```
@@ -160,7 +160,7 @@ Die letzte (aktive/freigegebene) Meldung eines Meldebereichs ist mit dem folgend
 ## Meldungen senden
 Zum Abgeben von Meldungen bzw. zum Aktualisieren von Meldungen [^5] sind die folgenden Entpunkte relevant:
 * Abgeben einer Meldung - ```POST /meldungen```
-* Aktulisierung einer Meldung - ```PUT /meldungen/{meldungId}``` 
+* Aktualisierung einer Meldung - ```PUT /meldungen/{meldungId}``` 
 
 Notwendige technische Informationen zum Benutzen sind: ein Access-Token (s.o.), die ID des Meldebereichs, für den man melden will (s.u.) und eine zufällig generierte UUID für die neue Meldung (bzw.
 die ID der zu aktualisierenden Meldung).
