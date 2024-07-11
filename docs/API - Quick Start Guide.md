@@ -3,7 +3,7 @@
 
 # Getting Started
 
-Sie können sich selbstständig im [Partner-Portal](https://partner.intensivregister.de) registieren. Sobald die Registrierung abgeschlossen ist, können Sie die benötigten Zugangsinformation über das [Partner-Portal](https://partner.intensivregister.de) unter *Zugänge* einsehen. Mit den aufgeführten Credentials können Sie ein "Access Token" bei unserer Authentifizierungssoftware [^1] erstellen.
+Sie können sich selbstständig im [Partner-Portal](https://partner.intensivregister.de) registrieren. Sobald die Registrierung abgeschlossen ist, können Sie die benötigten Zugangsinformation über das [Partner-Portal](https://partner.intensivregister.de) unter *Zugänge* einsehen. Mit den aufgeführten Credentials können Sie ein "Access Token" bei unserer Authentifizierungssoftware [^1] erstellen.
 Dieses Access-Token muss in jedem HTTP-Request im Header namens ```Authorization``` samt des Prefix "Bearer " (Leerzeichen beachten!) mitgesendet werden.
 
 [^1]: Wir nutzen Keycloak, ein OpenID-Connect fähige Lösung.
@@ -58,7 +58,7 @@ In der Produktiv-Umgebung müssen die Meldebereiche erst zugeordnet werden, daf�
 
 ## Login-Modi
 
-Für die Authentifizierung wird das "client credentials" Verfahren verwendet. Hierzu wird kein username/passwort benötigt, sondern für die Authentifizerung muss das ```client_secret``` und der ```grant_type``` auf "client_credentials" gesetzt werden. 
+Für die Authentifizierung wird das "client credentials" Verfahren verwendet. Hierzu wird kein username/passwort benötigt, sondern für die Authentifizierung muss das ```client_secret``` und der ```grant_type``` auf "client_credentials" gesetzt werden. 
 
 Die folgenden Informationen werden benötigt und können dem [Partner-Portal](https://partner.intensivregister.de) unter *Zugänge* entnommen werden:
 
@@ -102,7 +102,7 @@ Die Dokumentation des (semi-)öffentlichen Teils dieser Schnittstelle findet man
 
 Darüber hinaus gibt es noch weitere Endpunkte, die nicht in der öffentlichen API-Spec beschrieben werden.
 
-### Kompabilität
+### Kompatibilität
 
 Wir versuchen die API "backwards compatible" zu entwickeln bzw. garantieren eine Übergangsphase von einigen 
 Monaten, in denen alte Requests technisch gültig sind.
@@ -149,16 +149,16 @@ Es wird dringend angeraten, die Client-seitige API anhand der OpenAPI-Spezifikat
 
 ## Meldebereiche des Nutzers abfragen
 
-Die Meldebereiche, die für den Client freigegeben sind, sind mit dem folegenden Endpunkt abrufbar:
+Die Meldebereiche, die für den Client freigegeben sind, sind mit dem folgenden Endpunkt abrufbar:
 * Abrufen der Meldebereiche - ```GET /stammdaten/meldebereich```
 
 ## Letzte Meldung eines Meldebereichs abfragen.
 
 Die letzte (aktive/freigegebene) Meldung eines Meldebereichs ist mit dem folgenden Endpunkt abrufbar:
-* Abrufen der letzen Meldung - ```GET /stammdaten/meldebereich/{meldebereichId}/letzte-meldung```
+* Abrufen der letzten Meldung - ```GET /stammdaten/meldebereich/{meldebereichId}/letzte-meldung```
 
 ## Meldungen senden
-Zum Abgeben von Meldungen bzw. zum Aktualisieren von Meldungen [^5] sind die folgenden Entpunkte relevant:
+Zum Abgeben von Meldungen bzw. zum Aktualisieren von Meldungen [^5] sind die folgenden Endpunkte relevant:
 * Abgeben einer Meldung - ```POST /meldungen```
 * Aktualisierung einer Meldung - ```PUT /meldungen/{meldungId}``` 
 
@@ -214,7 +214,7 @@ Auf der Testumgebung wird ihr Client i.d.R. sofort freigegeben; obige Hinweise b
 
 ### Validierungen
 
-Meldungen werden vor der Speicherung oder Aktualisierung zunächst validiert/plausibilisiert. Diese Validierungen können sich auf einzelne Felder beziehen (z.B. für den Wert von ```faelleCovidAktuell``` wird die folgende Validierung durchgeführt: ```0 <= faelleCovidAktuell <= 999```), oder auf mehrere Felder (z.B. muss die Anzahl der aktuellen COVID-19-Fälle kleinergleich der Gesamtzahl der belegten Betten sein).
+Meldungen werden vor der Speicherung oder Aktualisierung zunächst validiert/plausibilisiert. Diese Validierungen können sich auf einzelne Felder beziehen (z.B. für den Wert von ```faelleCovidAktuell``` wird die folgende Validierung durchgeführt: ```0 <= faelleCovidAktuell <= 999```), oder auf mehrere Felder (z.B. muss die Anzahl der aktuellen COVID-19-Fälle kleiner gleich der Gesamtzahl der belegten Betten sein).
 
 Schlägt die Validierung fehl, wird ein HTTP-Response mit dem Status Code 400 (Bad Request) zurückgegeben, welcher die
 Validierungsfehler als ```errors``` enthält. Für jedes in der fehlgeschlagenen Validierung beteiligte Feld wird ein
