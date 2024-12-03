@@ -68,7 +68,7 @@ Auch im Korrektur-Modus einer schon erfolgten Meldung ist ein Vorausfüllen unab
 Eine Meldung kann rückwirkend bis zu 14 Tage nach der initialen Erfassung der Meldung von allen Meldenden eines Meldebereichs korrigiert werden.
 Im Frontend des Intensivregisters ist die Korrekturfunktionalität zu finden unter dem Menüpunkt "Mein Krankenhaus-Standort/ Mein Meldebereich:/ Meldungshistorie des Meldebereichs (korrigierbar)".
 
-# Strukturmeldung
+# 2) Strukturmeldung
 ## 2.1) Pflichtfelder zum Speichern der Strukturmeldung
 Eine Strukturmeldung kann von technischer Seite gespeichert werden, wenn sie mindestens Angaben zu den folgenden Datenfeldern enthält:
 * Anzahl der planmäßig verfügbaren Intensivbetten Ihres Meldebereichs *(planBetten)*
