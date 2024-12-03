@@ -38,7 +38,7 @@ Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch h
 
 * **Regel 1A:** Alle Eingaben <= 300
 
-* **Regel 1B:** intensivBettenBelegt < intensivBetten + 60 % intensivBettenBelegt
+* **Regel 1B:** intensivBettenBelegt < intensivBetten + 60 % intensivBetten
 
 * **Regel 1C:** patientenBeatmet <= intensivBettenBelegt
 
