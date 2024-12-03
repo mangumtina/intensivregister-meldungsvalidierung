@@ -36,17 +36,17 @@ Wenn ein für die Regel relevantes Datenfeld **nicht** ausgefüllt wurde, werden
 
 Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch hingewiesen werden (z. B. in Form einer Fehlermeldung oder durch ein Pop-up während der Eingabe). 
 
-* **Regel 14A:** Alle Eingaben <= 300
+* **Regel 1A:** Alle Eingaben <= 300
 
-* **Regel 14B:** intensivBettenBelegt < intensivBetten + 60 % intensivBettenBelegt
+* **Regel 1B:** intensivBettenBelegt < intensivBetten + 60 % intensivBettenBelegt
 
-* **Regel 14C:** patientenBeatmet <= intensivBettenBelegt
+* **Regel 1C:** patientenBeatmet <= intensivBettenBelegt
 
-* **Regel 14D:** patientenEcmo <= intensivBettenBelegt
+* **Regel 1D:** patientenEcmo <= intensivBettenBelegt
 
-* **Regel 14E:** patientenEcmo NULL, wenn Meldebereich kein ECMO hat
+* **Regel 1E:** patientenEcmo NULL, wenn Meldebereich kein ECMO hat
 
-* **Regel 14F:** patientenEcmo <= 300 oder NULL
+* **Regel 1F:** patientenEcmo <= 300 oder NULL
 
 ## 1.5) Warnmeldung bei stark veränderten Werten
 Bei zu starker Abweichung von der letzten Meldung sollte die folgende Warnmeldung für den User erscheinen: "Sind sie sicher, dass die Eingabe bei [Label] [Wert] korrekt ist, da die Zahl sehr stark abweicht?". Diese Warnmeldungen sollten nur bei numerischen Datenfeldern angezeigt werden. Wie groß die Abweichung sein muss, damit eine Warnmeldung angezeigt wird, hängt von der Größenordnung der vorherigen Meldung ab:
@@ -87,9 +87,9 @@ Die Prüfregeln sind **immer** aktiv, selbst wenn kein Wert in einem für die Re
 
 Wenn ein für die Regel relevantes Datenfeld **nicht** ausgefüllt wurde, werden für die Prüfregel leere Felder als die Zahl „0“ interpretiert. *Beispiel:* Für intensivBettenBelegt wurde kein Wert eingetragen, patientenBeatmet = 2. Nach Regel 5A wird nun getestet auf 0 >= 2. Da dies nicht erfüllt ist, wird ein Speichern verhindert.
 
-* **Regel 24A:**
-* **Regel 24B:**
-* **Regel 24C:**
+* **Regel 2A:**
+* **Regel 2B:**
+* **Regel 2C:**
 
 ## 2.5) Warnmeldung bei stark veränderten Werten
 Bei zu starker Abweichung von der letzten Meldung sollte die folgende Warnmeldung für den User erscheinen: "Sind sie sicher, dass die Eingabe bei [Label] [Wert] korrekt ist, da die Zahl sehr stark abweicht?". Diese Warnmeldungen sollten nur bei numerischen Datenfeldern angezeigt werden. Wie groß die Abweichung sein muss, damit eine Warnmeldung angezeigt wird, hängt von der Größenordnung der vorherigen Meldung ab:
