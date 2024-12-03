@@ -9,8 +9,12 @@ Dieses Dokument fasst alle Plausibilitäts-Checks & Systemanforderungen zusammen
 
 ## 1) Pflichtfelder zum Speichern der Meldung
 Eine Meldung kann von technischer Seite gespeichert werden, wenn sie mindestens Angaben zu den folgenden Datenfeldern enthält:
-* betreibbare Betten *(intensiv_betten)*
-* belegte Betten *(intensiv_betten_belegt)* 
+* eine selbst generierte UUID (für neue Meldungen) oder die ID der zu aktualisierenden Meldung *(id)*
+* ID des Meldebereichs *(meldebereich.id:)*
+* betreibbare Betten *(intensivBetten)*
+* belegte Betten *(intensivBettenBelegt)*
+* Anzahl der Intensivpatient*innen mit Beatmung (nicht-invasiv UND invasiv) *(patientenBeatmet)*
+* Anzahl der Intensivpatient*innen mit ECMO-Behandlung (Pflichtfeld mit NULL) *(patientenEcmo)*
 
 Für die anderen Datenfelder sind auch NULL-Werte zugelassen. Das Speichern der Meldung ist trotzdem möglich. Wenn eines dieser Felder leer gelassen wurde (NULL), sollte es einen Warnhinweis geben. Im Intensivregister Frontend ist der Warnhinweis so implementiert, dass er auf der Meldungszusammenfassungsseite angezeigt wird, wenn ein Datenfeld mit Zahlenwert aus einer vorherigen Meldung auf eine NULLmeldung wechselt. Danach werden keine weiteren Warnhinweise bei späteren Meldungen angezeigt, bis wieder erstmalig ein Datenfeld leer gelassen wird.
 **Bitte beachten Sie: Grundsätzlich besteht eine Meldepflicht, die über die technischen Pflichtfelder hinausgeht. Die gesetzliche Grundlage bildet die Verordnung zur Krankenhauskapazitätssurveillance (https://www.gesetze-im-internet.de/khkapsurv/BJNR626200022.html). Alle Datenfelder sind demnach rechtlich verpflichtend für die Meldung, ausgenommen Datenfelder, welche explizit mit dem Label „(optional)“ versehen sind.**
