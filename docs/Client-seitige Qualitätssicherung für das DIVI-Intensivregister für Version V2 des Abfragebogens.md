@@ -7,8 +7,8 @@ Dieses Dokument fasst alle Plausibilitäts-Checks & Systemanforderungen zusammen
 * **Durchgestrichene Passagen** betreffen derzeit **pausierte**, d. h. nicht erfragte Variablen. Nach Ende der Pausierung treten die betreffenden Prüfregeln wieder in Kraft.
 * Die Nummerierung der Prüfregeln ist historisch bedingt. Durch nachträgliche Änderungen, Hinzufügen oder Streichen von Plausibilitätsprüfungen kann daher ein Sprung in der Nummerierung auftreten.
 
-# Tägliche Meldung
-## 1) Pflichtfelder zum Speichern der täglichen Meldung
+# 1.Tägliche Meldung
+## 1.1) Pflichtfelder zum Speichern der täglichen Meldung
 Eine Meldung kann von technischer Seite gespeichert werden, wenn sie mindestens Angaben zu den folgenden Datenfeldern enthält:
 * betreibbare Betten *(intensivBetten)*
 * belegte Betten *(intensivBettenBelegt)*
@@ -23,13 +23,13 @@ NULL-Werte sind auch hier zugelassen und bedeuten, dass der Anwender nicht um de
 * Bei Auswahl der Betriebssituation mit ‚KEINE_ANGABE‘ oder ‚REGULAERER_BETRIEB‘ sollen die vier Felder für Betriebseinschränkungen (betriebseinschraenkungPersonal, betriebseinschraenkungRaum, betriebseinschraenkungBeatmungsgeraet, betriebseinschraenkungVerbrauchsmaterial) NULL sein. 
 * Bei Auswahl der Betriebssituation mit ‚TEILWEISE EINGESCHRÄNKT‘ oder ‚EINGESCHRÄNKT‘ sollen die vier Felder ‚Gründe der Betriebseinschränkung‘ angezeigt werden. Es können beliebig viele dieser Betriebseinschränkungsgründe gesetzt werden (Mehrfachauswahl), kein Ausfüllen (NULL-Wert) der vier Felder ist auch möglich.
 
-## 2) Notwendige Datentypen für Datenfelder
+## 1.2) Notwendige Datentypen für Datenfelder
 Die Datentypen der gemeldeten Werte müssen mit den Datentypen übereinstimmen, die in der Dokumentation der Schnittstelle (https://www.intensivregister.de/api/public/api-docs-ui) als Schema hinterlegt sind.
 
-## 3) Notwendige Zahlenintervalle für numerische Eingabewerte
+## 1.3) Notwendige Zahlenintervalle für numerische Eingabewerte
 Die gemeldeten Werte aller numerischer Datenfelder müssen ganze Zahlen sein in dem Intervall [0,999] (0 und 999 eingeschlossen).
 
-## 4) Notwendige Prüfregeln auf Eingabeseite für die tägliche Meldung
+## 1.4) Notwendige Prüfregeln auf Eingabeseite für die tägliche Meldung
 Die Prüfregeln sind **immer** aktiv, selbst wenn kein Wert in einem für die Regel relevanten Feld eingegeben wurde. Die Prüfregel **muss** eingehalten werden, um eine Meldung speichern zu können.
 
 Wenn ein für die Regel relevantes Datenfeld **nicht** ausgefüllt wurde, werden für die Prüfregel leere Felder als die Zahl „0“ interpretiert. *Beispiel:* Für intensivBettenBelegt wurde kein Wert eingetragen, patientenBeatmet = 2. Nach Regel 5A wird nun getestet auf 0 >= 2. Da dies nicht erfüllt ist, wird ein Speichern verhindert.
@@ -48,7 +48,7 @@ Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch h
 
 * **Regel 14F:** patientenEcmo <= 300 oder NULL
 
-## 5) Warnmeldung bei stark veränderten Werten
+## 1.5) Warnmeldung bei stark veränderten Werten
 Bei zu starker Abweichung von der letzten Meldung sollte die folgende Warnmeldung für den User erscheinen: "Sind sie sicher, dass die Eingabe bei [Label] [Wert] korrekt ist, da die Zahl sehr stark abweicht?". Diese Warnmeldungen sollten nur bei numerischen Datenfeldern angezeigt werden. Wie groß die Abweichung sein muss, damit eine Warnmeldung angezeigt wird, hängt von der Größenordnung der vorherigen Meldung ab:
 * bei Größenordnung 0-9 vorheriger Meldungen: Warnmeldung nur bei Sprung von +- >= 7
 * bei Größenordnung 10-19 vorheriger Meldungen: Warnmeldung bei Verdoppelung oder Reduktion auf ein Viertel
@@ -58,31 +58,31 @@ Eine Warnung muss für jedes Datenfeld, das eine starke Abweichung aufzeigt, ein
 
 Die Integration der Warnmeldung setzt voraus, dass das Client-System die letzte Meldung des Meldebereichs gespeichert hat und abrufen kann.
 
-## 6) Funktionalität: Automatisches Werte-Vorausfüllen
+## 1.6) Funktionalität: Automatisches Werte-Vorausfüllen
 Beim „Meldung erfassen“ kann eine automatische Werte-Vorausfüll-Funktionalität genutzt werden, die alle Datenfelder automatisch mit den Daten der letzten Erfassung befüllt.
 Dies soll den Meldenden das Melden erleichtern, da nur Werte, die sich seit der letzten Erfassung verändert haben, angepasst werden müssen. Die Funktionalität setzt voraus, dass das Client-System die letzte Meldung des Meldebereichs gespeichert hat und abrufen kann.
 
 Auch im Korrektur-Modus einer schon erfolgten Meldung ist ein Vorausfüllen unabhängig vom Zeitpunkt der vorhergehenden Meldung möglich.
 
-## 7) Funktionalität: Nachträgliche Werte-Korrektur von erfassten Meldungen
+## 1.7) Funktionalität: Nachträgliche Werte-Korrektur von erfassten Meldungen
 Eine Meldung kann rückwirkend bis zu 14 Tage nach der initialen Erfassung der Meldung von allen Meldenden eines Meldebereichs korrigiert werden.
 Im Frontend des Intensivregisters ist die Korrekturfunktionalität zu finden unter dem Menüpunkt "Mein Krankenhaus-Standort/ Mein Meldebereich:/ Meldungshistorie des Meldebereichs (korrigierbar)".
 
 # Strukturmeldung
-## 1) Pflichtfelder zum Speichern der Strukturmeldung
+## 2.1) Pflichtfelder zum Speichern der Strukturmeldung
 Eine Strukturmeldung kann von technischer Seite gespeichert werden, wenn sie mindestens Angaben zu den folgenden Datenfeldern enthält:
 * Anzahl der planmäßig verfügbaren Intensivbetten Ihres Meldebereichs *(planBetten)*
 * Anzahl der planmäßig verfügbaren Beatmungskapazitäten (invasiv UND nicht-invasiv) Ihres Meldebereichs *(planBeatmungskapazitaeten:)*
 * Anzahl der planmäßig verfügbaren ECMO-Kapazitäten Ihres Meldebereichs *(planEcmoKapazitaeten)*
 * Anzahl im Rahmen eines intensivmedizinischen Notfall-Szenarios innerhalb von 7 Tagen an Ihrem Standort betreibbare Betten *(planNotfallkapazitaet)*
 
-## 2) Notwendige Datentypen für Datenfelder
+## 2.2) Notwendige Datentypen für Datenfelder
 Die Datentypen der gemeldeten Werte müssen mit den Datentypen übereinstimmen, die in der Dokumentation der Schnittstelle (https://www.intensivregister.de/api/public/api-docs-ui) als Schema hinterlegt sind.
 
-## 3) Notwendige Zahlenintervalle für numerische Eingabewerte
+## 2.3) Notwendige Zahlenintervalle für numerische Eingabewerte
 Die gemeldeten Werte aller numerischer Datenfelder müssen ganze Zahlen sein in dem Intervall [0,999] (0 und 999 eingeschlossen).
 
-## 4) Notwendige Prüfregeln auf Eingabeseite für die tägliche Meldung
+## 2.4) Notwendige Prüfregeln auf Eingabeseite für die tägliche Meldung
 Die Prüfregeln sind **immer** aktiv, selbst wenn kein Wert in einem für die Regel relevanten Feld eingegeben wurde. Die Prüfregel **muss** eingehalten werden, um eine Meldung speichern zu können.
 
 Wenn ein für die Regel relevantes Datenfeld **nicht** ausgefüllt wurde, werden für die Prüfregel leere Felder als die Zahl „0“ interpretiert. *Beispiel:* Für intensivBettenBelegt wurde kein Wert eingetragen, patientenBeatmet = 2. Nach Regel 5A wird nun getestet auf 0 >= 2. Da dies nicht erfüllt ist, wird ein Speichern verhindert.
@@ -91,7 +91,7 @@ Wenn ein für die Regel relevantes Datenfeld **nicht** ausgefüllt wurde, werden
 * **Regel 24B:**
 * **Regel 24C:**
 
-## 5) Warnmeldung bei stark veränderten Werten
+## 2.5) Warnmeldung bei stark veränderten Werten
 Bei zu starker Abweichung von der letzten Meldung sollte die folgende Warnmeldung für den User erscheinen: "Sind sie sicher, dass die Eingabe bei [Label] [Wert] korrekt ist, da die Zahl sehr stark abweicht?". Diese Warnmeldungen sollten nur bei numerischen Datenfeldern angezeigt werden. Wie groß die Abweichung sein muss, damit eine Warnmeldung angezeigt wird, hängt von der Größenordnung der vorherigen Meldung ab:
 * bei Größenordnung 0-9 vorheriger Meldungen: Warnmeldung nur bei Sprung von +- >= 7
 * bei Größenordnung 10-19 vorheriger Meldungen: Warnmeldung bei Verdoppelung oder Reduktion auf ein Viertel
