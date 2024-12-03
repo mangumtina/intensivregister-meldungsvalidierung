@@ -7,7 +7,8 @@ Dieses Dokument fasst alle Plausibilitäts-Checks & Systemanforderungen zusammen
 * **Durchgestrichene Passagen** betreffen derzeit **pausierte**, d. h. nicht erfragte Variablen. Nach Ende der Pausierung treten die betreffenden Prüfregeln wieder in Kraft.
 * Die Nummerierung der Prüfregeln ist historisch bedingt. Durch nachträgliche Änderungen, Hinzufügen oder Streichen von Plausibilitätsprüfungen kann daher ein Sprung in der Nummerierung auftreten.
 
-## 1) Pflichtfelder zum Speichern der Meldung
+# Tägliche Meldung
+## 1) Pflichtfelder zum Speichern der täglichen Meldung
 Eine Meldung kann von technischer Seite gespeichert werden, wenn sie mindestens Angaben zu den folgenden Datenfeldern enthält:
 * betreibbare Betten *(intensivBetten)*
 * belegte Betten *(intensivBettenBelegt)*
@@ -28,25 +29,24 @@ Die Datentypen der gemeldeten Werte müssen mit den Datentypen übereinstimmen, 
 ## 3) Notwendige Zahlenintervalle für numerische Eingabewerte
 Die gemeldeten Werte aller numerischer Datenfelder müssen ganze Zahlen sein in dem Intervall [0,999] (0 und 999 eingeschlossen).
 
-## 4) Notwendige Prüfregeln auf Eingabeseite
+## 4) Notwendige Prüfregeln auf Eingabeseite für die tägliche Meldung
 Die Prüfregeln sind **immer** aktiv, selbst wenn kein Wert in einem für die Regel relevanten Feld eingegeben wurde. Die Prüfregel **muss** eingehalten werden, um eine Meldung speichern zu können.
 
 Wenn ein für die Regel relevantes Datenfeld **nicht** ausgefüllt wurde, werden für die Prüfregel leere Felder als die Zahl „0“ interpretiert. *Beispiel:* Für intensivBettenBelegt wurde kein Wert eingetragen, patientenBeatmet = 2. Nach Regel 5A wird nun getestet auf 0 >= 2. Da dies nicht erfüllt ist, wird ein Speichern verhindert.
 
 Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch hingewiesen werden (z. B. in Form einer Fehlermeldung oder durch ein Pop-up während der Eingabe). 
 
-* **Regel 4A:** Alle Eingaben <= 300
+* **Regel 14A:** Alle Eingaben <= 300
 
-* **Regel 4B:** intensivBettenBelegt < intensivBetten + 60 % intensivBettenBelegt
+* **Regel 14B:** intensivBettenBelegt < intensivBetten + 60 % intensivBettenBelegt
 
-* **Regel 4C:** patientenBeatmet <= intensivBettenBelegt
+* **Regel 14C:** patientenBeatmet <= intensivBettenBelegt
 
-* **Regel 4D:** patientenEcmo <= intensivBettenBelegt
+* **Regel 14D:** patientenEcmo <= intensivBettenBelegt
 
-* **Regel 4E:** patientenEcmo NULL, wenn Meldebereich kein ECMO hat
+* **Regel 14E:** patientenEcmo NULL, wenn Meldebereich kein ECMO hat
 
-* **Regel 4F:** patientenEcmo <= 300 oder NULL
-
+* **Regel 14F:** patientenEcmo <= 300 oder NULL
 
 ## 5) Warnmeldung bei stark veränderten Werten
 Bei zu starker Abweichung von der letzten Meldung sollte die folgende Warnmeldung für den User erscheinen: "Sind sie sicher, dass die Eingabe bei [Label] [Wert] korrekt ist, da die Zahl sehr stark abweicht?". Diese Warnmeldungen sollten nur bei numerischen Datenfeldern angezeigt werden. Wie groß die Abweichung sein muss, damit eine Warnmeldung angezeigt wird, hängt von der Größenordnung der vorherigen Meldung ab:
@@ -68,3 +68,31 @@ Auch im Korrektur-Modus einer schon erfolgten Meldung ist ein Vorausfüllen unab
 Eine Meldung kann rückwirkend bis zu 14 Tage nach der initialen Erfassung der Meldung von allen Meldenden eines Meldebereichs korrigiert werden.
 Im Frontend des Intensivregisters ist die Korrekturfunktionalität zu finden unter dem Menüpunkt "Mein Krankenhaus-Standort/ Mein Meldebereich:/ Meldungshistorie des Meldebereichs (korrigierbar)".
 
+# Strukturmeldung
+## 1) Pflichtfelder zum Speichern der Strukturmeldung
+Eine Strukturmeldung kann von technischer Seite gespeichert werden, wenn sie mindestens Angaben zu den folgenden Datenfeldern enthält:
+* Anzahl der planmäßig verfügbaren Intensivbetten Ihres Meldebereichs *(planBetten)*
+* Anzahl der planmäßig verfügbaren Beatmungskapazitäten (invasiv UND nicht-invasiv) Ihres Meldebereichs *(planBeatmungskapazitaeten:)*
+* Anzahl der planmäßig verfügbaren ECMO-Kapazitäten Ihres Meldebereichs *(planEcmoKapazitaeten)*
+* Anzahl im Rahmen eines intensivmedizinischen Notfall-Szenarios innerhalb von 7 Tagen an Ihrem Standort betreibbare Betten *(planNotfallkapazitaet)*
+
+## 2) Notwendige Datentypen für Datenfelder
+Die Datentypen der gemeldeten Werte müssen mit den Datentypen übereinstimmen, die in der Dokumentation der Schnittstelle (https://www.intensivregister.de/api/public/api-docs-ui) als Schema hinterlegt sind.
+
+## 3) Notwendige Zahlenintervalle für numerische Eingabewerte
+Die gemeldeten Werte aller numerischer Datenfelder müssen ganze Zahlen sein in dem Intervall [0,999] (0 und 999 eingeschlossen).
+
+## 4) Notwendige Prüfregeln auf Eingabeseite für die tägliche Meldung
+Die Prüfregeln sind **immer** aktiv, selbst wenn kein Wert in einem für die Regel relevanten Feld eingegeben wurde. Die Prüfregel **muss** eingehalten werden, um eine Meldung speichern zu können.
+
+Wenn ein für die Regel relevantes Datenfeld **nicht** ausgefüllt wurde, werden für die Prüfregel leere Felder als die Zahl „0“ interpretiert. *Beispiel:* Für intensivBettenBelegt wurde kein Wert eingetragen, patientenBeatmet = 2. Nach Regel 5A wird nun getestet auf 0 >= 2. Da dies nicht erfüllt ist, wird ein Speichern verhindert.
+
+* **Regel 24A:**
+* **Regel 24B:**
+* **Regel 24C:**
+
+## 5) Warnmeldung bei stark veränderten Werten
+Bei zu starker Abweichung von der letzten Meldung sollte die folgende Warnmeldung für den User erscheinen: "Sind sie sicher, dass die Eingabe bei [Label] [Wert] korrekt ist, da die Zahl sehr stark abweicht?". Diese Warnmeldungen sollten nur bei numerischen Datenfeldern angezeigt werden. Wie groß die Abweichung sein muss, damit eine Warnmeldung angezeigt wird, hängt von der Größenordnung der vorherigen Meldung ab:
+* bei Größenordnung 0-9 vorheriger Meldungen: Warnmeldung nur bei Sprung von +- >= 7
+* bei Größenordnung 10-19 vorheriger Meldungen: Warnmeldung bei Verdoppelung oder Reduktion auf ein Viertel
+* bei Größenordnung ab 20 vorheriger Meldungen: Warnmeldung bei Verdoppelung oder Halbierung
