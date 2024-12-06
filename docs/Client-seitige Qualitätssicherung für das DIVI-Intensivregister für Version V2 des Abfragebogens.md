@@ -82,14 +82,14 @@ Die Datentypen der gemeldeten Werte müssen mit den Datentypen übereinstimmen, 
 ## 2.3) Notwendige Zahlenintervalle für numerische Eingabewerte
 Die gemeldeten Werte aller numerischer Datenfelder müssen ganze Zahlen sein in dem Intervall [0,999] (0 und 999 eingeschlossen).
 
-## 2.4) Notwendige Prüfregeln auf Eingabeseite für die tägliche Meldung
+## 2.4) Notwendige Prüfregeln auf Eingabeseite für Strukturmeldung
 Die Prüfregeln sind **immer** aktiv, selbst wenn kein Wert in einem für die Regel relevanten Feld eingegeben wurde. Die Prüfregel **muss** eingehalten werden, um eine Meldung speichern zu können.
 
 Wenn ein für die Regel relevantes Datenfeld **nicht** ausgefüllt wurde, werden für die Prüfregel leere Felder als die Zahl „0“ interpretiert. *Beispiel:* Für intensivBettenBelegt wurde kein Wert eingetragen, patientenBeatmet = 2. Nach Regel 5A wird nun getestet auf 0 >= 2. Da dies nicht erfüllt ist, wird ein Speichern verhindert.
 
-* **Regel 2A:**
-* **Regel 2B:**
-* **Regel 2C:**
+* **Regel 2A:** Eingaben über 300 nicht möglich
+* **Regel 2B:** Beatmungskapazitäten <= Planbetten *(planBetten)*
+* **Regel 2C:** ECMO-Kapazitäten <= Planbetten *(planBetten)*
 
 ## 2.5) Warnmeldung bei stark veränderten Werten
 Bei zu starker Abweichung von der letzten Meldung sollte die folgende Warnmeldung für den User erscheinen: "Sind sie sicher, dass die Eingabe bei [Label] [Wert] korrekt ist, da die Zahl sehr stark abweicht?". Diese Warnmeldungen sollten nur bei numerischen Datenfeldern angezeigt werden. Wie groß die Abweichung sein muss, damit eine Warnmeldung angezeigt wird, hängt von der Größenordnung der vorherigen Meldung ab:
