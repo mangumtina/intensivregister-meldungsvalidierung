@@ -72,7 +72,7 @@ Im Frontend des Intensivregisters ist die Korrekturfunktionalität zu finden unt
 ## 2.1) Pflichtfelder zum Speichern der Strukturmeldung
 Eine Strukturmeldung kann von technischer Seite gespeichert werden, wenn sie mindestens Angaben zu den folgenden Datenfeldern enthält:
 * Anzahl der planmäßig verfügbaren Intensivbetten Ihres Meldebereichs *(planBetten)*
-* Anzahl der planmäßig verfügbaren Beatmungskapazitäten (invasiv UND nicht-invasiv) Ihres Meldebereichs *(planBeatmungskapazitaeten:)*
+* Anzahl der planmäßig verfügbaren Beatmungskapazitäten (invasiv UND nicht-invasiv) Ihres Meldebereichs *(planBeatmungskapazitaeten)*
 * Anzahl der planmäßig verfügbaren ECMO-Kapazitäten Ihres Meldebereichs *(planEcmoKapazitaeten)*
 * Anzahl im Rahmen eines intensivmedizinischen Notfall-Szenarios innerhalb von 7 Tagen an Ihrem Standort betreibbare Betten *(planNotfallkapazitaet)*
 
@@ -88,8 +88,8 @@ Die Prüfregeln sind **immer** aktiv, selbst wenn kein Wert in einem für die Re
 Wenn ein für die Regel relevantes Datenfeld **nicht** ausgefüllt wurde, werden für die Prüfregel leere Felder als die Zahl „0“ interpretiert. *Beispiel:* Für intensivBettenBelegt wurde kein Wert eingetragen, patientenBeatmet = 2. Nach Regel 5A wird nun getestet auf 0 >= 2. Da dies nicht erfüllt ist, wird ein Speichern verhindert.
 
 * **Regel 2A:** Eingaben über 300 nicht möglich
-* **Regel 2B:** Beatmungskapazitäten <= Planbetten *(planBetten)*
-* **Regel 2C:** ECMO-Kapazitäten <= Planbetten *(planBetten)*
+* **Regel 2B:** Beatmungskapazitäten *(planBeatmungskapazitaeten)* <= Planbetten *(planBetten)*
+* **Regel 2C:** ECMO-Kapazitäten *(planEcmoKapazitaeten)* <= Planbetten *(planBetten)*
 
 ## 2.5) Warnmeldung bei stark veränderten Werten
 Bei zu starker Abweichung von der letzten Meldung sollte die folgende Warnmeldung für den User erscheinen: "Sind sie sicher, dass die Eingabe bei [Label] [Wert] korrekt ist, da die Zahl sehr stark abweicht?". Diese Warnmeldungen sollten nur bei numerischen Datenfeldern angezeigt werden. Wie groß die Abweichung sein muss, damit eine Warnmeldung angezeigt wird, hängt von der Größenordnung der vorherigen Meldung ab:
