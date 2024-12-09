@@ -27,7 +27,7 @@ NULL-Werte sind auch hier zugelassen und bedeuten, dass der Anwender nicht um de
 Die Datentypen der gemeldeten Werte müssen mit den Datentypen übereinstimmen, die in der Dokumentation der Schnittstelle (https://www.intensivregister.de/api/public/api-docs-ui) als Schema hinterlegt sind.
 
 ## 1.3) Notwendige Zahlenintervalle für numerische Eingabewerte
-Die gemeldeten Werte aller numerischer Datenfelder müssen ganze Zahlen sein in dem Intervall [0,999] (0 und 999 eingeschlossen).
+Die gemeldeten Werte aller numerischer Datenfelder müssen ganze Zahlen sein in dem Intervall [0,300] (0 und 300 eingeschlossen).
 
 ## 1.4) Notwendige Prüfregeln auf Eingabeseite für die tägliche Meldung
 Die Prüfregeln sind **immer** aktiv, selbst wenn kein Wert in einem für die Regel relevanten Feld eingegeben wurde. Die Prüfregel **muss** eingehalten werden, um eine Meldung speichern zu können.
@@ -36,17 +36,15 @@ Wenn ein für die Regel relevantes Datenfeld **nicht** ausgefüllt wurde, werden
 
 Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch hingewiesen werden (z. B. in Form einer Fehlermeldung oder durch ein Pop-up während der Eingabe). 
 
-* **Regel 1A:** Alle Eingaben <= 300
+* **Regel 1A:** intensivBettenBelegt < intensivBetten + 60 % intensivBetten
 
-* **Regel 1B:** intensivBettenBelegt < intensivBetten + 60 % intensivBetten
+* **Regel 1B:** patientenBeatmet <= intensivBettenBelegt
 
-* **Regel 1C:** patientenBeatmet <= intensivBettenBelegt
+* **Regel 1C:** patientenEcmo <= intensivBettenBelegt
 
-* **Regel 1D:** patientenEcmo <= intensivBettenBelegt
+* **Regel 1D:** patientenEcmo NULL, wenn Meldebereich kein ECMO hat
 
-* **Regel 1E:** patientenEcmo NULL, wenn Meldebereich kein ECMO hat
-
-* **Regel 1F:** patientenEcmo <= 300 oder NULL
+* **Regel 1E:** patientenEcmo <= 300 oder NULL
 
 ## 1.5) Warnmeldung bei stark veränderten Werten
 Bei zu starker Abweichung von der letzten Meldung sollte die folgende Warnmeldung für den User erscheinen: "Sind sie sicher, dass die Eingabe bei [Label] [Wert] korrekt ist, da die Zahl sehr stark abweicht?". Diese Warnmeldungen sollten nur bei numerischen Datenfeldern angezeigt werden. Wie groß die Abweichung sein muss, damit eine Warnmeldung angezeigt wird, hängt von der Größenordnung der vorherigen Meldung ab:
@@ -80,16 +78,15 @@ Eine Strukturmeldung kann von technischer Seite gespeichert werden, wenn sie min
 Die Datentypen der gemeldeten Werte müssen mit den Datentypen übereinstimmen, die in der Dokumentation der Schnittstelle (https://www.intensivregister.de/api/public/api-docs-ui) als Schema hinterlegt sind.
 
 ## 2.3) Notwendige Zahlenintervalle für numerische Eingabewerte
-Die gemeldeten Werte aller numerischer Datenfelder müssen ganze Zahlen sein in dem Intervall [0,999] (0 und 999 eingeschlossen).
+Die gemeldeten Werte aller numerischer Datenfelder müssen ganze Zahlen sein in dem Intervall [0,300] (0 und 300 eingeschlossen).
 
 ## 2.4) Notwendige Prüfregeln auf Eingabeseite für Strukturmeldung
 Die Prüfregeln sind **immer** aktiv, selbst wenn kein Wert in einem für die Regel relevanten Feld eingegeben wurde. Die Prüfregel **muss** eingehalten werden, um eine Meldung speichern zu können.
 
 Wenn ein für die Regel relevantes Datenfeld **nicht** ausgefüllt wurde, werden für die Prüfregel leere Felder als die Zahl „0“ interpretiert. *Beispiel:* Für intensivBettenBelegt wurde kein Wert eingetragen, patientenBeatmet = 2. Nach Regel 5A wird nun getestet auf 0 >= 2. Da dies nicht erfüllt ist, wird ein Speichern verhindert.
 
-* **Regel 2A:** Eingaben über 300 nicht möglich
-* **Regel 2B:** Beatmungskapazitäten *(planBeatmungskapazitaeten)* <= Planbetten *(planBetten)*
-* **Regel 2C:** ECMO-Kapazitäten *(planEcmoKapazitaeten)* <= Planbetten *(planBetten)*
+* **Regel 2A:** Beatmungskapazitäten *(planBeatmungskapazitaeten)* <= Planbetten *(planBetten)*
+* **Regel 2B:** ECMO-Kapazitäten *(planEcmoKapazitaeten)* <= Planbetten *(planBetten)*
 
 ## 2.5) Warnmeldung bei stark veränderten Werten
 Bei zu starker Abweichung von der letzten Meldung sollte die folgende Warnmeldung für den User erscheinen: "Sind sie sicher, dass die Eingabe bei [Label] [Wert] korrekt ist, da die Zahl sehr stark abweicht?". Diese Warnmeldungen sollten nur bei numerischen Datenfeldern angezeigt werden. Wie groß die Abweichung sein muss, damit eine Warnmeldung angezeigt wird, hängt von der Größenordnung der vorherigen Meldung ab:
