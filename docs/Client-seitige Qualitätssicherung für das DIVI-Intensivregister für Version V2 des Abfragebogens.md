@@ -44,7 +44,7 @@ Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch h
 
 * **Regel 1D:** patientenEcmo NULL, wenn Meldebereich kein ECMO hat
 
-* **Regel 1E:** patientenEcmo <= 300 oder NULL
+* **Regel 1E:** ECMO: NULL erlaubt
 
 ## 1.5) Warnmeldung bei stark veränderten Werten
 Bei zu starker Abweichung von der letzten Meldung sollte die folgende Warnmeldung für den User erscheinen: "Sind sie sicher, dass die Eingabe bei [Label] [Wert] korrekt ist, da die Zahl sehr stark abweicht?". Diese Warnmeldungen sollten nur bei numerischen Datenfeldern angezeigt werden. Wie groß die Abweichung sein muss, damit eine Warnmeldung angezeigt wird, hängt von der Größenordnung der vorherigen Meldung ab:
