@@ -36,7 +36,7 @@ Wenn ein für die Regel relevantes Datenfeld **nicht** ausgefüllt wurde, werden
 
 Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch hingewiesen werden (z. B. in Form einer Fehlermeldung oder durch ein Pop-up während der Eingabe). 
 
-* **Regel 1A:** intensivBettenBelegt < intensivBetten + 60 % intensivBetten
+* **Regel 1A:** intensivBettenBelegt < intensivBetten + 150 % intensivBetten
 
 * **Regel 1B:** patientenBeatmet <= intensivBettenBelegt
 
