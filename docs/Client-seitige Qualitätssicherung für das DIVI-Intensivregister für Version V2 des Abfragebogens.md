@@ -36,7 +36,7 @@ Wenn ein für die Regel relevantes Datenfeld **nicht** ausgefüllt wurde, werden
 
 Sollte gegen eine Regel verstoßen werden, soll der User auf diesen Regelbruch hingewiesen werden (z. B. in Form einer Fehlermeldung oder durch ein Pop-up während der Eingabe). 
 
-* **Regel 1A:** intensivBettenBelegt < intensivBetten + 150 % intensivBetten
+* **Regel 1A:** intensivBettenBelegt <= intensivBetten + 150 % intensivBetten
 
 * **Regel 1B:** patientenBeatmet <= intensivBettenBelegt
 
@@ -87,6 +87,7 @@ Wenn ein für die Regel relevantes Datenfeld **nicht** ausgefüllt wurde, werden
 
 * **Regel 2A:** Beatmungskapazitäten *(planBeatmungskapazitaeten)* <= Planbetten *(planBetten)*
 * **Regel 2B:** ECMO-Kapazitäten *(planEcmoKapazitaeten)* <= Planbetten *(planBetten)*
+* **2C: ECMO-Kapazitäten *(planEcmoKapazitaeten)*:** Keine Angabe, wenn Meldebereich kein ECMO hat
 
 ## 2.5) Warnmeldung bei stark veränderten Werten
 Bei zu starker Abweichung von der letzten Meldung sollte die folgende Warnmeldung für den User erscheinen: "Sind sie sicher, dass die Eingabe bei [Label] [Wert] korrekt ist, da die Zahl sehr stark abweicht?". Diese Warnmeldungen sollten nur bei numerischen Datenfeldern angezeigt werden. Wie groß die Abweichung sein muss, damit eine Warnmeldung angezeigt wird, hängt von der Größenordnung der vorherigen Meldung ab:
